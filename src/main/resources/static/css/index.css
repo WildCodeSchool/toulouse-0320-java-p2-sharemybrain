@@ -1,11 +1,20 @@
-/* @import url('styles.css') */
-body {
-    padding: 0;
-    margin: 0;
+@import url('styles.css');
+
+/* GENERAL */
+p {
+    color: var(--gainsboro);
 }
 /*  HEADER */
+
+.index-header p{
+    color: var(--darkImperialBlue);
+    font-size:1.5rem;
+    font-family: 'Fjalla One', sans-serif;
+}
+
 .index-header {
     display: flex;
+    margin: 1rem;
 }
 
 .logo {
@@ -13,25 +22,29 @@ body {
     align-items: center;
 }
 
-.index-header .btns-header {
+.btns-header {
     display: none;
 }
 
 .logo img {
-    width: 60px;
-    height: 72px;
+    width: 15vw;
 }
 
 /* CONTENT */
 .index-content h1 {
     text-align: center;
+    font-family: 'Chau Philomene One', sans-serif;
+    color: var(--sunsetOrange);
+    text-transform: uppercase;
+    font-size: 2rem;
 }
 .index-content img {
     display: none;
 }
 
 .blue-square {
-    background-color: #155268;
+    margin-top: 1.5rem 0;
+    background-color: var(--darkImperialBlue);
     position: relative;
     left: 0;
     height: auto;
@@ -41,8 +54,8 @@ body {
 
 .share-brain p{
     position: relative;
-    color: #E4DFDA;
     padding: 2rem 2.5rem;
+    font-size: 1.2rem;
 }
 
 /* CARDS */
@@ -55,29 +68,31 @@ body {
     align-self: center;
     display: flex;
     justify-content: space-around;
-    background-color: #00798C;
+    background-color: var(--metallicSeaweed);
     border-radius: 30px;
     width: 50%;
     align-items: center;
     padding: 1.5rem 1.2rem;
     text-align: center;
-    margin-top: 1.5rem;
+    margin-top: 2.5rem;
 
+}
+
+.card p {
+    font-size: 1.5rem;
 }
 
 .share img {
     width: 40%;
-    height: 30%;
 }
 
 .search img {
     width: 30%;
-    height: 20%;
 }
 
 .question i {
-    color: #FE5F55;
-    font-size: 3.5rem;
+    color: var(--sunsetOrange);
+    font-size: 14vw;
     text-align: center;
 }
 
@@ -87,8 +102,10 @@ body {
 
 
 .search {
-    padding: 2.1rem 1.2rem;
+    padding: 2rem 1.2rem;
 }
+
+/* BUTTONS */
 
 .btns-index {
     margin-top: 2rem;
@@ -96,17 +113,18 @@ body {
     justify-content: center;
 }
 
-/* BUTTONS */
 .btn-log {
     border-style: none;
     background-color: transparent;
-    color: #155268;
+    color: var(--darkImperialBlue);
     font-size: 1.5rem;
 }
 
 /* FOOTER */
 .no-session {
+    background-color: transparent;
     margin-top: 3rem;
+    margin-bottom: 1rem;
 }
 .no-session .social{
     display: none;
@@ -118,3 +136,99 @@ body {
     font-size: 0.8rem;
 }
 
+/* MEDIA */
+
+@media screen and (min-width: 768px) {
+
+    .index-header {
+        margin: 1rem 2rem 0 2rem;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .index-header p{
+        font-size: 2rem;
+    }
+
+    .logo img {
+        width: 5vw;
+    }
+
+    .btns-header {
+        display: initial;
+    }
+
+    /* CONTENT */
+    .index-content {
+        display: flex;
+        align-items: center;
+
+        justify-content: space-around;
+    }
+
+    .index-content img {
+        display: initial;
+        width: 24%;
+
+    }
+
+    .share-brain {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        width: 60%;
+    }
+
+    .share-brain h1 {
+        font-size: 6vw;
+        margin-top: 3rem
+    }
+
+    .blue-square {
+        margin-top: 4rem;
+        border-radius: 30px;
+        width: 80%;
+    }
+
+    .blue-square p {
+        font-size: 1.5rem;
+    }
+
+    /* CARDS */
+
+    .index-cards {
+        flex-direction: row;
+        justify-content :space-around;
+        margin-top: 2rem;
+    }
+
+    .card {
+        width: 20%;
+        padding: 1.5rem 0.8rem;
+
+    }
+
+    .card p {
+        flex-basis: 50%;
+    }
+
+    .question i {
+        font-size: 5vw;
+    }
+
+    .share img {
+        flex-basis: 30%;
+    }
+
+    .search img {
+        width: 28%;
+    }
+
+    /* BUTTONS */
+
+    .btns-index {
+        display: none;
+    }
+
+}

@@ -1,7 +1,7 @@
-. {
+*{
     margin: 0;
     padding: 0;
-    font-family: "Roboto Light"; /*TODO: replace "Roboto Light" by "Roboto"*/
+    font-family: 'Roboto', sans-serif; /*TODO: replace "Roboto Light" by "Roboto"*/
 }
 
 :root {
@@ -10,7 +10,9 @@
     --metallicSeaweed: #00798C;
     --gainsboro: #E4DFDA;
 }
-
+body {
+    background-color: var(--gainsboro);
+}
 footer {
     background-color: var(--darkImperialBlue);
     color: var(--gainsboro);

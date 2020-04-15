@@ -1,0 +1,120 @@
+/* @import url('styles.css') */
+body {
+    padding: 0;
+    margin: 0;
+}
+/*  HEADER */
+.index-header {
+    display: flex;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.index-header .btns-header {
+    display: none;
+}
+
+.logo img {
+    width: 60px;
+    height: 72px;
+}
+
+/* CONTENT */
+.index-content h1 {
+    text-align: center;
+}
+.index-content img {
+    display: none;
+}
+
+.blue-square {
+    background-color: #155268;
+    position: relative;
+    left: 0;
+    height: auto;
+    width: auto;
+
+}
+
+.share-brain p{
+    position: relative;
+    color: #E4DFDA;
+    padding: 2rem 2.5rem;
+}
+
+/* CARDS */
+.index-cards {
+    display: flex;
+    flex-direction: column;
+}
+
+.card {
+    align-self: center;
+    display: flex;
+    justify-content: space-around;
+    background-color: #00798C;
+    border-radius: 30px;
+    width: 50%;
+    align-items: center;
+    padding: 1.5rem 1.2rem;
+    text-align: center;
+    margin-top: 1.5rem;
+
+}
+
+.share img {
+    width: 40%;
+    height: 30%;
+}
+
+.search img {
+    width: 30%;
+    height: 20%;
+}
+
+.question i {
+    color: #FE5F55;
+    font-size: 3.5rem;
+    text-align: center;
+}
+
+.question p {
+    width: 50%;
+}
+
+
+.search {
+    padding: 2.1rem 1.2rem;
+}
+
+.btns-index {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+/* BUTTONS */
+.btn-log {
+    border-style: none;
+    background-color: transparent;
+    color: #155268;
+    font-size: 1.5rem;
+}
+
+/* FOOTER */
+.no-session {
+    margin-top: 3rem;
+}
+.no-session .social{
+    display: none;
+}
+
+.no-session p {
+    text-align: center;
+    color: #8A8E95;
+    font-size: 0.8rem;
+}
+

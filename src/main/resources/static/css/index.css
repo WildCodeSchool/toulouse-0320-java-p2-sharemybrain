@@ -1,16 +1,6 @@
 @import url('styles.css');
 
 /* GENERAL */
-html {
-    height: 100%;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100%;
-}
-
 p {
     color: var(--gainsboro);
 }
@@ -124,16 +114,6 @@ p {
     color: var(--darkImperialBlue);
     font-size: 1.5rem;
 }
-
-.button {
-    font-size: 1.5rem;
-    border-radius: 15px;
-    padding: 0.3rem;
-    width: auto;
-    height: auto;
-    margin-left: 1rem;
-}
-
 
 /* FOOTER */
 .no-session {

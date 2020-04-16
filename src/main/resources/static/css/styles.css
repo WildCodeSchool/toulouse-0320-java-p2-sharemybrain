@@ -1,7 +1,7 @@
-.{
+* {
     margin: 0;
     padding: 0;
-    font-family: "Roboto Light"; /*TODO: replace "Roboto Light" by "Roboto"*/
+    font-family: "Roboto";
 }
 
 :root {
@@ -50,6 +50,18 @@ footer div ul {
 }
 
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 768px) {
+
+    footer div ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    footer div div ul li {
+        margin-left: 3em;
+        margin-right: 3em;
+    }
 
 }

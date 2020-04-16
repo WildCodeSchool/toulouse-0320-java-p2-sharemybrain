@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <th:block th:include="fragments/head.html :: head"></th:block>
+    <link rel="stylesheet" type="text/css" href="../static/css/register.css"/>
+
+</head>
+<body>
+<div class="cadredestop">
+    <h2>Register</h2>
+    <form action="" method="post" class="register">
+
+        <div id="formulaire">
+            <label for="mail"></label>
+            <input type="email" id="mail" name="user_mail" placeholder="Email" required>
+
+            <label for="name"></label>
+            <input type="text" id="name" name="user_name" placeholder="Username" required>
+
+            <label for="pwd"></label>
+            <input type="password" id="pwd" name="password" placeholder="Password" required>
+
+            <label for="pwd2"></label>
+            <input type="password" id="pwd2" name="password" placeholder="Confirm password" required>
+        </div>
+        <div id="skillmobile">
+            <div>
+                <label id="chose">
+                    <select name="Chose your skill" size="1">
+                        <option value="Chose">Chose your skill</option>
+                        <OPTION>HTML
+                        <OPTION>CSS
+                        <OPTION>JAVA
+                        <OPTION>JAVASCRIPT
+                        <OPTION>Autre
+                    </select>
+                </label>
+            </div>
+            <!--TODO encadré pour mettre la photo -->
+
+            <div id="formAvatar">
+                <label for="avatar"></label>
+                <input type="file" accept="image/*" id="avatar" name="avatar" placeholder="profile-placeholder-3.jpg">
+            </div>
+        </div>
+
+        <div>
+            <input class="button" type="submit" value="Go">
+        </div>
+
+    </form>
+</div>
+</body>
+</html>

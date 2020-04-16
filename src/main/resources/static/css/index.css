@@ -1,14 +1,24 @@
 @import url('styles.css');
 
 /* GENERAL */
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
 p {
     color: var(--gainsboro);
 }
-/*  HEADER */
 
-.index-header p{
+/*  HEADER */
+.index-header p {
     color: var(--darkImperialBlue);
-    font-size:1.5rem;
+    font-size: 1.5rem;
     font-family: 'Fjalla One', sans-serif;
 }
 
@@ -38,6 +48,7 @@ p {
     text-transform: uppercase;
     font-size: 2rem;
 }
+
 .index-content img {
     display: none;
 }
@@ -49,10 +60,9 @@ p {
     left: 0;
     height: auto;
     width: auto;
-
 }
 
-.share-brain p{
+.share-brain p {
     position: relative;
     padding: 2rem 2.5rem;
     font-size: 1.2rem;
@@ -62,6 +72,7 @@ p {
 .index-cards {
     display: flex;
     flex-direction: column;
+    margin-bottom: 2rem;
 }
 
 .card {
@@ -75,19 +86,22 @@ p {
     padding: 1.5rem 1.2rem;
     text-align: center;
     margin-top: 2.5rem;
-
 }
 
 .card p {
-    font-size: 1.5rem;
+    flex-basis: 50%;
+}
+
+.share {
+    padding: 1.2rem;
 }
 
 .share img {
-    width: 40%;
+    flex-basis: 40%;
 }
 
 .search img {
-    width: 30%;
+    flex-basis: 30%;
 }
 
 .question i {
@@ -96,17 +110,7 @@ p {
     text-align: center;
 }
 
-.question p {
-    width: 50%;
-}
-
-
-.search {
-    padding: 2rem 1.2rem;
-}
-
 /* BUTTONS */
-
 .btns-index {
     margin-top: 2rem;
     display: flex;
@@ -123,10 +127,11 @@ p {
 /* FOOTER */
 .no-session {
     background-color: transparent;
-    margin-top: 3rem;
+    margin-top: auto;
     margin-bottom: 1rem;
 }
-.no-session .social{
+
+.no-session .social {
     display: none;
 }
 
@@ -137,7 +142,6 @@ p {
 }
 
 /* MEDIA */
-
 @media screen and (min-width: 768px) {
 
     .index-header {
@@ -146,7 +150,7 @@ p {
         align-items: center;
     }
 
-    .index-header p{
+    .index-header p {
         font-size: 2rem;
     }
 
@@ -162,14 +166,12 @@ p {
     .index-content {
         display: flex;
         align-items: center;
-
         justify-content: space-around;
     }
 
     .index-content img {
         display: initial;
         width: 24%;
-
     }
 
     .share-brain {
@@ -196,20 +198,21 @@ p {
     }
 
     /* CARDS */
-
     .index-cards {
         flex-direction: row;
-        justify-content :space-around;
+        justify-content: space-around;
         margin-top: 2rem;
+        height: 20vh;
+        align-items: center;
     }
 
     .card {
         width: 20%;
         padding: 1.5rem 0.8rem;
-
     }
 
     .card p {
+        font-size: 1.3rem;
         flex-basis: 50%;
     }
 
@@ -222,13 +225,11 @@ p {
     }
 
     .search img {
-        width: 28%;
+        flex-basis: 28%;
     }
 
     /* BUTTONS */
-
     .btns-index {
         display: none;
     }
-
 }

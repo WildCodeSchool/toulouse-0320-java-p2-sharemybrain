@@ -1,9 +1,8 @@
 /* style commun */
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Roboto';
+    font-family: 'Roboto', sans-serif;
 }
 
 :root {
@@ -12,6 +11,18 @@
     --metallicSeaweed: #00798C;
     --gainsboro: #E4DFDA;
 }
+
+html {
+    height: 100%;
+}
+
+body {
+    background-color: var(--gainsboro);
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
 .button{
     width: 7rem;
     height: 3rem;
@@ -22,8 +33,15 @@
     padding: 0;
 }
 
+.btn-register{
+    font-size: 1.5rem;
+    border-radius: 15px;
+    padding: 0.3rem;
+    width: auto;
+    height: auto;
+    margin-left: 1rem;
+}
 /* style footer */
-
 footer {
     background-color: var(--darkImperialBlue);
     color: var(--gainsboro);
@@ -63,18 +81,17 @@ footer div ul {
 }
 
 
-
 @media screen and (min-width: 768px) {
 
     .button{
         width: 6rem;
         height: 2.5rem;
-        background: var(--sunsetOrange);
-        border-color: var(--sunsetOrange);
         border-radius: 25px;
-        font-size: 2rem;
-        padding: 0;
     }
 
-
+    .btn-register{
+        border-radius: 15px;
+        width: auto;
+        height: auto;
+    }
 }

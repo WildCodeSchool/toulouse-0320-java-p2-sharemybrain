@@ -35,7 +35,7 @@ p {
 
 /*MENU BURGER*/
 .btn-burger {
-    width:  40px;
+    width: 40px;
     height: 40px;
     cursor: pointer;
     position: relative;
@@ -74,7 +74,7 @@ p {
 
 .btn-burger.active span {
     background-color: transparent;
-    z-index:2;
+    z-index: 2;
 }
 
 .btn-burger.active span::before {

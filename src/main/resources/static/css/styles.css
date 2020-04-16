@@ -1,7 +1,8 @@
-*{
+/* style commun */
+* {
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif; /*TODO: replace "Roboto Light" by "Roboto"*/
+    font-family: 'Roboto', sans-serif;
 }
 
 :root {
@@ -10,9 +11,22 @@
     --metallicSeaweed: #00798C;
     --gainsboro: #E4DFDA;
 }
+
 body {
     background-color: var(--gainsboro);
 }
+
+.button{
+    width: 7rem;
+    height: 3rem;
+    background: var(--sunsetOrange);
+    border-color: var(--sunsetOrange);
+    border-radius: 25px;
+    font-size: 2rem;
+    padding: 0;
+}
+
+/* style footer */
 footer {
     background-color: var(--darkImperialBlue);
     color: var(--gainsboro);
@@ -52,6 +66,17 @@ footer div ul {
 }
 
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 768px) {
+
+    .button{
+        width: 6rem;
+        height: 2.5rem;
+        background: var(--sunsetOrange);
+        border-color: var(--sunsetOrange);
+        border-radius: 25px;
+        font-size: 2rem;
+        padding: 0;
+    }
+
 
 }

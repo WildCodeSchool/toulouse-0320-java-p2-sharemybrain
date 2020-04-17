@@ -82,6 +82,7 @@ footer div ul {
     footer div div ul li {
         margin-left: 3em;
         margin-right: 3em;
+    }
 
     .button{
         width: 6rem;
@@ -95,6 +96,7 @@ footer div ul {
     }
 
     /* commun login et register*/
+
     .cadredestop{
         background-color: var(--darkImperialBlue);
         height: 80vh;

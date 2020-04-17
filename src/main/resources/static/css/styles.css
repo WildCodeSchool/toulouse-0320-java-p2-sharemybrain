@@ -1,4 +1,4 @@
-
+@import url('header.css');
 * {
     margin: 0;
     padding: 0;
@@ -22,7 +22,7 @@ body {
     flex-direction: column;
     min-height: 100%;
 }
-
+/* button */
 .button{
     width: 7rem;
     height: 3rem;
@@ -41,6 +41,8 @@ body {
     height: auto;
     margin-left: 1rem;
 }
+
+
 /* style footer */
 footer {
     background-color: var(--darkImperialBlue);
@@ -93,6 +95,7 @@ footer div ul {
     footer div div ul li {
         margin-left: 3em;
         margin-right: 3em;
+    }
 
     .button{
         width: 6rem;

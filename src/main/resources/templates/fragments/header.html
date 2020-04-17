@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body th:fragment="header (logged, page)">
+    <header class="index-header header" th:if="${not logged}">
+        <div class="logo" >
+            <div class="img"></div>
+            <p>ShareMyBrain</p>
+        </div>
+        <div class="btns-header" th:if="${page == 'index'}">
+            <input class="btn-log" type="submit" value="Log in">
+            <input class="button btn-register" type="submit" value="Register">
+        </div>
+        <div class="btns-header" th:if="${page == 'register'}">
+            <input class="button btn-register" type="submit" value="Log in">
+        </div>
+        <div class="btns-header" th:if="${page == 'login'}">
+            <input class="button btn-register" type="submit" value="Register">
+        </div>
+        <div class="btn-burger">
+            <span></span>
+        </div>
+    </header>
+    <header class="log-header header" th:if="${logged}">
+        <div class="logo">
+            <img src="images/LogoBlue2.png">
+            <p>ShareMyBrain</p>
+        </div>
+        <div class="btns-nav">
+            <div class="icon-nav nav-brain">
+                <img src="images/brain2.png">
+                <p>Answer</p>
+            </div>
+            <div class="icon-nav nav-question">
+                <i class="fas fa-question"></i>
+                <p>Ask</p>
+            </div>
+            <div class="icon-nav nav-search">
+                <img src="images/search.png">
+                <p>Search</p>
+            </div>
+            <div class="icon-nav nav-exit">
+                <img src="images/exit.png">
+                <p>Log out</p>
+            </div>
+        </div>
+        <div class="btn-burger">
+            <span></span>
+        </div>
+    </header>
+    <div class="menu-burger" th:if="${not logged}">
+        <div>
+            <a href="#">Log in</a>
+            <a href="#">Register</a>
+        </div>
+    </div>
+    <div class="menu-burger" th:if="${logged}">
+        <div>
+            <a href="#">Answer</a>
+            <a href="#">Ask</a>
+            <a href="#">Search</a>
+            <a href="#">Log Out</a>
+        </div>
+    </div>
+</body>
+</html>

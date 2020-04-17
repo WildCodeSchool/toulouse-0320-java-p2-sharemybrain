@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Register</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <th:block th:include="fragments/head.html :: head"></th:block>
+    <title>Register</title>
     <link href="../static/css/register.css" rel="stylesheet" type="text/css"/>
-
 </head>
 <body>
+<th:block th:include="fragments/header.html :: header(${false},${'register'})"></th:block>
 <div class="cadredestop">
     <h2>Register</h2>
     <form action="" class="register" method="post">

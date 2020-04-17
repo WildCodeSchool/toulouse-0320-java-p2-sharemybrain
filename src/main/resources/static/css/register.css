@@ -16,7 +16,7 @@ h2{
     align-items: center;
     width: 100%;
 }
-div, #chose {
+div, #skill {
     display: flex;
     flex-direction: column;
 

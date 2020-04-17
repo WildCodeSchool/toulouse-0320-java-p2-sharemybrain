@@ -1,0 +1,188 @@
+@import url('styles.css');
+
+/* GENERAL */
+p {
+    color: var(--gainsboro);
+}
+
+/* CONTENT */
+.index-content h1 {
+    text-align: center;
+    font-family: 'Chau Philomene One', sans-serif;
+    color: var(--sunsetOrange);
+    text-transform: uppercase;
+    font-size: 2rem;
+}
+
+.index-content img {
+    display: none;
+}
+
+.blue-square {
+    margin-top: 1.5rem 0;
+    background-color: var(--darkImperialBlue);
+    position: relative;
+    left: 0;
+    height: auto;
+    width: auto;
+}
+
+.share-brain p {
+    position: relative;
+    padding: 2rem 2.5rem;
+    font-size: 1.2rem;
+}
+
+/* CARDS */
+.index-cards {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+.card {
+    align-self: center;
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--metallicSeaweed);
+    border-radius: 30px;
+    width: 50%;
+    align-items: center;
+    padding: 1.5rem 1.2rem;
+    text-align: center;
+    margin-top: 2.5rem;
+}
+
+.card p {
+    flex-basis: 50%;
+}
+
+.share {
+    padding: 1.2rem;
+}
+
+.share img {
+    width: 40%;
+    flex-basis: 40%;
+}
+
+.search img {
+    width: 30%;
+    flex-basis: 30%;
+}
+
+.question i {
+    color: var(--sunsetOrange);
+    font-size: 13vw;
+    text-align: center;
+}
+
+/* BUTTONS */
+.btns-index {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.btn-log {
+    border-style: none;
+    background-color: transparent;
+    color: var(--darkImperialBlue);
+    font-size: 1.5rem;
+}
+
+/* FOOTER */
+.no-session {
+    background-color: transparent;
+    margin-top: auto;
+    margin-bottom: 1rem;
+}
+
+.no-session .social {
+    display: none;
+}
+
+.no-session p {
+    text-align: center;
+    color: #8A8E95;
+    font-size: 0.8rem;
+}
+
+/* MEDIA */
+@media screen and (min-width: 768px) {
+
+    /* CONTENT */
+    .index-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .index-content img {
+        display: initial;
+        width: 24%;
+    }
+
+    .share-brain {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        width: 60%;
+    }
+
+    .share-brain h1 {
+        font-size: 6vw;
+        margin-top: 3rem
+    }
+
+    .blue-square {
+        margin-top: 4rem;
+        border-radius: 30px;
+        width: 80%;
+    }
+
+    .blue-square p {
+        font-size: 1.5rem;
+    }
+
+    /* CARDS */
+    .index-cards {
+        flex-direction: row;
+        justify-content: space-around;
+        margin-top: 2rem;
+        height: 20vh;
+        align-items: center;
+    }
+
+    .card {
+        width: 20%;
+        padding: 1.5rem 0.8rem;
+    }
+
+    .card p {
+        font-size: 1.3rem;
+        flex-basis: 50%;
+    }
+
+    .question i {
+        font-size: 5vw;
+    }
+
+    .share img {
+        width: 30%;
+        flex-basis: 30%;
+    }
+
+    .search img {
+        flex-basis: 28%;
+        width: 28%;
+    }
+
+    /* BUTTONS */
+    .btns-index {
+        display: none;
+    }
+
+}

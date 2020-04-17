@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block  th:include="fragments/head.html :: head"></th:block>
+    <title>ShareMyBrain</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css"  >
+<head>
+<body>
+    <th:block  th:include="fragments/header.html :: header(${false},${'index'})"></th:block>
+    <main>
+        <div class="index-content">
+            <div class="share-brain">
+                <h1>Share your brain!</h1>
+                <div class="blue-square">
+                    <p>
+                        Illud tamen te esse admonitum volo, primum ut qualis es talem ibertate
+                        seiungas; deinde ut ea in alterum ne dicas, quae cum tibi falso responsa
+                        sint, erubescas. Quis es, cui via ista non pateat, qui isti aetat
+                    </p>
+                </div>
+            </div>
+            <img src="images/LogoBlue2.png">
+        </div>
+        <div class="index-cards">
+            <div class="card share">
+                <img src="images/brain2.png">
+                <p>Share your knowledge!</p>
+            </div>
+            <div class="card search">
+                <img src="images/search.png">
+                <p>Find Answers!</p>
+            </div>
+            <div class="card question">
+                <i class="fas fa-question"></i>
+                <p>Ask your questions!</p>
+            </div>
+        </div>
+        <div class="btns-index">
+            <input class="btn-log" type="submit" value="Log in">
+            <input class="button btn-register" type="submit" value="Register">
+        </div>
+    </main>
+    <footer class="no-session">
+        <p>© 2020 Copyright</p>
+        <div class="social">
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-twitter"></i>
+        </div>
+    </footer>
+    <script type="text/javascript" src="burger.js"></script>
+</body>
+
+</html>

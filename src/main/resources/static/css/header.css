@@ -1,0 +1,203 @@
+/*GENERAL*/
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.img {
+    background: url("/images/LogoBlue2.png") no-repeat;
+    background-size: contain;
+    width: 10vh;
+    height: 10vh;
+}
+
+.logo p {
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 1.5rem;
+    margin-left: 1rem;
+}
+
+.header {
+    display: flex;
+    margin: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--darkImperialBlue);
+}
+
+.header p {
+    color: var(--darkImperialBlue);
+}
+
+/*HEADER NOT LOGGED*/
+.btns-header {
+    display: none;
+}
+
+/*HEADER LOGGED*/
+.btns-nav {
+    display: none;
+}
+
+/*MENU BURGER*/
+.btn-burger {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    position: relative;
+}
+
+.btn-burger span {
+    width: 100%;
+    height: 0.3rem;
+    border-radius: 10px;
+    background-color: var(--darkImperialBlue);
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: background-color 0.5s ease-in-out;
+}
+
+.btn-burger span::before, .btn-burger span::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 0.3rem;
+    background-color: var(--darkImperialBlue);
+    transition: transform 0.5s ease-in-out;
+    border-radius: 10px;
+}
+
+.btn-burger span::before {
+    transform: translateY(-10px);
+}
+
+.btn-burger span::after {
+    transform: translateY(10px);
+}
+
+.btn-burger.active span {
+    background-color: transparent;
+    z-index: 2;
+}
+
+.btn-burger.active span::before {
+    transform: translateY(0px) rotateZ(45deg);
+    background-color: var(--gainsboro);
+}
+
+.btn-burger.active span::after {
+    transform: translateY(0px) rotateZ(-45deg);
+    background-color: var(--gainsboro);
+}
+
+.menu-burger {
+    display: none;
+}
+
+.menu-burger.open {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--darkImperialBlue);
+}
+
+.menu-burger div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 70%;
+    text-transform: uppercase;
+}
+
+.menu-burger a {
+    padding: 1.5rem;
+    font-size: 2rem;
+    text-decoration: none;
+    color: var(--gainsboro);
+}
+
+@media screen and (min-width: 768px) {
+    /*GENERAL*/
+    .logo {
+        flex-basis: 20%;
+        justify-content: space-between;
+    }
+
+    .img {
+        width: 6vw;
+        height: 6vw;
+    }
+
+    .logo p {
+        font-size: 2.5vw;
+    }
+
+    .index-header {
+        margin: 1rem 2rem 0 3rem;
+        align-items: center;
+    }
+
+    .btns-header {
+        display: initial;
+        margin-right: 3rem;
+    }
+
+    /*LOGGED*/
+    .log-header {
+        align-items: center;
+        margin: 1rem 2rem 0 3rem;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+    .icon-nav {
+        display: flex;
+        align-items: center;
+    }
+    .btns-nav p {
+        font-size: 1.5vw;
+        margin-left: 0.5rem;
+        vertical-align: middle;
+    }
+
+    .btns-nav {
+        display: flex;
+        margin-left: 5rem;
+        align-items: center;
+    }
+
+    .btns-nav div {
+        margin-left: 1.5rem;
+        display: flex;
+    }
+
+    .nav-brain img {
+        width: 3.2vw;
+        flex-basis: 3.2vw;
+    }
+
+    .nav-question i {
+        font-size: 2.5vw;
+        color: var(--sunsetOrange);
+    }
+
+    .nav-search img {
+        width: 3vw;
+        flex-basis: 3vw;
+    }
+
+    .nav-exit img {
+        width: 2.5vw;
+        flex-basis: 2.5vw;
+    }
+
+    /*BURGER*/
+    .header .btn-burger {
+        display: none;
+    }
+}

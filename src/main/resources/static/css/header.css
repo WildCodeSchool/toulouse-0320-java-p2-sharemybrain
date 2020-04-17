@@ -135,7 +135,7 @@
     }
 
     .logo p {
-        font-size: 3rem;
+        font-size: 2.5vw;
     }
 
     .index-header {
@@ -153,16 +153,22 @@
         align-items: center;
         margin: 1rem 2rem 0 3rem;
         justify-content: flex-start;
+        flex-wrap: wrap;
     }
-
+    .icon-nav {
+        display: flex;
+        align-items: center;
+    }
     .btns-nav p {
-        font-size: 2rem;
+        font-size: 1.5vw;
         margin-left: 0.5rem;
+        vertical-align: middle;
     }
 
     .btns-nav {
         display: flex;
         margin-left: 5rem;
+        align-items: center;
     }
 
     .btns-nav div {
@@ -171,23 +177,23 @@
     }
 
     .nav-brain img {
-        width: 37px;
-        height: 30px;
+        width: 3.2vw;
+        flex-basis: 3.2vw;
     }
 
     .nav-question i {
-        font-size: 2rem;
+        font-size: 2.5vw;
         color: var(--sunsetOrange);
     }
 
     .nav-search img {
-        width: 37px;
-        height: 32px;
+        width: 3vw;
+        flex-basis: 3vw;
     }
 
     .nav-exit img {
-        width: 27.07px;
-        height: 30px;
+        width: 2.5vw;
+        flex-basis: 2.5vw;
     }
 
     /*BURGER*/

@@ -1,4 +1,6 @@
 @import url('header.css');
+@import url('footer.css');
+
 * {
     margin: 0;
     padding: 0;
@@ -39,57 +41,16 @@ body {
     margin-left: 1rem;
 }
 
-/* FOOTER */
-footer {
-    background-color: var(--darkImperialBlue);
-    color: var(--gainsboro);
-    font-size: 15px;
-    text-align: center;
-}
-footer div div ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-footer ul li {
-    margin-bottom: 1em;
-}
-footer div {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin: 1em auto 1em;
-}
-footer div ul {
-    display: flex;
-    flex-direction: column;
-}
-#footerLogo {
-    width: 54px;
-    height: 65px;
-}
-#copyright {
-    font-size: 12px;
-}
+
 @media screen and (min-width: 768px) {
 
-    footer div ul {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    footer div div ul li {
-        margin-left: 3em;
-        margin-right: 3em;
-    }
-
+    /* BUTTON */
     .button{
         width: 6rem;
         height: 2.5rem;
         border-radius: 25px;
     }
+
     .btn-register{
         border-radius: 15px;
         width: auto;

@@ -40,13 +40,7 @@
             <input class="button btn-register" type="submit" value="Register">
         </div>
     </main>
-    <footer class="no-session">
-        <p>© 2020 Copyright</p>
-        <div class="social">
-            <i class="fab fa-facebook"></i>
-            <i class="fab fa-twitter"></i>
-        </div>
-    </footer>
+    <th:block  th:include="fragments/footer.html :: bottom (${true})"></th:block>
     <script type="text/javascript" src="burger.js"></script>
 </body>
 

@@ -141,6 +141,7 @@
     .index-header {
         margin: 1rem 2rem 0 3rem;
         align-items: center;
+        width: 96%;
     }
 
     .btns-header {

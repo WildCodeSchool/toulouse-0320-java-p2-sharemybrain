@@ -16,7 +16,7 @@ h2{
     align-items: center;
     width: 100%;
 }
-div, #skill {
+.cadredestop div, #skill {
     display: flex;
     flex-direction: column;
 
@@ -24,7 +24,7 @@ div, #skill {
     justify-content: center;
     align-items: center;
 }
-div label {
+.cadredestop div label {
     padding: 1.5vh;
 }
 input, select {
@@ -39,7 +39,7 @@ input, select {
 #chose select{
     margin: 1.5vh;
 }
-.button{
+.cadredestop .button{
     margin-top: 5vh;
 }
 #avatar{
@@ -55,12 +55,9 @@ OPTION{
 @media screen and (min-width: 768px) {
     body{
         background-color: var(--gainsboro);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
     }
     .cadredestop{
+        margin: auto;
         width: 90%;
     }
     .register{
@@ -69,7 +66,7 @@ OPTION{
         flex-wrap: wrap;
         height: 70vh;
     }
-    div{
+    .cadredestop div{
         width: 50%;
     }
     #skillmobile{

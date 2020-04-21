@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
     <title>Login</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <th:block th:include="fragments/head.html :: head"></th:block>
-    <link href="../static/css/login.css" rel="stylesheet" type="text/css"/>
+    <link href="css/login.css" rel="stylesheet" type="text/css"/>
 
 </head>
 <body>
+<th:block th:include="fragments/header.html :: header(${false},${'login'})"></th:block>
 <div class="cadredestop">
     <h2>Login</h2>
     <form action="" class="login" method="post">
@@ -29,7 +28,6 @@
     </form>
 </div>
 
-<footer>
-</footer>
+<th:block th:include="fragments/footer.html :: bottom (${false})"></th:block>
 </body>
 </html>

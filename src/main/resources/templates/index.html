@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="css/index.css"  >
 <head>
 <body>
-    <th:block  th:include="fragments/header.html :: header(${false},${'index'})"></th:block>
+    <th:block  th:include="fragments/header.html :: header(${logged},${'index'})"></th:block>
     <main>
         <div class="index-content">
             <div class="share-brain">
@@ -40,7 +40,7 @@
             <input class="button btn-register" type="submit" value="Register">
         </div>
     </main>
-    <th:block  th:include="fragments/footer.html :: bottom (${true})"></th:block>
+    <th:block  th:include="fragments/footer.html :: bottom (${logged})"></th:block>
     <script type="text/javascript" src="burger.js"></script>
 </body>
 

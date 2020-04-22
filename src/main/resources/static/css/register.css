@@ -19,7 +19,6 @@ h2{
 div, #skill {
     display: flex;
     flex-direction: column;
-
     width: 100%;
     justify-content: center;
     align-items: center;
@@ -28,7 +27,6 @@ div label {
     padding: 1.5vh;
 }
 input, select {
-    width: 70%;
     height: 4vh;
     background-color: var(--gainsboro);
     border-radius: 18px;
@@ -36,8 +34,12 @@ input, select {
     font-size: 2vh;
     padding-left: 0.7rem;
 }
-#chose select{
-    margin: 1.5vh;
+input{
+    width: 70%;
+}
+select{
+    width: 73%;
+    margin-top: 0.5rem;
 }
 .button{
     margin-top: 5vh;

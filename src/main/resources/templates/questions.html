@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <head>
+        <th:block th:include="fragments/head.html :: head"></th:block>
+        <title>Questions</title>
+        <link href="css/questions.css" rel="stylesheet" type="text/css">
+    </head>
+</head>
+<body>
+<th:block th:include="fragments/header.html :: header(${true},${'index'})"></th:block>
+<main class ="share-knowledge">
+    <h2>Questions for you!</h2>
+    <div class="select_box">
+        <select name="filter" id="filter">
+            <option value="">Sort</option>
+            <option value="newest">By newest</option>
+            <option value="oldest">By oldest</option>
+        </select>
+    </div>
+    <div class="question">
+        <div class="question-descrip-Img">
+            <img src="">
+            <div>
+                <a class="quest-title">Fusce rhoncus odio ante, at auctor nibh dapibus eget?</a>
+                <p class="quest-description">Cras sed turpis justo. Interdum et malesuada fames ac ante ipsum
+                    primis in faucibus...
+                </p>
+            </div>
+        </div>
+        <div class="question-infos">
+            <p>asked 10 seconds ago</p>
+            <p>2 answers</p>
+        </div>
+    </div>
+    <div class="question">
+        <div class="question-descrip-Img">
+            <img src="">
+            <div>
+                <a class="quest-title">Fusce rhoncus odio ante, at auctor nibh dapibus eget?</a>
+                <p class="quest-description">Cras sed turpis justo. Interdum et malesuada fames ac ante ipsum
+                    primis in faucibus...
+                </p>
+            </div>
+        </div>
+        <div class="question-infos">
+            <p>asked 10 seconds ago</p>
+            <p>2 answers</p>
+        </div>
+    </div>
+    <div class="question">
+        <div class="question-descrip-Img">
+            <img src="">
+            <div>
+                <a class="quest-title">Fusce rhoncus odio ante, at auctor nibh dapibus eget?</a>
+                <p class="quest-description">Cras sed turpis justo. Interdum et malesuada fames ac ante ipsum
+                    primis in faucibus...
+                </p>
+            </div>
+        </div>
+        <div class="question-infos">
+            <p>asked 10 seconds ago</p>
+            <p>2 answers</p>
+        </div>
+    </div>
+    <div class="pagination">
+        <a href="#">Prev</a>
+        <div class="num-page">
+            <a href="#">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+        </div>
+        <a href="#">Next</a>
+    </div>
+</main>
+
+<th:block th:include="fragments/footer.html :: bottom (${true})"></th:block>
+<script src="burger.js" type="text/javascript"></script>
+
+</body>
+</html>

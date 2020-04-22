@@ -9,13 +9,13 @@ public class UserController {
     @GetMapping("/register")
     public String showRegisterPage() {
 
-        return "/register.html";
+        return "/register";
     }
 
     @GetMapping("/login")
     public String showLoginPage() {
 
-        return "/login.html";
+        return "/login";
     }
 
 }

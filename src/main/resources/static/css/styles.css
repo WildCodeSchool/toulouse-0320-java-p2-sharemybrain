@@ -6,15 +6,18 @@
     padding: 0;
     font-family: 'Roboto', sans-serif;
 }
+
 :root {
     --darkImperialBlue: #155268;
     --sunsetOrange: #FE5F55;
     --metallicSeaweed: #00798C;
     --gainsboro: #E4DFDA;
 }
+
 html {
     height: 100%;
 }
+
 body {
     background-color: var(--gainsboro);
     display: flex;
@@ -23,7 +26,7 @@ body {
 }
 
 /* BUTTON */
-.button{
+.button {
     width: auto;
     height: auto;
     background: var(--sunsetOrange);
@@ -33,7 +36,8 @@ body {
     padding: 0 1.2rem;
     color: var(--darkImperialBlue);
 }
-.btn-register{
+
+.btn-register {
     font-size: 1.5rem;
     border-radius: 15px;
     padding: 0.3rem;
@@ -42,25 +46,23 @@ body {
     margin-left: 1rem;
 }
 
-
 @media screen and (min-width: 768px) {
 
     /* BUTTON */
-    .button{
+    .button {
         width: 6rem;
         height: 2.5rem;
         border-radius: 25px;
     }
 
-    .btn-register{
+    .btn-register {
         border-radius: 15px;
         width: auto;
         height: auto;
     }
 
     /* Comun between login and register*/
-
-    .cadredestop{
+    .cadredestop {
         background-color: var(--darkImperialBlue);
         height: 80vh;
         margin: 5rem 5rem;

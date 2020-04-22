@@ -1,21 +1,39 @@
 @import "styles.css";
 
+.header .img {
+    background: url("/images/LogoWhite2.png") no-repeat;
+    background-size: contain;
+    width: 10vh;
+    height: 10vh;
+}
+
+.header a {
+    color: var(--gainsboro);
+}
+
+.btn-burger span, .btn-burger span::before, .btn-burger span::after {
+    background-color: var(--gainsboro);
+}
+
 body {
     background-color: #155268;
 }
-h2{
+
+h2 {
     color: var(--gainsboro);
     text-align: center;
     font-size: 5vh;
     padding-top: 3rem;
 }
-.register{
+
+.register {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
 }
+
 .cadredestop div, #skill {
     display: flex;
     flex-direction: column;
@@ -24,9 +42,11 @@ h2{
     justify-content: center;
     align-items: center;
 }
+
 .cadredestop div label {
     padding: 1.5vh;
 }
+
 input, select {
     width: 70%;
     height: 4vh;
@@ -36,43 +56,64 @@ input, select {
     font-size: 2vh;
     padding-left: 0.7rem;
 }
-#chose select{
+
+#chose select {
     margin: 1.5vh;
 }
-.cadredestop .button{
+
+.cadredestop .button {
     margin-top: 5vh;
 }
-#avatar{
+
+#avatar {
     width: 50%;
     height: 15rem;
 }
-OPTION{
+
+OPTION {
     font-size: 1.5vh;
 }
 
 /* desktop */
 
 @media screen and (min-width: 768px) {
-    body{
+
+    .header .img {
+        background: url("/images/LogoBlue2.png") no-repeat;
+        background-size: contain;
+        width: 6vw;
+        height: 6vw;
+    }
+
+    .header a {
+        color: var(--darkImperialBlue);
+    }
+
+    body {
         background-color: var(--gainsboro);
     }
-    .cadredestop{
+
+    .cadredestop {
         margin: auto;
         width: 90%;
     }
-    .register{
+
+    .register {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         height: 70vh;
     }
-    .cadredestop div{
+
+    .cadredestop div {
         width: 50%;
     }
-    #skillmobile{
+
+    #skillmobile {
         display: flex;
         flex-direction: column-reverse;
     }
+
     input {
         width: 70%;
         height: 5vh;
@@ -80,14 +121,16 @@ OPTION{
         font-size: 1rem;
         padding-left: 0.7rem;
     }
-    select{
+
+    select {
         width: 100%;
         border-radius: 18px;
         font-size: 1rem;
         padding-left: 0.7rem;
         height: 5vh;
     }
-    #formAvatar{
+
+    #formAvatar {
         height: 80%;
     }
 }

@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class QuestionAnswerController {
 
     @GetMapping("/profile")
-    public String showQuestions(Model model) {
+    public String profileDisplay(Model model) {
         String activityType;
-   /*     if (activityType.equals("questions")) {
-            model.addAttribute("questions, ")
-        }*/
-        return null;
+        activityType = "questions"; // or "answers" to display answers
+        model.addAttribute("questions", activityType);
+        if (activityType.equals("answers")) {
+            return "/answers"; // TODO create answers fragment
+        }
+        return "/questions"; // TODO create questions fragment
 
     }
-
-
 }

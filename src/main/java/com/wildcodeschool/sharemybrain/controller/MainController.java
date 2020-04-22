@@ -10,7 +10,7 @@ public class MainController {
     @GetMapping("/")
     public String index(Model model) {
         Boolean logged;
-        logged = true;
+        logged = false;
         model.addAttribute("logged", logged);
         return "index";
     }

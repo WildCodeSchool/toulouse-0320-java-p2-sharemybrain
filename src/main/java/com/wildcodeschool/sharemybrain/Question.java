@@ -14,7 +14,7 @@ public class Question {
     }
 
     //Constructor with all items
-    public Question(String title, String description, int idUser, int id_skill, Date date) {
+    public Question(String title, String description, int idUser, int idSkill, Date date) {
         this.title = title;
         this.description = description;
         this.idUser = idUser;

@@ -3,9 +3,10 @@
 <head>
     <th:block th:include="fragments/head.html :: head"></th:block>
     <title>Register</title>
-    <link href="../static/css/register.css" rel="stylesheet" type="text/css"/>
+    <link href="css/register.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
+<th:block th:include="fragments/header.html :: header(${false},${'register'})"></th:block>
 <div class="cadredestop">
     <h2>Register</h2>
     <form action="" class="register" method="post">
@@ -49,7 +50,7 @@
         </div>
     </form>
 </div>
-<footer>
-</footer>
+<th:block th:include="fragments/footer.html :: bottom (${false})"></th:block>
+<script src="burger.js" type="text/javascript"></script>
 </body>
 </html>

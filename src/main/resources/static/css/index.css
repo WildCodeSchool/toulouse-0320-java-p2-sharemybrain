@@ -5,6 +5,10 @@ p {
     color: var(--gainsboro);
 }
 
+a {
+    text-decoration: none;
+}
+
 /* CONTENT */
 .index-content h1 {
     text-align: center;
@@ -19,7 +23,7 @@ p {
 }
 
 .blue-square {
-    margin-top: 1.5rem ;
+    margin-top: 1.5rem;
     background-color: var(--darkImperialBlue);
     position: relative;
     left: 0;
@@ -83,6 +87,7 @@ p {
     display: flex;
     justify-content: center;
     margin-bottom: 1rem;
+    align-items: center;
 }
 
 .btn-log {

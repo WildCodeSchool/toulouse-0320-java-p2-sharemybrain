@@ -1,6 +1,7 @@
 @import "styles.css";
 
-.header .img {
+/*HEADER*/
+header .img {
     background: url("/images/LogoWhite2.png") no-repeat;
     background-size: contain;
     width: 10vh;
@@ -16,7 +17,7 @@
 }
 
 body {
-    background-color: #155268;
+    background-color: var(--darkImperialBlue);
 }
 
 h2 {
@@ -26,29 +27,21 @@ h2 {
     padding-top: 3rem;
 }
 
-.register {
+.login {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
 }
 
-.cadredestop div, #skill {
+#formLog {
+    width: 60%;
     display: flex;
     flex-direction: column;
-
-    width: 100%;
-    justify-content: center;
-    align-items: center;
 }
 
-.cadredestop div label {
-    padding: 1.5vh;
-}
-
-input, select {
-    width: 70%;
+input {
+    margin-top: 2rem;
     height: 4vh;
     background-color: var(--gainsboro);
     border-radius: 18px;
@@ -57,27 +50,19 @@ input, select {
     padding-left: 0.7rem;
 }
 
-#chose select {
-    margin: 1.5vh;
+p {
+    color: var(--gainsboro);
+    font-size: 0.7em;
+    padding-left: 0.7rem;
+    padding-top: 0.5rem;
 }
 
-.cadredestop .button {
-    margin-top: 5vh;
-}
-
-#avatar {
-    width: 50%;
-    height: 15rem;
-}
-
-OPTION {
-    font-size: 1.5vh;
+a:link, a:visited, a:hover, a:active {
+    color: var(--gainsboro);
 }
 
 /* desktop */
-
 @media screen and (min-width: 768px) {
-
     .header .img {
         background: url("/images/LogoBlue2.png") no-repeat;
         background-size: contain;
@@ -91,46 +76,17 @@ OPTION {
 
     body {
         background-color: var(--gainsboro);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login {
+        margin: 5rem 5rem;
+        border-radius: 25px;
     }
 
     .cadredestop {
-        margin: auto;
-        width: 90%;
-    }
-
-    .register {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        height: 70vh;
-    }
-
-    .cadredestop div {
-        width: 50%;
-    }
-
-    #skillmobile {
-        display: flex;
-        flex-direction: column-reverse;
-    }
-
-    input {
-        width: 70%;
-        height: 5vh;
-        border-radius: 18px;
-        font-size: 1rem;
-        padding-left: 0.7rem;
-    }
-
-    select {
-        width: 100%;
-        border-radius: 18px;
-        font-size: 1rem;
-        padding-left: 0.7rem;
-        height: 5vh;
-    }
-
-    #formAvatar {
-        height: 80%;
+        width: 60%;
     }
 }

@@ -2,27 +2,35 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <link href="css/styles.css" rel="stylesheet" type="text/css"/>
 </head>
-<body>
-    <footer th:fragment="bottom">
+<body th:fragment="bottom (logged)">
+<footer class="session" th:if="${logged}">
+    <div class="content-footer">
+        <ul>
+            <li>Terms</li>
+            <li>Privacy</li>
+        </ul>
         <div>
-            <div>
-                <ul>
-                    <li>Terms</li>
-                    <li>Privacy</li>
-                </ul>
-            </div>
-            <div>
-                <img id="footerLogo" src="images/LogoOrange2.png">
-            </div>
-            <div>
-                <ul>
-                    <li>Hire us!</li>
-                    <li>Contact us</li>
-                </ul>
-            </div>
+            <img id="footerLogo" src="images/LogoOrange2.png">
+            <p>© 2020 Copyright</p>
         </div>
-    </footer>
+        <ul>
+            <li>Hire us!</li>
+            <li>Contact us</li>
+        </ul>
+    </div>
+    <div class="social">
+        <i class="fab fa-facebook"></i>
+        <i class="fab fa-twitter"></i>
+    </div>
+</footer>
+<footer class="no-session" th:if="${not logged}">
+    <p>© 2020 Copyright</p>
+    <div class="social">
+        <i class="fab fa-facebook"></i>
+        <i class="fab fa-twitter"></i>
+    </div>
+</footer>
 </body>
 </html>

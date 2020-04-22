@@ -7,10 +7,11 @@ public class User {
     private String avatar;
     private String skill;
 
-    // constructeur vide
+    // Empty constructor
     public User(){
     }
-    //contructeur avec tous les item
+
+    //Constructor with all items
     public User(String name, String mail, String pwd, String avatar, String skill) {
         this.name = name;
         this.mail = mail;
@@ -18,13 +19,15 @@ public class User {
         this.avatar = avatar;
         this.skill = skill;
     }
-    // constructeur sans skill
+
+    // Constructor without skill
     public User(String name, String mail, String pwd, String avatar) {
         this.name = name;
         this.mail = mail;
         this.pwd = pwd;
         this.avatar = avatar;
     }
+
     // getters
     public String getName() {
         return name;

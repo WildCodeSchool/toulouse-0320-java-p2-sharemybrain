@@ -6,19 +6,19 @@ public class Question {
     private String title;
     private String description;
     private Date date;
-    private int id_user;
-    private int id_skill;
+    private int idUser;
+    private int idSkill;
 
     // Empty constructor
-    public Question(){
+    public Question() {
     }
 
     //Constructor with all items
-    public Question(String title, String description, int id_user, int id_skill, Date date) {
+    public Question(String title, String description, int idUser, int id_skill, Date date) {
         this.title = title;
         this.description = description;
-        this.id_user = id_user;
-        this.id_skill = id_skill;
+        this.idUser = idUser;
+        this.idSkill = idSkill;
         this.date = date;
     }
 
@@ -38,20 +38,20 @@ public class Question {
         this.description = description;
     }
 
-    public int getId_user() {
-        return this.id_user;
+    public int getIdUser() {
+        return this.idUser;
     }
 
-    public void setId_user(int id_user) {
-        this.id_user = id_user;
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
 
-    public int getId_skill() {
-        return this.id_skill;
+    public int getIdSkill() {
+        return this.idSkill;
     }
 
-    public void setId_skill(int id_skill) {
-        this.id_skill = id_skill;
+    public void setIdSkill(int idSkill) {
+        this.idSkill = idSkill;
     }
 
     public Date getDate() {

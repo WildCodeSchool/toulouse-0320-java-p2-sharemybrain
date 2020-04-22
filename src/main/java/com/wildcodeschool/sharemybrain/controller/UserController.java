@@ -18,5 +18,11 @@ public class UserController {
 
         return "/login";
     }
+
+    @GetMapping("/question")
+    public String showQuestionPage() {
+
+        return "/question";
+    }
 }
 

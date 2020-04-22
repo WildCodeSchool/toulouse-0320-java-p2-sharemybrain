@@ -3,25 +3,33 @@ package com.wildcodeschool.sharemybrain;
 import java.util.Date;
 
 public class Answer {
-    private String questionTitle;
+    private int idAnswer;
+    private int idQuestion;
+    private int idUser;
     private String description;
     private Date date;
-    private int idUser;
-    private int idSkill;
-    private int qualityScore; /*attribute for voting for the best answer*/
 
-    public Answer(String questionTitle, String answerText, int idUser, int idSkill, Date date) {
-        this.questionTitle = questionTitle;
-        this.description = answerText;
+    public Answer(int idAnswer, int idQuestion, int idUser, String answerText, Date date) {
+        this.idAnswer = idAnswer;
+        this.idQuestion = idQuestion;
         this.idUser = idUser;
-        this.idSkill = idSkill;
+        this.description = answerText;
         this.date = date;
-        this.qualityScore = 0;
     }
 
-    public String getQuestionTitle() { return this.questionTitle; }
+    public int getIdAnswer() { return this.idAnswer; }
 
-    public void setQuestionTitle(String questionTitle) { this.questionTitle = questionTitle; }
+    public void setIdAnswer(int idAnswer) { this.idAnswer = idAnswer; }
+
+    public int getIdQuestion() { return this.idQuestion; }
+
+    public void setIdQuestion(int idQuestion) { this.idQuestion = idQuestion; }
+
+    public int getIdUser() { return this.idUser; }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
+    }
 
     public String getDescription() { return this.description; }
 
@@ -31,23 +39,6 @@ public class Answer {
 
     public void setDate(Date date) { this.date = date; }
 
-    public int getIdUser() { return this.idUser; }
-
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
-    }
-
-    public int getIdSkill() {
-        return this.idSkill;
-    }
-
-    public void setIdSkill(int idSkill) {
-        this.idSkill = idSkill;
-    }
-
-    public int getQualityScore() { return this.qualityScore; }
-
-    public void setQualityScore(int score) { this.qualityScore = score; }
 }
 
 

@@ -3,6 +3,7 @@ package com.wildcodeschool.sharemybrain;
 import java.util.Date;
 
 public class Question {
+    private int idQuestion;
     private String title;
     private String description;
     private Date date;
@@ -14,13 +15,18 @@ public class Question {
     }
 
     //Constructor with all items
-    public Question(String title, String description, int idUser, int idSkill, Date date) {
+    public Question(int id, String title, String description, int idUser, int idSkill, Date date) {
+        this.idQuestion = id;
         this.title = title;
         this.description = description;
         this.idUser = idUser;
         this.idSkill = idSkill;
         this.date = date;
     }
+
+    public int getIdQuestion() { return this.idQuestion; }
+
+    public void setIdQuestion(int id) { this.idQuestion = id; }
 
     public String getTitle() {
         return this.title;

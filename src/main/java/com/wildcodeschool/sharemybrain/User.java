@@ -1,6 +1,7 @@
 package com.wildcodeschool.sharemybrain;
 
 public class User {
+    private int idUser;
     private String name;
     private String mail;
     private String pwd;
@@ -12,7 +13,8 @@ public class User {
     }
 
     //Constructor with all items
-    public User(String name, String mail, String pwd, String avatar, String skill) {
+    public User(int id, String name, String mail, String pwd, String avatar, String skill) {
+        this.idUser = id;
         this.name = name;
         this.mail = mail;
         this.pwd = pwd;
@@ -21,7 +23,8 @@ public class User {
     }
 
     // Constructor without skill
-    public User(String name, String mail, String pwd, String avatar) {
+    public User(int id, String name, String mail, String pwd, String avatar) {
+        this.idUser = id;
         this.name = name;
         this.mail = mail;
         this.pwd = pwd;
@@ -29,6 +32,7 @@ public class User {
     }
 
     // getters
+    public int getIdUser() { return idUser; }
     public String getName() {
         return name;
     }
@@ -45,6 +49,7 @@ public class User {
         return skill;
     }
     // setters
+    public void setIdUser(int id) { this.idUser = id; }
     public void setName(String name) {
         this.name = name;
     }

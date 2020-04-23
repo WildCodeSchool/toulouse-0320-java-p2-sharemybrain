@@ -1,4 +1,4 @@
-package com.wildcodeschool.sharemybrain;
+package com.wildcodeschool.sharemybrain.entity;
 
 import java.util.Date;
 

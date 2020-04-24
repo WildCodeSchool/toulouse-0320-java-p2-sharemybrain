@@ -1,86 +1,101 @@
 @import "styles.css";
-main{
+
+h2 {
+    color: var(--darkImperialBlue);
+    text-align: center;
+    font-size: 5vh;
+    padding-top: 3rem;
+}
+
+.register div {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-}
-section{
-    background-color: var(--metallicSeaweed);
-    width: 80%;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    padding: 1rem;
-    margin: 0.5rem;
 }
-h3{
-    color: var(--sunsetOrange);
+
+#skill {
     width: 100%;
-    font-size: 1.2rem;
 }
-p{
-    color: var(--gainsboro);
-    font-size: 0.9rem;
-}
-form.register{
-    width: 86%;
+
+label.skill {
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    padding: 1rem;
-    margin: 0.5rem;
-}
-form div{
-    width: 100%;
-    display: flex;
     align-items: center;
 }
-input{
-    width: 100%;
-    height: 20rem;
-    border-radius: 15px;
-    margin-bottom: 1rem;
-    font-size: 0.9rem;
+
+input, select {
+    border-color: #CEC9C4;
+    margin: 1rem;
+    box-shadow: 3px 3px 3px #CEC9C4;
     background-color: var(--gainsboro);
-}
-#button-question{
-    display: flex;
-    justify-content: center;
+    height: 4vh;
+    border-radius: 18px;
+    color: var(--darkImperialBlue);
+    font-size: 2vh;
+    padding-left: 0.7rem;
 }
 
-section div img {
-    display: none;
+input {
+    width: 70%;
 }
-/* desktop*/
+
+select {
+    width: 73%
+}
+
+#question {
+    height: 9rem;
+}
+
+/* desktop */
+
 @media screen and (min-width: 768px) {
+    h2 {
+        text-align: left;
+        margin-left: 2rem;
+    }
 
-    .button{
-        width: auto;
+    input, select {
+        margin: 1rem 5rem;
     }
-    section{
-        width: 84%;
-        border-radius: 15px;
-        display: flex;
-        height: 100%;
-        flex-direction: initial;
+
+    input {
+        width: 85%;
     }
-    section div:first-child{
-        width:10% ;
+
+    select {
+        width: 86%;
     }
-    #question-desktop{
+    .register {
         display: flex;
         flex-direction: column;
-        width: 100%;
-    }
-    #button-question{
-        display: flex;
-        justify-content: flex-end;
     }
 
-    section div img {
-        display: initial;
+    .register div {
+        align-items: flex-start;
+    }
+
+    label.skill {
+        justify-content: flex-start;
+        width: 50%;
+    }
+
+    #button-question .button {
+        padding: 0;
+    }
+
+    #button-question {
+        display: flex;
+        align-items: flex-end;
+    }
+
+    #question {
+        height: 15rem;
+    }
+
+    form.register {
+        margin-top: 2rem;
     }
 }

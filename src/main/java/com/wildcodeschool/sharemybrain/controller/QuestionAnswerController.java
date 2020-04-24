@@ -23,7 +23,6 @@ public class QuestionAnswerController {
         if (question_offset + limit > qtyQuestions) {
             limit = qtyQuestions - question_offset;
         }
-        List<Question> questions = questionRepository.findWithLimit(limit, question_offset);
         model.addAttribute("questions", questionRepository.findWithLimit(limit, question_offset));
         model.addAttribute("page", page);
         model.addAttribute("numPages", numPages);

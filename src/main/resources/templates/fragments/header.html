@@ -6,7 +6,7 @@
 <body th:fragment="header (logged, page)">
 <header class="index-header header" th:if="${not logged}">
     <div class="logo">
-        <div class="img"></div>
+        <a href="/" class="img"></a>
         <a href="/">ShareMyBrain</a>
     </div>
     <div class="btns-header" th:if="${page == 'index'}">
@@ -17,7 +17,7 @@
         <a class="button btn-register" href="/login">Log in</a>
     </div>
     <div class="btns-header" th:if="${page == 'login'}">
-        < <a class="button btn-register" href="/register">Register</a>
+        <a class="button btn-register" href="/register">Register</a>
     </div>
     <div class="btn-burger">
         <span></span>
@@ -31,11 +31,11 @@
     <div class="btns-nav">
         <div class="icon-nav nav-brain">
             <img src="images/brain2.png">
-            <a href="#">Answer</a>
+            <a href="/questions">Answer</a>
         </div>
         <div class="icon-nav nav-question">
             <i class="fas fa-question"></i>
-            <a href="#">Ask</a>
+            <a href="/ask">Ask</a>
         </div>
         <div class="icon-nav nav-search">
             <img src="images/search.png">
@@ -64,8 +64,8 @@
 </div>
 <div class="menu-burger" th:if="${logged}">
     <div>
-        <a href="#">Answer</a>
-        <a href="#">Ask</a>
+        <a href="/questions">Answer</a>
+        <a href="/ask">Ask</a>
         <a href="#">Search</a>
         <a href="#">Log Out</a>
     </div>

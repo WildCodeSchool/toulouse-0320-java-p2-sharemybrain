@@ -31,7 +31,7 @@ CREATE TABLE avatar(
 
 CREATE TABLE user(
         id_user   Int  Auto_increment  NOT NULL ,
-        firstname Varchar (50) NOT NULL ,
+        username Varchar (50) NOT NULL ,
         email     Varchar (50) NOT NULL ,
         password  Varchar (50) NOT NULL ,
         id_avatar Int NOT NULL ,
@@ -66,11 +66,12 @@ CREATE TABLE question(
 #------------------------------------------------------------
 
 CREATE TABLE answer(
+        id_answer int Auto_increment NOT NULL ,
         id_question Int NOT NULL ,
         id_user     Int NOT NULL ,
         description Text NOT NULL ,
         date        Date NOT NULL
-	,CONSTRAINT answer_PK PRIMARY KEY (id_question,id_user)
+	,CONSTRAINT answer_PK PRIMARY KEY (id_answer)
 
 	,CONSTRAINT answer_question_FK FOREIGN KEY (id_question) REFERENCES question(id_question)
 	,CONSTRAINT answer_user0_FK FOREIGN KEY (id_user) REFERENCES user(id_user)

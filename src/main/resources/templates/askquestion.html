@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
     <title>Question</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <th:block th:include="fragments/head.html :: head"></th:block>
-    <link href="../static/css/askquestion.css" rel="stylesheet" type="text/css"/>
-
-<body>
+    <link href="css/askquestion.css" rel="stylesheet" type="text/css"/>
 </head>
-<th:block th:include="fragments/header.html :: header(${false},${'index'})"></th:block>
+<body>
+<th:block  th:include="fragments/header.html :: header(${true},${'index'})"></th:block>
 <h2>Ask your question:</h2>
 <form action="" class="register" method="post">
 
@@ -20,7 +17,7 @@
 
     <label class="skill">
         <select name="Chose your skill" size="1">
-            <option value="Chose">Chose your skill</option>
+            <option value="Choose">Choose your skill</option>
             <OPTION>HTML</OPTION>
             <OPTION>CSS</OPTION>
             <OPTION>JAVA</OPTION>

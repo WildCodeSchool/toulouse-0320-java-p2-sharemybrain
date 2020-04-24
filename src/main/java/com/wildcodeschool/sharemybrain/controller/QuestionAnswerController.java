@@ -39,6 +39,6 @@ public class QuestionAnswerController {
     @GetMapping("/answer")
     public String answer() {
 
-        return "/answer";
+        return "/answerquestion";
     }
 }

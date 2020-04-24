@@ -3,29 +3,34 @@
 <head>
     <th:block th:include="fragments/head.html :: head"></th:block>
     <title>ShareMyBrain</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link href="../static/css/answerquestion.css" rel="stylesheet" type="text/css">
-    <head>
+    <link href="css/answerquestion.css" rel="stylesheet" type="text/css">
+</head>
 <body>
-<section>
-    <div>
-        <a href="https://via.placeholder.com"><img src="https://via.placeholder.com/75"></a>
-    </div>
-    <div id="question-desktop">
-        <h3>Title of the question to fetch in the database</h3>
-        <p>Question to look in the database...Hoc inmaturo interitu ipse quoque sui pertaesus excessit e vita aetatis nono anno atque vicensimo cum quadriennio imperasset. natus apud Tuscos in Massa Veternensi, patre Constantio Constantini fratre imperatoris, matreque Galla sorore Rufini.</p>
-    </div>
-</section>
-<form action="" class="register" method="post">
-    <div>
-        <label for="answer-question"></label>
-        <input id="answer-question" name="answer-question" placeholder="Type your answer ..." required type="text">
-    </div>
+<th:block th:include="fragments/header.html :: header(${true},${'index'})"></th:block>
+<main>
+    <section>
+        <div>
+            <a href="https://via.placeholder.com"><img src="https://via.placeholder.com/75"></a>
+        </div>
+        <div id="question-desktop">
+            <h3>Title of the question to fetch in the database</h3>
+            <p>Question to look in the database...Hoc inmaturo interitu ipse quoque sui pertaesus excessit e vita aetatis nono anno atque vicensimo cum quadriennio imperasset. natus apud Tuscos in Massa Veternensi, patre Constantio Constantini fratre imperatoris, matreque Galla sorore Rufini.</p>
+        </div>
+    </section>
+    <form action="" class="register" method="post">
+        <div>
+            <label for="answer-question"></label>
+            <input id="answer-question" name="answer-question" placeholder="Type your answer ..." required type="text">
+        </div>
 
-    <div id="button-question">
-        <input class="button" type="submit" value="Send">
-    </div>
-</form>
+        <div id="button-question">
+            <input class="button" type="submit" value="Send">
+        </div>
+    </form>
+</main>
+
+<th:block th:include="fragments/footer.html :: bottom (${true})"></th:block>
+<script src="burger.js" type="text/javascript"></script>
 
 </body>
 </html>

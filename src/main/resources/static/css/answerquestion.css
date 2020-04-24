@@ -1,5 +1,5 @@
 @import "styles.css";
-body{
+main{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,7 +33,7 @@ form.register{
     padding: 1rem;
     margin: 0.5rem;
 }
-section div{
+form div{
     width: 100%;
     display: flex;
     align-items: center;
@@ -44,10 +44,15 @@ input{
     border-radius: 5%;
     margin-bottom: 1rem;
     font-size: 0.9rem;
+    background-color: var(--gainsboro);
 }
 #button-question{
     display: flex;
     justify-content: center;
+}
+
+section div img {
+    display: none;
 }
 /* desktop*/
 @media screen and (min-width: 768px) {
@@ -73,5 +78,9 @@ input{
     #button-question{
         display: flex;
         justify-content: flex-end;
+    }
+
+    section div img {
+        display: initial;
     }
 }

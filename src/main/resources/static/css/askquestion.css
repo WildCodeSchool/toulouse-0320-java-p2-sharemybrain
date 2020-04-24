@@ -68,7 +68,6 @@ select {
     select {
         width: 86%;
     }
-
     .register {
         display: flex;
         flex-direction: column;

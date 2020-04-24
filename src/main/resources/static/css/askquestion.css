@@ -59,7 +59,7 @@ select{
     select{
         width: 86%;
     }
-    div{
+    form div{
         align-items: flex-start;
     }
     label.skill {

@@ -33,7 +33,7 @@ form.register{
     padding: 1rem;
     margin: 0.5rem;
 }
-div{
+section div{
     width: 100%;
     display: flex;
     align-items: center;
@@ -61,7 +61,6 @@ input{
         display: flex;
         height: 100%;
         flex-direction: initial;
-    }
     }
     section div:first-child{
         width:10% ;

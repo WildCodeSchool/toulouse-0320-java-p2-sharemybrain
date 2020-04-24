@@ -7,8 +7,9 @@
     <th:block th:include="fragments/head.html :: head"></th:block>
     <link href="../static/css/answerquestion.css" rel="stylesheet" type="text/css"/>
 
+<body>
 </head>
-<th:block  th:include="fragments/header.html :: header(${false},${'index'})"></th:block>
+<th:block th:include="fragments/header.html :: header(${false},${'index'})"></th:block>
 <h2>Ask your question:</h2>
 <form action="" class="register" method="post">
 
@@ -39,8 +40,8 @@
     </div>
 </form>
 
-<th:block  th:include="fragments/footer.html :: bottom (${true})"></th:block>
-<script type="text/javascript" src="burger.js"></script>
+<th:block th:include="fragments/footer.html :: bottom (${true})"></th:block>
+<script src="burger.js" type="text/javascript"></script>
 
 </body>
 </html>

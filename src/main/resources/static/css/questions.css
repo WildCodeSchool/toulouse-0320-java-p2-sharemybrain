@@ -89,7 +89,7 @@
     justify-content: space-evenly;
 }
 
-.num-page a:focus {
+.num-page a:focus, .num-page a:hover {
     background-color: var(--sunsetOrange);
     border-radius: 11px;
     padding: 0.2rem 0.5rem;

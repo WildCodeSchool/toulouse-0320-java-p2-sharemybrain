@@ -1,0 +1,101 @@
+@import "styles.css";
+
+h2 {
+    color: var(--darkImperialBlue);
+    text-align: center;
+    font-size: 5vh;
+    padding-top: 3rem;
+}
+
+.register div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#skill {
+    width: 100%;
+}
+
+label.skill {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input, select {
+    border-color: #CEC9C4;
+    margin: 1rem;
+    box-shadow: 3px 3px 3px #CEC9C4;
+    background-color: var(--gainsboro);
+    height: 4vh;
+    border-radius: 18px;
+    color: var(--darkImperialBlue);
+    font-size: 2vh;
+    padding-left: 0.7rem;
+}
+
+input {
+    width: 70%;
+}
+
+select {
+    width: 73%
+}
+
+#question {
+    height: 9rem;
+}
+
+/* desktop */
+
+@media screen and (min-width: 768px) {
+    h2 {
+        text-align: left;
+        margin-left: 2rem;
+    }
+
+    input, select {
+        margin: 1rem 5rem;
+    }
+
+    input {
+        width: 85%;
+    }
+
+    select {
+        width: 86%;
+    }
+    .register {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .register div {
+        align-items: flex-start;
+    }
+
+    label.skill {
+        justify-content: flex-start;
+        width: 50%;
+    }
+
+    #button-question .button {
+        padding: 0;
+    }
+
+    #button-question {
+        display: flex;
+        align-items: flex-end;
+    }
+
+    #question {
+        height: 15rem;
+    }
+
+    form.register {
+        margin-top: 2rem;
+    }
+}

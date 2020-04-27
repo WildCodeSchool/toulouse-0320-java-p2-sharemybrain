@@ -5,6 +5,10 @@ p {
     color: var(--gainsboro);
 }
 
+a {
+    text-decoration: none;
+}
+
 /* CONTENT */
 .index-content h1 {
     text-align: center;
@@ -19,7 +23,7 @@ p {
 }
 
 .blue-square {
-    margin-top: 1.5rem 0;
+    margin-top: 1.5rem;
     background-color: var(--darkImperialBlue);
     position: relative;
     left: 0;
@@ -83,6 +87,7 @@ p {
     display: flex;
     justify-content: center;
     margin-bottom: 1rem;
+    align-items: center;
 }
 
 .btn-log {
@@ -92,22 +97,6 @@ p {
     font-size: 1.5rem;
 }
 
-/* FOOTER */
-.no-session {
-    background-color: transparent;
-    margin-top: auto;
-    margin-bottom: 1rem;
-}
-
-.no-session .social {
-    display: none;
-}
-
-.no-session p {
-    text-align: center;
-    color: #8A8E95;
-    font-size: 0.8rem;
-}
 
 /* MEDIA */
 @media screen and (min-width: 768px) {

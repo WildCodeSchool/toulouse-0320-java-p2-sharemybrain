@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Question</title>
+    <th:block th:include="fragments/head.html :: head"></th:block>
+    <link href="css/askquestion.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<th:block  th:include="fragments/header.html :: header(${true},${'index'})"></th:block>
+<h2>Ask your question:</h2>
+<form action="" class="register" method="post">
+
+    <div id="formulaire">
+        <label for="question_title"></label>
+        <input id="question_title" name="question_title" placeholder="Question title" required type="text">
+    </div>
+
+    <label class="skill">
+        <select name="Chose your skill" size="1">
+            <option value="Choose">Choose your skill</option>
+            <OPTION>HTML</OPTION>
+            <OPTION>CSS</OPTION>
+            <OPTION>JAVA</OPTION>
+            <OPTION>JAVASCRIPT</OPTION>
+            <OPTION>Other</OPTION>
+        </select>
+    </label>
+
+    <div>
+        <label for="question"></label>
+        <input id="question" name="question" placeholder="Ask your question" required type="text">
+
+    </div>
+
+    <div id="button-question">
+        <input class="button" type="submit" value="Send">
+    </div>
+</form>
+
+<th:block th:include="fragments/footer.html :: bottom (${true})"></th:block>
+<script src="burger.js" type="text/javascript"></script>
+
+</body>
+</html>

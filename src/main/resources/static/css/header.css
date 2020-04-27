@@ -11,10 +11,15 @@
     height: 10vh;
 }
 
-.logo p {
+a {
+    text-decoration: none;
+}
+
+.logo a {
     font-family: 'Fjalla One', sans-serif;
     font-size: 1.5rem;
     margin-left: 1rem;
+    color: var(--darkImperialBlue);
 }
 
 .header {
@@ -22,10 +27,6 @@
     margin: 1rem;
     justify-content: space-between;
     align-items: center;
-    color: var(--darkImperialBlue);
-}
-
-.header p {
     color: var(--darkImperialBlue);
 }
 
@@ -134,13 +135,14 @@
         height: 6vw;
     }
 
-    .logo p {
+    .logo a {
         font-size: 2.5vw;
     }
 
     .index-header {
         margin: 1rem 2rem 0 3rem;
         align-items: center;
+        width: 96%;
     }
 
     .btns-header {
@@ -155,14 +157,17 @@
         justify-content: flex-start;
         flex-wrap: wrap;
     }
+
     .icon-nav {
         display: flex;
         align-items: center;
     }
-    .btns-nav p {
+
+    .btns-nav a {
         font-size: 1.5vw;
         margin-left: 0.5rem;
         vertical-align: middle;
+        color: var(--darkImperialBlue);
     }
 
     .btns-nav {
@@ -189,6 +194,7 @@
     .nav-search img {
         width: 3vw;
         flex-basis: 3vw;
+    ()
     }
 
     .nav-exit img {

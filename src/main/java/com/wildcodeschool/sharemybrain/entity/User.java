@@ -12,6 +12,15 @@ public class User {
     public User(){
     }
 
+    //Constructor without id
+    public User(String userName, String mail, String pwd, int idAvatar, int idSkill) {
+        this.userName = userName;
+        this.mail = mail;
+        this.pwd = pwd;
+        this.idAvatar = idAvatar;
+        this.idSkill = idSkill;
+    }
+
     //Constructor with all items
     public User(int id, String userName, String mail, String pwd, int idAvatar, int idSkill) {
         this.idUser = id;

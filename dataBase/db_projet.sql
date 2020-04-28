@@ -68,7 +68,7 @@ CREATE TABLE user(
 
         email     Varchar (50) NOT NULL ,
 
-        password  Varchar (50) NOT NULL ,
+        password  Varchar (255) NOT NULL ,
 
         id_avatar Int NOT NULL ,
 

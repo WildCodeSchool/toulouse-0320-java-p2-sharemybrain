@@ -64,7 +64,7 @@ public class UserRepository {
         return false;
     }
 
-    public void insertNewUser(String userName, String email, String password, int idAvatar, int idSkill) {
+    public void insertNewUser(User user) {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -73,13 +73,14 @@ public class UserRepository {
                     DB_URL, DB_USER, DB_PASSWORD
             );
             statement = connection.prepareStatement(
-                    "INSERT INTO user (username, email, password, id_avatar, id_skill) VALUES (?, ?, ?, ?, ?);"
+                    //"INSERT INTO user (username, email, password, id_avatar, id_skill) VALUES (?, ?, ?, ?, ?);"
+                    "INSERT INTO user (username, email, password, id_skill) VALUES (?, ?, ?, ?);"
             );
-            statement.setString(1, userName);
-            statement.setString(2, email);
-            statement.setString(3, password);
-            statement.setInt(4, idAvatar);
-            statement.setInt(5, idSkill);
+            statement.setString(1, user.getUserName());
+            statement.setString(2, user.getMail());
+            statement.setString(3, user.getPwd());
+            //statement.setInt(4, user.getIdAvatar());
+            statement.setInt(4, user.getIdSkill());
 
             if (statement.executeUpdate() != 1) {
                 throw new SQLException("failed to insert data");
@@ -93,5 +94,6 @@ public class UserRepository {
             JdbcUtils.closeConnection(connection);
         }
     }
+
 
 }

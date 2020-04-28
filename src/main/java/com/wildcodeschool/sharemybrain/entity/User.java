@@ -14,12 +14,13 @@ public class User {
     }
 
     //Constructor without id and with pwd2
-    public User(String userName, String mail, String pwd, int idSkill, String pwd2) {
+    public User(String userName, String mail, String pwd, int idSkill, String pwd2, int idAavatar) {
         this.userName = userName;
         this.mail = mail;
         this.pwd = pwd;
         this.idSkill = idSkill;
         this.pwd2 = pwd2;
+        this.idAvatar = idAavatar;
     }
 
     //Constructor without pwd2

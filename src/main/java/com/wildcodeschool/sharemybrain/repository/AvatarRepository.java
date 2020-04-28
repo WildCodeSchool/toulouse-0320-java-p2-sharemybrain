@@ -1,25 +1,47 @@
 package com.wildcodeschool.sharemybrain.repository;
 
 import com.wildcodeschool.sharemybrain.entity.Avatar;
+import com.wildcodeschool.sharemybrain.util.JdbcUtils;
 
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AvatarRepository {
 
-    private static List<Avatar> initAvatar() {
+    private final static String DB_URL = "jdbc:mysql://localhost:3306/share_my_brain?serverTimezone=GMT";
+    private final static String DB_USER = "poule";
+    private final static String DB_PASSWORD = "p0uleR3qu3st?";
 
-        List<Avatar> avatars = new ArrayList<>();
-        avatars.add(new Avatar("cat.png"));
-        avatars.add(new Avatar("bull.png"));
-        avatars.add(new Avatar("fox.png"));
-        avatars.add(new Avatar("deer.png"));
-        avatars.add(new Avatar("dog.png"));
-        avatars.add(new Avatar("monkey.png"));
-        avatars.add(new Avatar("panda.png"));
-        avatars.add(new Avatar("pig.png"));
-        return avatars;
+    public List<Avatar> findAllAvatars() {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            connection = DriverManager.getConnection(
+                    DB_URL, DB_USER, DB_PASSWORD
+            );
+            statement = connection.prepareStatement(
+                    "SELECT * FROM avatar;"
+            );
 
+            resultSet = statement.executeQuery();
+
+            List<Avatar> avatars = new ArrayList<>();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id_avatar");
+                String url = resultSet.getString("url");
+                avatars.add(new Avatar(id, url));
+            }
+            return avatars;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JdbcUtils.closeResultSet(resultSet);
+            JdbcUtils.closeStatement(statement);
+            JdbcUtils.closeConnection(connection);
+        }
+        return null;
     }
 }
 

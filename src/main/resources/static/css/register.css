@@ -55,8 +55,11 @@ input, select {
     color: var(--darkImperialBlue);
     font-size: 2vh;
     padding-left: 0.7rem;
+    border-style: none;
 }
-
+select {
+    width: 73%;
+}
 #chose select {
     margin: 1.5vh;
 }
@@ -99,6 +102,22 @@ option {
     outline: 2px solid #f00;
 }
 
+#avatar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+#avatar label {
+    padding: 0 0.5rem;
+}
+
+#formAvatar p {
+    color: var(--gainsboro);
+    font-size: 1.5rem;
+
+}
 /* desktop */
 
 @media screen and (min-width: 768px) {

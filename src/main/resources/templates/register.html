@@ -44,13 +44,12 @@
             <!--TODO PUT THE PHOTO OF THE AVATAR -->
             <div id="formAvatar">
                 <p>Choose your avatar</p>
-                <div class="avatar">
+                <div id="avatar">
                     <label class="avatar-radio" th:each="avatar : ${avatars}" >
                         <input type="radio" id="avatar" name="idAvatar" value="id" th:value="${avatar.id}">
                         <img class="img-avatar" src="image/avatar" th:id="id + ${avatar.id}" th:src="@{images/avatar/{avatar}(avatar = ${avatar.url})}" >
                     </label>
                 </div>
-
             </div>
         </div>
 

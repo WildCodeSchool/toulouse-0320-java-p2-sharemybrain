@@ -41,9 +41,7 @@ CREATE TABLE skill(
 CREATE TABLE avatar(
 
         id_avatar Int  Auto_increment  NOT NULL ,
-
         url      Text NOT NULL
-
 	,CONSTRAINT avatar_PK PRIMARY KEY (id_avatar)
 
 )ENGINE=InnoDB;

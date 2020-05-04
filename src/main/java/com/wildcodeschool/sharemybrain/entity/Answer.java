@@ -9,6 +9,8 @@ public class Answer {
     private String description;
     private Date date;
 
+    public Answer() {}
+
     public Answer(int idAnswer, int idQuestion, int idUser, String answerText, Date date) {
         this.idAnswer = idAnswer;
         this.idQuestion = idQuestion;

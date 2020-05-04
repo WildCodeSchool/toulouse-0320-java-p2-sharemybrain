@@ -55,8 +55,11 @@ input, select {
     color: var(--darkImperialBlue);
     font-size: 2vh;
     padding-left: 0.7rem;
+    border-style: none;
 }
-
+select {
+    width: 73%;
+}
 #chose select {
     margin: 1.5vh;
 }
@@ -65,20 +68,53 @@ input, select {
     margin-top: 5vh;
 }
 
-#avatar {
-    width: 50%;
-    height: 15rem;
-}
-
 option {
     font-size: 1.5vh;
 }
 
-.error {
-    color: white;
-    font-style: italic;
+
+/* AVATARS */
+.img-avatar {
+    width:80px;
+    height: 80px;
 }
 
+#id3 {
+    width:103px;
+    height: 80px;
+}
+
+/* HIDE RADIO */
+[type=radio] {
+    transform: scale(0,0);
+}
+
+/* IMAGE STYLES */
+[type=radio] + img {
+    cursor: pointer;
+}
+
+/* CHECKED STYLES */
+[type=radio]:checked + img {
+    outline: 2px solid #f00;
+}
+
+#avatar-div, #avatar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+#avatar-div label {
+    padding: 0 0.5rem;
+}
+
+#formAvatar p {
+    color: var(--gainsboro);
+    font-size: 1.5rem;
+
+}
 /* desktop */
 
 @media screen and (min-width: 768px) {

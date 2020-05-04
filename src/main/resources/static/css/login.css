@@ -48,6 +48,7 @@ input {
     color: var(--darkImperialBlue);
     font-size: 2vh;
     padding-left: 0.7rem;
+    border-style: none;
 }
 
 p {

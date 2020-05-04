@@ -19,8 +19,4 @@ public class MainController {
         model.addAttribute("logged", logged);
         return "index";
     }
-
-
-
-
 }

@@ -1,8 +1,6 @@
-
 package com.wildcodeschool.sharemybrain.controller;
 
 import com.google.common.hash.Hashing;
-import com.wildcodeschool.sharemybrain.entity.Avatar;
 import com.wildcodeschool.sharemybrain.entity.User;
 import com.wildcodeschool.sharemybrain.repository.AvatarRepository;
 import com.wildcodeschool.sharemybrain.repository.UserRepository;
@@ -11,18 +9,35 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.nio.charset.StandardCharsets;
-import java.util.List;
 
 
 @Controller
 public class UserController {
     private UserRepository repository = new UserRepository();
     private AvatarRepository avatarRepository = new AvatarRepository();
+
     @GetMapping("/login")
     public String showLoginPage() {
+        return "/login";
+    }
 
+    @PostMapping("/login")
+    public String checkLogin(Model model, @RequestParam(defaultValue = "", required = false) String username, @RequestParam(defaultValue = "", required = false) String password) {
+        if (username == "" || password == "") {
+            return "redirect:/login";
+        }
+        String hash = crypt(password);
+        if (repository.findAnyUsername(username)) {
+            if (repository.findUsernamePsw(hash, username)) {
+                return "redirect:/";
+            }
+            model.addAttribute("nopsw", true);
+            return "/login";
+        }
+        model.addAttribute("noUser", true);
         return "/login";
     }
 

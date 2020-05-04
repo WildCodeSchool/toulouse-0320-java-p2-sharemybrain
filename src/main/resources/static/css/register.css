@@ -72,10 +72,7 @@ option {
     font-size: 1.5vh;
 }
 
-.error {
-    color: white;
-    font-style: italic;
-}
+
 /* AVATARS */
 .img-avatar {
     width:80px;
@@ -102,14 +99,14 @@ option {
     outline: 2px solid #f00;
 }
 
-#avatar {
+#avatar-div, #avatar {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
 }
 
-#avatar label {
+#avatar-div label {
     padding: 0 0.5rem;
 }
 

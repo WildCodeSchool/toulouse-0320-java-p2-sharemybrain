@@ -14,7 +14,7 @@ public class SkillRepository {
     private final static String DB_USER = "poule";
     private final static String DB_PASSWORD = "p0uleR3qu3st?";
 
-    public List<Skill> findAllSkills() throws SQLException {
+    public List<Skill> findAllSkills() {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;

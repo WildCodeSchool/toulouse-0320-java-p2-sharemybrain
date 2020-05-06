@@ -48,9 +48,9 @@ public class QuestionAnswerController {
     }
 
     @GetMapping("/answer/{question}")
-    public String answer(@PathVariable int question) {
+    public String answer(Model model, @PathVariable int question) {
 
-
-        return "/answerquestion";
+        model.addAttribute("question",questionRepository.findQuestion(question));
+        return "answerquestion";
     }
 }

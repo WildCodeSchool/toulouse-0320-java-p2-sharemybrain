@@ -3,7 +3,7 @@
 <head>
     <th:block th:include="fragments/head.html :: head"></th:block>
     <title>ShareMyBrain</title>
-    <link href="css/answerquestion.css" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/answerquestion.css}" rel="stylesheet" type="text/css">
 </head>
 <body>
 <th:block th:include="fragments/header.html :: header(${true},${'index'})"></th:block>
@@ -12,14 +12,15 @@
         <div>
             <a href="https://via.placeholder.com"><img src="https://via.placeholder.com/75"></a>
         </div>
-        <div id="question-desktop">
-            <h3>Title of the question to fetch in the database</h3>
-            <p>Question to look in the database...Hoc inmaturo interitu ipse quoque sui pertaesus excessit e vita aetatis nono anno atque vicensimo cum quadriennio imperasset. natus apud Tuscos in Massa Veternensi, patre Constantio Constantini fratre imperatoris, matreque Galla sorore Rufini.</p>
+        <div th:object="${question}" id="question-desktop">
+            <h3 th:text="${question.title}">Title of the question to fetch in the database</h3>
+            <p th:text="${question.description}">Question to look in the database...Hoc inmaturo interitu ipse quoque sui pertaesus excessit e vita aetatis nono anno atque vicensimo cum quadriennio imperasset. natus apud Tuscos in Massa Veternensi, patre Constantio Constantini fratre imperatoris, matreque Galla sorore Rufini.</p>
         </div>
     </section>
     <form action="" class="register" method="post">
         <div>
             <label for="answer-question"></label>
+            <input name="idQuestion" type="hidden" th:value="${question.idQuestion}">
             <input id="answer-question" name="answer-question" placeholder="Type your answer ..." required type="text">
         </div>
 

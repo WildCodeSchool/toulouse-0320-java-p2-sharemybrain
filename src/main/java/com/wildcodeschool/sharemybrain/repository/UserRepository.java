@@ -177,5 +177,32 @@ public class UserRepository {
         return -1;
     }
 
+    public int findAvatar(String username) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            connection = DriverManager.getConnection(
+                    DB_URL, DB_USER, DB_PASSWORD
+            );
+            statement = connection.prepareStatement(
+                    "SELECT id_avatar FROM user WHERE username = ?;"
+            );
+            statement.setString(1, username);
+            resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                int idSkill = resultSet.getInt("id_avatar");
+                return idSkill;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JdbcUtils.closeResultSet(resultSet);
+            JdbcUtils.closeStatement(statement);
+            JdbcUtils.closeConnection(connection);
+        }
+        return -1;
+    }
 
 }

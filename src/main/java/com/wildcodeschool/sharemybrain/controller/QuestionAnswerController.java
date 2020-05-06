@@ -1,5 +1,8 @@
 package com.wildcodeschool.sharemybrain.controller;
 
+
+import com.wildcodeschool.sharemybrain.repository.AvatarRepository;
+
 import com.wildcodeschool.sharemybrain.repository.AnswerRepository;
 import com.wildcodeschool.sharemybrain.repository.QuestionRepository;
 import com.wildcodeschool.sharemybrain.repository.SkillRepository;
@@ -21,6 +24,7 @@ public class QuestionAnswerController {
     private final QuestionRepository questionRepository = new QuestionRepository();
     private final SkillRepository skillRepository = new SkillRepository();
     private final UserRepository userRepository = new UserRepository();
+    private final AvatarRepository avatarRepository = new AvatarRepository();
     private  final AnswerRepository answerRepository = new AnswerRepository();
 
 
@@ -52,8 +56,12 @@ public class QuestionAnswerController {
 
 
     @GetMapping("/ask")
-    public String ask(Model model) {
-        model.addAttribute("skills", skillRepository.findAllSkills());
+
+    public String ask( Model model, @CookieValue(value = "username", defaultValue = "Atta") String username) {
+        int idAvatar = userRepository.findAvatar(username);
+        model.addAttribute("username", username);
+        model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar));
+
         return "/askquestion";
     }
 

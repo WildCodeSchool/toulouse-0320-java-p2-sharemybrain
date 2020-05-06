@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import java.nio.charset.StandardCharsets;
 
 
@@ -25,14 +27,22 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String checkLogin(Model model, @RequestParam(defaultValue = "", required = false) String username, @RequestParam(defaultValue = "", required = false) String password) {
+    public String checkLogin(Model model, @RequestParam(defaultValue = "", required = false) String username,
+                             @RequestParam(defaultValue = "", required = false) String password, HttpServletResponse response) {
         if (username == "" || password == "") {
             return "redirect:/login";
         }
         String hash = crypt(password);
         if (repository.findAnyUsername(username)) {
             if (repository.findUsernamePsw(hash, username)) {
-                return "redirect:/";
+                // initialisation des cookies
+                Cookie cookie = new Cookie("username", username);
+                cookie.setMaxAge(7 * 24 * 60 * 60); // expires in 7 days
+                cookie.setSecure(true);
+                cookie.setHttpOnly(true);
+                cookie.setPath("/");
+                response.addCookie(cookie);
+                return "redirect:/questions";
             }
             model.addAttribute("nopsw", true);
             return "/login";

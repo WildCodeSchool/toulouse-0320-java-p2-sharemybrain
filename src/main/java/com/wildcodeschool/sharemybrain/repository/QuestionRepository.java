@@ -52,7 +52,7 @@ public class QuestionRepository {
         return null;
     }
 
-    public int totalLines() {
+    public int totalLines(int idSkill) {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -60,12 +60,21 @@ public class QuestionRepository {
             connection = DriverManager.getConnection(
                     DB_URL, DB_USER, DB_PASSWORD
             );
-            statement = connection.prepareStatement(
-                    "SELECT COUNT(*) as count FROM question;"
-            );
+            if (idSkill == -1) {
+                statement = connection.prepareStatement(
+                        "SELECT COUNT(*) as count FROM question;"
+                );
+            } else {
+                statement = connection.prepareStatement(
+                        "SELECT COUNT(*) as count FROM question where id_skill = ?;"
+                );
+                statement.setInt(1,idSkill);
+            }
             resultSet = statement.executeQuery();
-            resultSet.next();
-            return resultSet.getInt("count");
+            if (resultSet.next()) {
+                return resultSet.getInt("count");
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -76,4 +85,41 @@ public class QuestionRepository {
         return 0;
     }
 
+    public List<Question> findWithSkill(int limit, int offset, int idSkill) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            connection = DriverManager.getConnection(
+                    DB_URL, DB_USER, DB_PASSWORD
+            );
+            statement = connection.prepareStatement(
+                    "SELECT * FROM question  WHERE id_skill = ? LIMIT ?,?;"
+            );
+            statement.setInt(3, limit);
+            statement.setInt(2, offset);
+            statement.setInt(1, idSkill);
+            resultSet = statement.executeQuery();
+
+            List<Question> questions = new ArrayList<>();
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id_question");
+                String title = resultSet.getString("title");
+                String description = resultSet.getString("description");
+                Date date = resultSet.getDate("date");
+                int idUser = resultSet.getInt("id_user");
+
+                questions.add(new Question(id, title, description, idUser, idSkill, date));
+            }
+            return questions;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JdbcUtils.closeResultSet(resultSet);
+            JdbcUtils.closeStatement(statement);
+            JdbcUtils.closeConnection(connection);
+        }
+        return null;
+    }
 }

@@ -1,18 +1,23 @@
 package com.wildcodeschool.sharemybrain.controller;
 
+import com.wildcodeschool.sharemybrain.repository.AnswerRepository;
 import com.wildcodeschool.sharemybrain.repository.QuestionRepository;
 import com.wildcodeschool.sharemybrain.repository.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 
 @Controller
 public class QuestionAnswerController {
     private final QuestionRepository questionRepository = new QuestionRepository();
     private final UserRepository userRepository = new UserRepository();
+    private  final AnswerRepository answerRepository = new AnswerRepository();
 
     @GetMapping("/questions")
     public String share(Model model, @RequestParam(required = false, defaultValue = "1") int page,
@@ -53,4 +58,17 @@ public class QuestionAnswerController {
         model.addAttribute("question",questionRepository.findQuestion(question));
         return "answerquestion";
     }
+
+    @PostMapping("/answerquestion")
+    public String postAnswer(@RequestParam int idQuestion,
+                             @RequestParam (required = true) String answerQuestion,
+                             @CookieValue(value = "username", defaultValue = "Atta") String username){
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
+        int idUser = userRepository.findUserId(username);
+        answerRepository.answerQuestion(idQuestion, idUser, answerQuestion,sdf.format(date));
+    return "redirect:/questions" ;
+    }
+
 }

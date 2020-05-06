@@ -17,11 +17,11 @@
             <p th:text="${question.description}">Question to look in the database...Hoc inmaturo interitu ipse quoque sui pertaesus excessit e vita aetatis nono anno atque vicensimo cum quadriennio imperasset. natus apud Tuscos in Massa Veternensi, patre Constantio Constantini fratre imperatoris, matreque Galla sorore Rufini.</p>
         </div>
     </section>
-    <form action="" class="register" method="post">
+    <form action="/answerquestion" class="register" method="post">
         <div>
             <label for="answer-question"></label>
             <input name="idQuestion" type="hidden" th:value="${question.idQuestion}">
-            <input id="answer-question" name="answer-question" placeholder="Type your answer ..." required type="text">
+            <input id="answer-question" name="answerQuestion" placeholder="Type your answer ..." required type="text">
         </div>
 
         <div id="button-question">

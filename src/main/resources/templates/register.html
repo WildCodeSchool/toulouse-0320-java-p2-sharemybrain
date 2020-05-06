@@ -29,21 +29,13 @@
         </div>
         <div id="skillmobile">
             <div>
-                <label id="skill">
+                <label id="skill" >
 
-                    <select name="idSkill" size="1">
+                    <select name="idSkill">
                         <option value="0">Choose your skill</option>
-                        <option value="1">HTML</option>
-                        <option value="2">CSS</option>
-                        <option value="3">JAVA</option>
-                        <option value="4">JAVASCRIPT</option>
-                    </select>
-
-                    <!-- TODO: replace the select block by the dynamic thymeleaf stuff -->
-<!--                    <select th:field="*{idSkill}">
-                        <option th:each="skill : ${skills}" th:value="${i}" th:text="${skill.name}">
+                        <option th:each="skill : ${skills}" th:value="${skill.id}" th:text="${skill.name}">
                         </option>
-                    </select>-->
+                    </select>
 
                     <!-- TODO IF NO AVATAR CHOSEN -> WORKS AND ANYTHING HAPPENS -->
                     <p class="error" th:if="${noSkill}">You need to choose an avatar</p>

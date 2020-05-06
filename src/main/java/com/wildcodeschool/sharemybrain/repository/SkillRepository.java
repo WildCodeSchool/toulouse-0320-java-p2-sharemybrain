@@ -29,7 +29,7 @@ public class SkillRepository {
 
             List<Skill> skills = new ArrayList<>();
             while (resultSet.next()) {
-                int id = resultSet.getInt("id");
+                int id = resultSet.getInt("id_skill");
                 String name = resultSet.getString("name");
                 skills.add(new Skill(id, name));
             }

@@ -16,14 +16,13 @@
     </div>
 
     <label class="skill">
-        <select name="Chose your skill" size="1">
-            <option value="Choose">Choose your skill</option>
-            <OPTION>HTML</OPTION>
-            <OPTION>CSS</OPTION>
-            <OPTION>JAVA</OPTION>
-            <OPTION>JAVASCRIPT</OPTION>
-            <OPTION>Other</OPTION>
+
+        <select name="idSkill">
+            <option value="0">Choose your skill</option>
+            <option th:each="skill : ${skills}" th:value="${skill.id}" th:text="${skill.name}">
+            </option>
         </select>
+
     </label>
 
     <div>

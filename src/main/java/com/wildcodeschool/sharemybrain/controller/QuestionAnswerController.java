@@ -51,6 +51,10 @@ public class QuestionAnswerController {
 
         }
 
+        int idAvatar = userRepository.findAvatar(username);
+        model.addAttribute("username", username);
+        model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar));
+
         return "/questions";
     }
 
@@ -66,8 +70,10 @@ public class QuestionAnswerController {
     }
 
     @GetMapping("/answer/{question}")
-    public String answer(Model model, @PathVariable int question) {
-
+    public String answer(Model model, @PathVariable int question, @CookieValue(value = "username", defaultValue = "Atta") String username) {
+        int idAvatar = userRepository.findAvatar(username);
+        model.addAttribute("username", username);
+        model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar));
         model.addAttribute("question",questionRepository.findQuestion(question));
         return "answerquestion";
     }

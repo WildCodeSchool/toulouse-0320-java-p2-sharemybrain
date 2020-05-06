@@ -17,11 +17,13 @@ public class MainController {
         Boolean logged;
         if (username.equals("Atta")) {
             logged = false;
+            model.addAttribute("username", "");
+            model.addAttribute("avatar", "");
         } else {
             logged = true;
             int idAvatar = userRepository.findAvatar(username);
             model.addAttribute("username", username);
-            model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar));
+            model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar).getUrl());
         }
         model.addAttribute("logged", logged);
         return "index";

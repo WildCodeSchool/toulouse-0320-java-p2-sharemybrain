@@ -6,7 +6,7 @@
     <link href="css/register.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-<th:block th:include="fragments/header.html :: header(${false},${'register'})"></th:block>
+<th:block th:include="fragments/header.html :: header(${false},${'register'}, ${''},${''})"></th:block>
 <div class="cadredestop">
     <h2>Register</h2>
     <form action="/register" class="register" method="post" th:object="${user}">

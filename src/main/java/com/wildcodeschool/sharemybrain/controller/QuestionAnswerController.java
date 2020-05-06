@@ -2,6 +2,7 @@ package com.wildcodeschool.sharemybrain.controller;
 
 import com.wildcodeschool.sharemybrain.entity.Question;
 import com.wildcodeschool.sharemybrain.repository.QuestionRepository;
+import com.wildcodeschool.sharemybrain.repository.SkillRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,7 @@ import java.util.List;
 @Controller
 public class QuestionAnswerController {
     private QuestionRepository questionRepository = new QuestionRepository();
+    private SkillRepository skillRepository = new SkillRepository();
 
     @GetMapping("/questions")
     public String share(Model model, @RequestParam(required = false, defaultValue = "1") int page) {
@@ -30,8 +32,8 @@ public class QuestionAnswerController {
     }
 
     @GetMapping("/ask")
-    public String ask() {
-
+    public String ask(Model model) {
+        model.addAttribute("skills", skillRepository.findAllSkills());
         return "/askquestion";
     }
 

@@ -23,7 +23,7 @@
             <!-- TODO update with the good avatar -->
             <img src="">
             <div>
-                <a class="quest-title" href="/answer" th:text="${question.title}">Fusce rhoncus odio ante, at auctor
+                <a class="quest-title" href="/answer"  th:href="@{/answer/{question}(question = ${question.idQuestion})}" th:text="${question.title}">Fusce rhoncus odio ante, at auctor
                     nibh dapibus eget?</a>
                 <p class="quest-description" th:text="${question.description}">Cras sed turpis justo. Interdum et</p>
             </div>

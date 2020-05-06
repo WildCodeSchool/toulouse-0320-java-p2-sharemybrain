@@ -3,6 +3,7 @@ package com.wildcodeschool.sharemybrain.controller;
 import com.google.common.hash.Hashing;
 import com.wildcodeschool.sharemybrain.entity.User;
 import com.wildcodeschool.sharemybrain.repository.AvatarRepository;
+import com.wildcodeschool.sharemybrain.repository.SkillRepository;
 import com.wildcodeschool.sharemybrain.repository.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +21,7 @@ import java.nio.charset.StandardCharsets;
 public class UserController {
     private UserRepository repository = new UserRepository();
     private AvatarRepository avatarRepository = new AvatarRepository();
+    private SkillRepository skillRepository = new SkillRepository();
 
     @GetMapping("/login")
     public String showLoginPage() {
@@ -55,6 +57,7 @@ public class UserController {
     public String showRegisterPage(Model model) {
         model.addAttribute("user", new User());
         model.addAttribute("avatars", avatarRepository.findAllAvatars());
+        model.addAttribute("skills", skillRepository.findAllSkills());
         return "/register";
     }
 

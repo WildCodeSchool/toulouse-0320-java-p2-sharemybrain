@@ -56,9 +56,7 @@ public class User {
     public int getIdAvatar() {
         return idAvatar;
     }
-    public int getIdSkill() {
-        return idSkill;
-    }
+    public int getIdSkill() { return idSkill; }
     public String getPwd2() {
         return pwd2;
     }

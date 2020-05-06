@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
 </head>
-<body th:fragment="header (logged, page)">
+<body th:fragment="header (logged, page, avatar, username)">
 <header class="index-header header" th:if="${not logged}">
     <div class="logo">
         <a href="/" class="img"></a>
@@ -24,27 +24,35 @@
     </div>
 </header>
 <header class="log-header header" th:if="${logged}">
-    <div class="logo">
-        <div class="img"></div>
-        <a href="/">ShareMyBrain</a>
+    <div class="left-icons">
+        <div class="logo">
+            <div class="img"></div>
+            <a href="/">ShareMyBrain</a>
+        </div>
+        <div class="btns-nav">
+            <div class="icon-nav nav-brain">
+                <img th:src="@{/images/brain2.png}">
+                <a href="/questions">Answer</a>
+            </div>
+            <div class="icon-nav nav-question">
+                <i class="fas fa-question"></i>
+                <a href="/ask">Ask</a>
+            </div>
+            <div class="icon-nav nav-search">
+                <img th:src="@{/images/search.png}">
+                <a href="#">Search</a>
+            </div>
+            <div class="icon-nav nav-exit">
+                <img th:src="@{/images/exit.png}">
+                <a href="#">Log out</a>
+            </div>
+        </div>
     </div>
-    <div class="btns-nav">
-        <div class="icon-nav nav-brain">
-            <img th:src="@{/images/brain2.png}">
-            <a href="/questions">Answer</a>
-        </div>
-        <div class="icon-nav nav-question">
-            <i class="fas fa-question"></i>
-            <a href="/ask">Ask</a>
-        </div>
-        <div class="icon-nav nav-search">
-            <img th:src="@{/images/search.png}">
-            <a href="#">Search</a>
-        </div>
-        <div class="icon-nav nav-exit">
-            <img th:src="@{/images/exit.png}">
-            <a href="#">Log out</a>
-        </div>
+
+    <div class="user">
+        <p th:text="|Hello ${username}|">Hello</p>
+        <img th:src="@{images/avatar/{avatar}(avatar = ${avatar})}">
+
     </div>
     <div class="btn-burger">
         <span></span>

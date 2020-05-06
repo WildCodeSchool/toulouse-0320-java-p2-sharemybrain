@@ -37,8 +37,8 @@ public class UserController {
             if (repository.findUsernamePsw(hash, username)) {
                 // initialisation des cookies
                 Cookie cookie = new Cookie("username", username);
-                cookie.setMaxAge(7 * 24 * 60 * 60); // expires in 7 days
-                cookie.setSecure(true);
+                cookie.setMaxAge(1 * 24 * 60 * 60); // expires in 7 days
+                /* cookie.setSecure(true); */
                 cookie.setHttpOnly(true);
                 cookie.setPath("/");
                 response.addCookie(cookie);

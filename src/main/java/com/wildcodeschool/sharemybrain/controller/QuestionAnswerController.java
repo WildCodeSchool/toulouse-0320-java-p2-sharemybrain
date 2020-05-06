@@ -1,5 +1,6 @@
 package com.wildcodeschool.sharemybrain.controller;
 
+import com.wildcodeschool.sharemybrain.repository.AvatarRepository;
 import com.wildcodeschool.sharemybrain.repository.QuestionRepository;
 import com.wildcodeschool.sharemybrain.repository.UserRepository;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class QuestionAnswerController {
     private final QuestionRepository questionRepository = new QuestionRepository();
     private final UserRepository userRepository = new UserRepository();
+    private final AvatarRepository avatarRepository = new AvatarRepository();
 
     @GetMapping("/questions")
     public String share(Model model, @RequestParam(required = false, defaultValue = "1") int page,
@@ -42,8 +44,10 @@ public class QuestionAnswerController {
 
 
     @GetMapping("/ask")
-    public String ask() {
-
+    public String ask( Model model, @CookieValue(value = "username", defaultValue = "Atta") String username) {
+        int idAvatar = userRepository.findAvatar(username);
+        model.addAttribute("username", username);
+        model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar));
         return "/askquestion";
     }
 

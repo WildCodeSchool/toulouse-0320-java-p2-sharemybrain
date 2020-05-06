@@ -7,6 +7,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+
 @Controller
 public class MainController {
     UserRepository userRepository = new UserRepository();
@@ -27,5 +30,18 @@ public class MainController {
         }
         model.addAttribute("logged", logged);
         return "index";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpServletResponse response) {
+        Cookie cookie = new Cookie("username", null);
+        cookie.setMaxAge(0);
+        cookie.setSecure(true);
+        cookie.setHttpOnly(true);
+        cookie.setPath("/");
+
+        //add cookie to response
+        response.addCookie(cookie);
+        return "redirect:/";
     }
 }

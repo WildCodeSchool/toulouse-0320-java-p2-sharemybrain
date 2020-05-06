@@ -45,6 +45,7 @@ public class UserController {
     public String showRegisterPage(Model model) {
         model.addAttribute("user", new User());
         model.addAttribute("avatars", avatarRepository.findAllAvatars());
+        /* TODO : ajouter les skills*/
         return "/register";
     }
 

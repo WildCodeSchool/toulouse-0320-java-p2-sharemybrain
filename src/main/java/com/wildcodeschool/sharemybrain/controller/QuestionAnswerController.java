@@ -1,7 +1,9 @@
 package com.wildcodeschool.sharemybrain.controller;
 
 import com.wildcodeschool.sharemybrain.repository.QuestionRepository;
+import com.wildcodeschool.sharemybrain.repository.SkillRepository;
 import com.wildcodeschool.sharemybrain.repository.UserRepository;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -11,8 +13,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class QuestionAnswerController {
+
     private final QuestionRepository questionRepository = new QuestionRepository();
+    private final SkillRepository skillRepository = new SkillRepository();
     private final UserRepository userRepository = new UserRepository();
+
 
     @GetMapping("/questions")
     public String share(Model model, @RequestParam(required = false, defaultValue = "1") int page,
@@ -42,8 +47,8 @@ public class QuestionAnswerController {
 
 
     @GetMapping("/ask")
-    public String ask() {
-
+    public String ask(Model model) {
+        model.addAttribute("skills", skillRepository.findAllSkills());
         return "/askquestion";
     }
 

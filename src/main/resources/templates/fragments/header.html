@@ -44,14 +44,14 @@
             </div>
             <div class="icon-nav nav-exit">
                 <img th:src="@{/images/exit.png}">
-                <a href="#">Log out</a>
+                <a href="/logout">Log out</a>
             </div>
         </div>
     </div>
 
     <div class="user">
         <p th:text="|Hello ${username}|">Hello</p>
-        <img th:src="@{images/avatar/{avatar}(avatar = ${avatar})}">
+        <img th:src="@{/images/avatar/{avatar}(avatar = ${avatar})}">
 
     </div>
     <div class="btn-burger">
@@ -75,7 +75,7 @@
         <a href="/questions">Answer</a>
         <a href="/ask">Ask</a>
         <a href="#">Search</a>
-        <a href="#">Log Out</a>
+        <a href="/logout">Log Out</a>
     </div>
 </div>
 </body>

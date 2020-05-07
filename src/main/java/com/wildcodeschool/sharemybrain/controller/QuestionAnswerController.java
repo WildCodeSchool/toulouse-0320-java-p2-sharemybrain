@@ -53,7 +53,8 @@ public class QuestionAnswerController {
 
         int idAvatar = userRepository.findAvatar(username);
         model.addAttribute("username", username);
-        model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar));
+
+        model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar).getUrl());
 
         return "/questions";
     }
@@ -62,10 +63,10 @@ public class QuestionAnswerController {
     @GetMapping("/ask")
 
     public String ask( Model model, @CookieValue(value = "username", defaultValue = "Atta") String username) {
+        model.addAttribute("skills", skillRepository.findAllSkills());
         int idAvatar = userRepository.findAvatar(username);
         model.addAttribute("username", username);
-        model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar));
-
+        model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar).getUrl());
         return "/askquestion";
     }
 
@@ -73,9 +74,9 @@ public class QuestionAnswerController {
     public String answer(Model model, @PathVariable int question, @CookieValue(value = "username", defaultValue = "Atta") String username) {
         int idAvatar = userRepository.findAvatar(username);
         model.addAttribute("username", username);
-        model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar));
+        model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar).getUrl());
         model.addAttribute("question",questionRepository.findQuestion(question));
-        return "answerquestion";
+        return "/answerquestion";
     }
 
     @PostMapping("/answerquestion")

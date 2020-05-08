@@ -1,6 +1,9 @@
 package com.wildcodeschool.sharemybrain.controller;
 
 
+import com.wildcodeschool.sharemybrain.entity.Answer;
+import com.wildcodeschool.sharemybrain.entity.Avatar;
+import com.wildcodeschool.sharemybrain.entity.Question;
 import com.wildcodeschool.sharemybrain.repository.AvatarRepository;
 
 import com.wildcodeschool.sharemybrain.repository.AnswerRepository;
@@ -14,8 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.*;
 
 
 @Controller
@@ -47,7 +49,16 @@ public class QuestionAnswerController {
 
             model.addAttribute("questions", questionRepository.findWithLimit(limit, question_offset));
         } else {
-            model.addAttribute("questions", questionRepository.findWithSkill(limit, question_offset, idSkill));
+            List <Question> questions  = questionRepository.findWithSkill(limit, question_offset, idSkill);
+            Map<Question, Avatar> avatarQuestMap = new LinkedHashMap<>();
+            int avatarId;
+            for (Question question : questions) {
+                avatarId = userRepository.findAvatarById(question.getIdUser());
+                avatarQuestMap.put(question,avatarRepository.findAvatar(avatarId));
+            }
+            model.addAttribute("avatarQuestMap", avatarQuestMap);
+            //model.addAttribute("avatars", avatars);
+            //model.addAttribute("questions", questions);
 
         }
 

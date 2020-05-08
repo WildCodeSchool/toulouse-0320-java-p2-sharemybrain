@@ -109,7 +109,6 @@ public class QuestionRepository {
                 String description = resultSet.getString("description");
                 Date date = resultSet.getDate("date");
                 int idUser = resultSet.getInt("id_user");
-
                 questions.add(new Question(id, title, description, idUser, idSkill, date));
             }
             return questions;

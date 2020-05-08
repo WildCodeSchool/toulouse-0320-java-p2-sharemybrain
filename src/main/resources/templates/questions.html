@@ -18,10 +18,10 @@
             <option value="oldest">By oldest</option>
         </select>
     </div>
-    <div class="question" th:each="question : ${questions}">
+    <div class="question" th:each="entry : ${avatarQuestMap}" th:with="avatar = ${entry.value}, question = ${entry.key}">
         <div class="question-descrip-Img">
             <!-- TODO update with the good avatar -->
-            <img src="">
+            <img src="" th:id="id + ${avatar.id}" th:src="@{images/avatar/{avatar}(avatar = ${avatar.url})}" alt="avatar">
             <div>
                 <a class="quest-title" href="/answer"  th:href="@{/answer/{question}(question = ${question.idQuestion})}" th:text="${question.title}">Fusce rhoncus odio ante, at auctor
                     nibh dapibus eget?</a>

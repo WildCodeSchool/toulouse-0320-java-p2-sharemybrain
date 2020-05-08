@@ -58,9 +58,6 @@ public class QuestionAnswerController {
                 question.setCountAnswers(answerRepository.countAnswersByQuestion(question.getIdQuestion()));
             }
             model.addAttribute("avatarQuestMap", avatarQuestMap);
-            //model.addAttribute("avatars", avatars);
-            //model.addAttribute("questions", questions);
-
         }
 
         int idAvatar = userRepository.findAvatar(username);
@@ -87,7 +84,10 @@ public class QuestionAnswerController {
         int idAvatar = userRepository.findAvatar(username);
         model.addAttribute("username", username);
         model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar).getUrl());
-        model.addAttribute("question",questionRepository.findQuestion(question));
+        Question questionDescr  = questionRepository.findQuestion(question);
+        int avatarId = userRepository.findAvatarById(questionDescr.getIdUser());
+        model.addAttribute("avatarQ", avatarRepository.findAvatar(avatarId));
+        model.addAttribute("question", questionDescr);
         return "/answerquestion";
     }
 

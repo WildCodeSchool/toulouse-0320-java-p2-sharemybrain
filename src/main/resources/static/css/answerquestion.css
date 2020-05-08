@@ -67,9 +67,6 @@ section div img {
         height: 100%;
         flex-direction: initial;
     }
-    section div:first-child{
-        width:10% ;
-    }
     #question-desktop{
         display: flex;
         flex-direction: column;
@@ -82,5 +79,13 @@ section div img {
 
     section div img {
         display: initial;
+        margin-right: 1rem;
+        width: 3vw;
+        height: 3vw;
+    }
+
+    #id3 {
+        width: 4vw;
+        height: 3vw;
     }
 }

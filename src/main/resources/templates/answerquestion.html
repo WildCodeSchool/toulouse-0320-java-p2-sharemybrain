@@ -10,7 +10,7 @@
 <main>
     <section>
         <div>
-            <a href="https://via.placeholder.com"><img src="https://via.placeholder.com/75"></a>
+            <img src="" th:id="id + ${avatarQ.id}" th:src="@{/images/avatar/{avatar}(avatar = ${avatarQ.url})}" alt="avatar">
         </div>
         <div th:object="${question}" id="question-desktop">
             <h3 th:text="${question.title}">Title of the question to fetch in the database</h3>

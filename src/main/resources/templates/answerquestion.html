@@ -1,26 +1,30 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:https="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:https="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <th:block th:include="fragments/head.html :: head"></th:block>
     <title>ShareMyBrain</title>
-    <link th:href="@{/css/answerquestion.css}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/answerquestion.css}" type="text/css">
 </head>
 <body>
 <th:block th:include="fragments/header.html :: header(${true},${'index'}, ${avatar}, ${username})"></th:block>
 <main>
     <section>
         <div>
-            <img src="" th:id="id + ${avatarQ.id}" th:src="@{/images/avatar/{avatar}(avatar = ${avatarQ.url})}" alt="avatar">
+            <img alt="avatar" src="" th:id="id + ${avatarQ.id}"
+                 th:src="@{/images/avatar/{avatar}(avatar = ${avatarQ.url})}">
         </div>
-        <div th:object="${question}" id="question-desktop">
+        <div id="question-desktop">
             <h3 th:text="${question.title}">Title of the question to fetch in the database</h3>
-            <p th:text="${question.description}">Question to look in the database...Hoc inmaturo interitu ipse quoque sui pertaesus excessit e vita aetatis nono anno atque vicensimo cum quadriennio imperasset. natus apud Tuscos in Massa Veternensi, patre Constantio Constantini fratre imperatoris, matreque Galla sorore Rufini.</p>
+            <p th:text="${question.description}">Question to look in the database...Hoc inmaturo interitu ipse quoque
+                sui pertaesus excessit e vita aetatis nono anno atque vicensimo cum quadriennio imperasset. natus apud
+                Tuscos in Massa Veternensi, patre Constantio Constantini fratre imperatoris, matreque Galla sorore
+                Rufini.</p>
         </div>
     </section>
     <form action="/answerquestion" class="register" method="post">
         <div>
             <label for="answer-question"></label>
-            <input name="idQuestion" type="hidden" th:value="${question.idQuestion}">
+            <input name="idQuestion" th:value="${question.idQuestion}" type="hidden">
             <input id="answer-question" name="answerQuestion" placeholder="Type your answer ..." required type="text">
         </div>
 

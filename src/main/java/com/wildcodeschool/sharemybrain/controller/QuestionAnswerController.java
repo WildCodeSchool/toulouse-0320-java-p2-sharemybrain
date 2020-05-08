@@ -27,7 +27,7 @@ public class QuestionAnswerController {
     private final SkillRepository skillRepository = new SkillRepository();
     private final UserRepository userRepository = new UserRepository();
     private final AvatarRepository avatarRepository = new AvatarRepository();
-    private  final AnswerRepository answerRepository = new AnswerRepository();
+    private final AnswerRepository answerRepository = new AnswerRepository();
 
 
     @GetMapping("/questions")
@@ -49,12 +49,12 @@ public class QuestionAnswerController {
 
             model.addAttribute("questions", questionRepository.findWithLimit(limit, question_offset));
         } else {
-            List <Question> questions  = questionRepository.findWithSkill(limit, question_offset, idSkill);
+            List<Question> questions = questionRepository.findWithSkill(limit, question_offset, idSkill);
             Map<Question, Avatar> avatarQuestMap = new LinkedHashMap<>();
             int avatarId;
             for (Question question : questions) {
                 avatarId = userRepository.findAvatarById(question.getIdUser());
-                avatarQuestMap.put(question,avatarRepository.findAvatar(avatarId));
+                avatarQuestMap.put(question, avatarRepository.findAvatar(avatarId));
                 question.setCountAnswers(answerRepository.countAnswersByQuestion(question.getIdQuestion()));
             }
             model.addAttribute("avatarQuestMap", avatarQuestMap);
@@ -71,7 +71,7 @@ public class QuestionAnswerController {
 
     @GetMapping("/ask")
 
-    public String ask( Model model, @CookieValue(value = "username", defaultValue = "Atta") String username) {
+    public String ask(Model model, @CookieValue(value = "username", defaultValue = "Atta") String username) {
         model.addAttribute("skills", skillRepository.findAllSkills());
         int idAvatar = userRepository.findAvatar(username);
         model.addAttribute("username", username);
@@ -84,7 +84,7 @@ public class QuestionAnswerController {
         int idAvatar = userRepository.findAvatar(username);
         model.addAttribute("username", username);
         model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar).getUrl());
-        Question questionDescr  = questionRepository.findQuestion(question);
+        Question questionDescr = questionRepository.findQuestion(question);
         int avatarId = userRepository.findAvatarById(questionDescr.getIdUser());
         model.addAttribute("avatarQ", avatarRepository.findAvatar(avatarId));
         model.addAttribute("question", questionDescr);
@@ -93,14 +93,14 @@ public class QuestionAnswerController {
 
     @PostMapping("/answerquestion")
     public String postAnswer(@RequestParam int idQuestion,
-                             @RequestParam (required = true) String answerQuestion,
-                             @CookieValue(value = "username", defaultValue = "Atta") String username){
+                             @RequestParam(required = true) String answerQuestion,
+                             @CookieValue(value = "username", defaultValue = "Atta") String username) {
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
         int idUser = userRepository.findUserId(username);
-        answerRepository.answerQuestion(idQuestion, idUser, answerQuestion,sdf.format(date));
-        return "redirect:/questions" ;
+        answerRepository.answerQuestion(idQuestion, idUser, answerQuestion, sdf.format(date));
+        return "redirect:/questions";
     }
 
 }

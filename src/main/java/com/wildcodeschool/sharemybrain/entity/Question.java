@@ -9,6 +9,7 @@ public class Question {
     private Date date;
     private int idUser;
     private int idSkill;
+    private int countAnswers;
 
     // Empty constructor
     public Question() {
@@ -67,4 +68,8 @@ public class Question {
     public void setDate(Date date) {
         this.date = date;
     }
+
+    public int getCountAnswers() { return this.countAnswers;}
+
+    public void setCountAnswers(int countAnswers) { this.countAnswers = countAnswers;}
 }

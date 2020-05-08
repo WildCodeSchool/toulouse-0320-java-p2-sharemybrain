@@ -55,6 +55,7 @@ public class QuestionAnswerController {
             for (Question question : questions) {
                 avatarId = userRepository.findAvatarById(question.getIdUser());
                 avatarQuestMap.put(question,avatarRepository.findAvatar(avatarId));
+                question.setCountAnswers(answerRepository.countAnswersByQuestion(question.getIdQuestion()));
             }
             model.addAttribute("avatarQuestMap", avatarQuestMap);
             //model.addAttribute("avatars", avatars);

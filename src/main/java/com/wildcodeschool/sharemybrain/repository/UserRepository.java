@@ -233,4 +233,32 @@ public class UserRepository {
         return -1;
     }
 
+    public int findUserName(int userId) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            connection = DriverManager.getConnection(
+                    DB_URL, DB_USER, DB_PASSWORD
+            );
+            statement = connection.prepareStatement(
+                    "SELECT username FROM user WHERE id_user = ?;"
+            );
+            statement.setInt(1, userId);
+            resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                int idUser = resultSet.getInt("id_user");
+                return idUser;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JdbcUtils.closeResultSet(resultSet);
+            JdbcUtils.closeStatement(statement);
+            JdbcUtils.closeConnection(connection);
+        }
+        return -1;
+    }
+
 }

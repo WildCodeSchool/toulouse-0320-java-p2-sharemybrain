@@ -1,5 +1,4 @@
 package com.wildcodeschool.sharemybrain.repository;
-
 import com.wildcodeschool.sharemybrain.entity.Answer;
 import com.wildcodeschool.sharemybrain.entity.Question;
 import com.wildcodeschool.sharemybrain.entity.User;
@@ -74,7 +73,8 @@ public class AnswerRepository {
         return -1;
     }
 
-    public List<Answer> answersByIdQuestion(int idQuestion) {
+
+    public List<Answer> findAnswerWithId(int idQuest) {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -83,19 +83,24 @@ public class AnswerRepository {
                     DB_URL, DB_USER, DB_PASSWORD
             );
             statement = connection.prepareStatement(
-                    "SELECT * FROM answer WHERE id_question = ?;"
+                    "SELECT *  FROM answer WHERE id_question = ?;"
             );
-            statement.setInt(1, idQuestion);
+            statement.setInt(1, idQuest);
             resultSet = statement.executeQuery();
+
             List<Answer> answers = new ArrayList<>();
+
             while (resultSet.next()) {
                 int idAnswer = resultSet.getInt("id_answer");
+                int idQuestion = resultSet.getInt("id_question");
                 int idUser = resultSet.getInt("id_user");
-                String answerText = resultSet.getString("description");
+                String description = resultSet.getString("description");
                 Date date = resultSet.getDate("date");
-                answers.add(new Answer(idAnswer, idQuestion, idUser, answerText, date));
+                answers.add(new Answer(idAnswer, idQuestion, idUser, description, date));
             }
+
             return answers;
+          
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

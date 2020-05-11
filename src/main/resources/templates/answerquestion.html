@@ -21,7 +21,8 @@
                 Rufini.</p>
         </div>
     </section>
-    <section th:each="answer : ${answers}">
+    <section th:each="answer : ${avatarAnswerMap}" th:with="avatar = ${answer.value}, answer = ${answer.key}">
+        <img alt="avatar" src="" th:id="id + ${avatar.id}" th:src="@{/images/avatar/{avatar}(avatar = ${avatar.url})}">
         <p th:text="${answer.description}">Verum ad istam omnem orationem brevis est defensio. Nam quoad aetas M. Caeli
             dare potuit isti suspicioni locum, fuit primum ipsius pudore, deinde etiam patris diligentia disciplinaque munita.
             Qui ut huic virilem togam deditšnihil dicam hoc loco de me; tantum sit, quantum vos existimatis; hoc dicam, hunc</p>

@@ -10,6 +10,60 @@
 <body>
 <th:block th:include="fragments/header.html :: header(${true},${'index'}, ${avatar}, ${username})"></th:block>
 <main>
+    <h2>Profile activity</h2>
+    <div class="profileQuestionAnswerBlock">
+        <div class="profileQuestionAnswerTabs">
+            <div>
+                <input class="questionsTabButton" type="submit" value="Questions">
+                <!-- TODO: connect to a controller-->
+            </div>
+            <div>
+                <input class="answersTabButton" type="submit" value="Answers">
+                <!-- TODO: connect to a controller-->
+            </div>
+        </div>
+        <div class="profileQuestionAnswerContent">
+            <div class="singleQuestionAnswerBlock">
+                <!-- TODO: look for a fragment -->
+                <div class="singleQuestionAnswerHeader">
+                    <div class="singleQuestionAnswerTitle">
+                        <!-- TODO: search for a questionTitle in DB -->
+                    </div>
+                    <div class="newQuestionLogo">
+                        <!-- TODO: add the '!' logo if the question hasn't been read yet -->
+                    </div>
+                </div>
+                <div class="singleQuestionAnswerContent">
+                    <div class="singleQuestionAnswerSkill">
+                        <div class="singleQuestionAnswerSkillLogo">
+                            <!-- TODO: add skills incons-->
+                        </div>
+                        <div class="singleQuestionAnswerSkillName">
+                            <!-- TODO: search for skill name in DB -->
+                        </div>
+                    </div>
+                    <div class="singleQuestionsAnswers">
+                        <div class="singleAnswerForSingleQuestion">
+                            <!-- TODO: search for all answers related to one question in DB -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="profileUserInformation">
+        <div class="profileUserAvatar">
+            <!-- TODO: connect to the avatar with DB -->
+        </div>
+        <div class="profileUserTextInfos">
+            <h3>Username</h3> <!-- TODO: look for username in DB -->
+            <a>My skill:</a> <!-- TODO: look for a skill in DB -->
+        </div>
+        <div class="accountOptions"> <!-- TODO: code those functions or delete -->
+            <a>Change my password.</a>
+            <a>Delete my account.</a>
+        </div>
+    </div>
 
 </main>
 <th:block th:include="fragments/footer.html :: bottom (${true})"></th:block>

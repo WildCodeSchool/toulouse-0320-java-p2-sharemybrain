@@ -89,18 +89,17 @@ public class UserController {
     }
 
     @GetMapping("/questionProfile")
-    public String questionProfile(Model model, @CookieValue(value = "username", defaultValue = "Atta") String username){
+    public String questionProfile(Model model, @CookieValue(value = "username", defaultValue = "Atta") String username) {
         int idUser = repository.findUserId(username);
         List<Question> questions = questionRepository.findWithUserId(idUser);
-        Map<Question, Skill>  mapQuestion= new LinkedHashMap<>();
-        for(Question question : questions) {
+        Map<Question, Skill> mapQuestion = new LinkedHashMap<>();
+        for (Question question : questions) {
             question.setAnswers(answerRepository.answersByIdQuestion(question.getIdQuestion()));
             mapQuestion.put(question, skillRepository.findSkillById(question.getIdSkill()));
         }
         model.addAttribute("mapQuestion", mapQuestion);
         int idAvatar = repository.findAvatar(username);
         model.addAttribute("username", username);
-
         model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar).getUrl());
 
         return "questionProfile";
@@ -121,8 +120,8 @@ public class UserController {
         model.addAttribute("avatarQuestMap", avatarQuestMap);
         int idAvatar = repository.findAvatar(username);
         model.addAttribute("username", username);
-
         model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar).getUrl());
+
         return "answerProfile";
     }
 

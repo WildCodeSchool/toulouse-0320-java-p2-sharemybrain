@@ -3,6 +3,7 @@
 h2 {
     color: var(--darkImperialBlue);
     font-size: 2.5rem;
+    margin: 1em;
 }
 
 .profileMainBlocks {
@@ -14,4 +15,69 @@ h2 {
 
 .profileUserInformation {
     width: 25%;
+    margin-left: 1em;
+    margin-right: 1em;
+    justify-content: center;
 }
+
+.profileQuestionAnswerTabs {
+    display: flex;
+    flex-direction: row;
+}
+
+.profileQuestionAnswerBlock {
+    margin-right: 1em;
+    margin-left: 1em;
+    width:75%;
+
+}
+
+.tabButton {
+    width: 100px;
+    background-color: var(--metallicSeaweed);
+    color:var(--gainsboro);
+    border: none;
+    text-align: center;
+    font-size: 18px;
+    padding: 0.5em;
+    border-radius: 15px 15px 0 0;
+    margin-right: 0.5em;
+}
+
+.profileQuestionAnswerContent {
+    background-color: var(--metallicSeaweed);
+    border-radius: 0 15px 15px 15px;
+    padding: 1em;
+}
+
+.profileUserTextInfos {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.profileUserTextInfos h3 {
+    font-size: 24px;
+    color: var(--sunsetOrange);
+    margin-bottom: .5em;
+}
+
+.profileUserTextInfos a {
+    font-size: 24px;
+    color: var(--darkImperialBlue);
+}
+
+.accountOptions ul {
+    list-style-type: none;
+    font-size: 13px;
+    color: var(--darkImperialBlue);
+}
+
+.profileUserAvatar {
+    background: url("/images/avatar/bull.png") no-repeat;
+    background-size: contain;
+    width: 284px;
+    height: 284px;
+    padding: 1em;
+}
+
+

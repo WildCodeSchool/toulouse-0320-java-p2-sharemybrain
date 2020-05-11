@@ -87,6 +87,7 @@ public class QuestionAnswerController {
         Question questionDescr = questionRepository.findQuestion(question);
         int avatarId = userRepository.findAvatarById(questionDescr.getIdUser());
         model.addAttribute("avatarQ", avatarRepository.findAvatar(avatarId));
+        model.addAttribute("answers", answerRepository.findAnswerWithId(question));
         model.addAttribute("question", questionDescr);
         return "/answerquestion";
     }

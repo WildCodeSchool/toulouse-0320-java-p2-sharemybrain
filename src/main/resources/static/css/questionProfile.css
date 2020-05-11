@@ -1,0 +1,67 @@
+@import url('styles.css');
+
+
+.share-knowledge p, option, .quest-description, h2, h3 {
+    color: var(--darkImperialBlue);
+}
+
+.quest-title {
+    color: var(--sunsetOrange);
+}
+
+.share-knowledge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto 1.5rem;
+}
+
+.question {
+    width: 90%;
+    border: 0.1rem solid #8A8E95;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px;
+    margin: 1rem 0;
+    padding: 0.5rem 0.5rem;
+}
+
+h3 {
+    text-align: center;
+}
+
+
+@media screen and (min-width: 768px) {
+    .share-knowledge {
+        margin: 3rem 0 0 5rem;;
+        align-items: start;
+        width: 80%;
+    }
+
+    .share-knowledge h2 {
+        font-size: 2.5rem;
+    }
+
+    h3 {
+        flex-basis:6%;
+    }
+
+    .question {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .question-descrip-Img {
+        display: flex;
+    }
+
+    .question p, .question a {
+        font-size: 1.3rem;
+    }
+
+    .question-infos p {
+        font-size: 1rem;
+    }
+
+}

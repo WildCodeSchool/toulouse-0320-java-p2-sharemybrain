@@ -1,6 +1,7 @@
 package com.wildcodeschool.sharemybrain.repository;
-
 import com.wildcodeschool.sharemybrain.entity.Answer;
+import com.wildcodeschool.sharemybrain.entity.Question;
+import com.wildcodeschool.sharemybrain.entity.User;
 import com.wildcodeschool.sharemybrain.util.JdbcUtils;
 
 import java.sql.*;
@@ -72,6 +73,7 @@ public class AnswerRepository {
         return -1;
     }
 
+
     public List<Answer> findAnswerWithId(int idQuest) {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -98,7 +100,7 @@ public class AnswerRepository {
             }
 
             return answers;
-
+          
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

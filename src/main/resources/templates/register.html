@@ -36,12 +36,9 @@
                         <option th:each="skill : ${skills}" th:value="${skill.id}" th:text="${skill.name}">
                         </option>
                     </select>
-
-                    <!-- TODO IF NO AVATAR CHOSEN -> WORKS AND ANYTHING HAPPENS -->
                     <p class="error" th:if="${noSkill}">You need to choose an avatar</p>
                 </label>
             </div>
-            <!--TODO PUT THE PHOTO OF THE AVATAR -->
             <div id="formAvatar">
                 <p>Choose your avatar</p>
                 <div id="avatar-div">

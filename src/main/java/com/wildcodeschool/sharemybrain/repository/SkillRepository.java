@@ -44,4 +44,33 @@ public class SkillRepository {
         return null;
     }
 
+    public Skill findSkillById(int idSkill) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            connection = DriverManager.getConnection(
+                    DB_URL, DB_USER, DB_PASSWORD
+            );
+            statement = connection.prepareStatement(
+                    "SELECT * FROM skill WHERE id_skill = ?;"
+            );
+            statement.setInt(1, idSkill);
+            resultSet = statement.executeQuery();
+
+            if(resultSet.next()) {
+                String name = resultSet.getString("name");
+                 return new Skill(idSkill, name);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JdbcUtils.closeResultSet(resultSet);
+            JdbcUtils.closeStatement(statement);
+            JdbcUtils.closeConnection(connection);
+        }
+        return null;
+    }
+
 }

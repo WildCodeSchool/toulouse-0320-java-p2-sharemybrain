@@ -36,7 +36,6 @@ public class MainController {
     public String logout(HttpServletResponse response) {
         Cookie cookie = new Cookie("username", null);
         cookie.setMaxAge(0);
-        cookie.setSecure(true);
         cookie.setHttpOnly(true);
         cookie.setPath("/");
 

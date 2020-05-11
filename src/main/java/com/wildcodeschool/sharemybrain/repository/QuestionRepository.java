@@ -1,6 +1,7 @@
 package com.wildcodeschool.sharemybrain.repository;
 
 import com.wildcodeschool.sharemybrain.entity.Question;
+import com.wildcodeschool.sharemybrain.entity.User;
 import com.wildcodeschool.sharemybrain.util.JdbcUtils;
 
 import java.sql.*;
@@ -156,5 +157,35 @@ public class QuestionRepository {
         }
         return null;
     }
-}
+    public void askQuestion(String question_title, String question, String date, int idUser, int idSkill) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            connection = DriverManager.getConnection(
+                    DB_URL, DB_USER, DB_PASSWORD
+            );
+            statement = connection.prepareStatement(
+                    "INSERT INTO question (title, description, `date`, id_user, id_skill) VALUES (?, ?, ?, ?, ?);"
+            );
+            statement.setString(1,question_title);
+            statement.setString(2, question);
+            statement.setString(3, date);
+            statement.setInt(4, idUser);
+            statement.setInt(5, idSkill);
 
+            if (statement.executeUpdate() != 1) {
+                throw new SQLException("failed to insert data");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JdbcUtils.closeResultSet(resultSet);
+            JdbcUtils.closeStatement(statement);
+            JdbcUtils.closeConnection(connection);
+        }
+    }
+
+
+}

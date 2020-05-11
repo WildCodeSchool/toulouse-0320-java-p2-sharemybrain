@@ -9,7 +9,7 @@
 </head>
 <body>
 <th:block th:include="fragments/header.html :: header(${true},${'index'}, ${avatar}, ${username})"></th:block>
-<main>
+<main class="fullProfile">
     <h2>Profile activity</h2>
     <div class="profileQuestionAnswerBlock">
         <div class="profileQuestionAnswerTabs">
@@ -60,8 +60,10 @@
             <a>My skill:</a> <!-- TODO: look for a skill in DB -->
         </div>
         <div class="accountOptions"> <!-- TODO: code those functions or delete -->
-            <a>Change my password.</a>
-            <a>Delete my account.</a>
+            <ul>
+                <li><a>Change my password.</a></li>
+                <li><a>Delete my account.</a></li>
+            </ul>
         </div>
     </div>
 

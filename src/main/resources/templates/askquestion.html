@@ -18,7 +18,7 @@
     <label class="skill">
 
         <select name="idSkill">
-            <option value="0">Choose your skill</option> "
+            <option value="0">Choose your skill</option>
             <option th:each="skill : ${skills}" th:value="${skill.id}" th:text="${skill.name}">
             </option>
         </select>

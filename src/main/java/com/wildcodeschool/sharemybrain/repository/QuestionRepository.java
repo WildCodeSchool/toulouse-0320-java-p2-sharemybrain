@@ -158,7 +158,7 @@ public class QuestionRepository {
         }
         return null;
     }
-    public void askQuestion(String question_title, String question, String date,int idUser, int idSkill) {
+    public void askQuestion(String question_title, String question, String date, int idUser, int idSkill) {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -172,7 +172,7 @@ public class QuestionRepository {
             statement.setString(1,question_title);
             statement.setString(2, question);
             statement.setString(3, date);
-            statement.setInt(4,idUser);
+            statement.setInt(4, idUser);
             statement.setInt(5, idSkill);
 
             if (statement.executeUpdate() != 1) {

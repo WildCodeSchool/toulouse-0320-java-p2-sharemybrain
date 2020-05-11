@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <head>
+        <th:block th:include="fragments/head.html :: head"></th:block>
+        <title>Your profile</title>
+        <link href="css/profile.css" rel="stylesheet" type="text/css">
+    </head>
+</head>
+<body>
+<th:block th:include="fragments/header.html :: header(${true},${'index'}, ${avatar}, ${username})"></th:block>
+<main class="fullProfile">
+    <h2>Profile activity</h2>
+    <div class="profileMainBlocks">
+        <div class="profileQuestionAnswerBlock">
+            <div class="profileQuestionAnswerTabs">
+                <div>
+                    <input class="tabButton" type="submit" value="Questions">
+                    <!-- TODO: connect to a controller-->
+                </div>
+                <div>
+                    <input class="tabButton" type="submit" value="Answers">
+                    <!-- TODO: connect to a controller-->
+                </div>
+            </div>
+            <div class="profileQuestionAnswerContent">
+                <div class="singleQuestionAnswerBlock">
+                    <!-- TODO: look for a fragment -->
+                    <div class="singleQuestionAnswerHeader">
+                        <div class="singleQuestionAnswerTitle">
+                            Fusce rhoncus odio ante, at auctor nibh dapibus eget?
+                            <!-- TODO: search for a questionTitle in DB -->
+                        </div>
+                        <div class="newQuestionLogo">
+                            <!-- TODO: add the '!' logo if the question hasn't been read yet -->
+                        </div>
+                    </div>
+                    <div class="singleQuestionAnswerContent">
+                        <div class="singleQuestionAnswerSkill">
+                            <div class="singleQuestionAnswerSkillLogo">
+                                <!-- TODO: add skills incons-->
+                            </div>
+                            <div class="singleQuestionAnswerSkillName">
+                                <!-- TODO: search for skill name in DB -->
+                            </div>
+                        </div>
+                        <div class="singleQuestionsAnswers">
+                            <!-- TODO: search for all answers related to one question in DB -->
+                            <div class="singleAnswerForSingleQuestion">
+                                Answer 1 : Cras sed turpis justo. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                                <!-- TODO: add a read more link and shorten the extra text. -->
+                            </div>
+                            <div class="singleAnswerForSingleQuestion">
+                                Answer 2 : Cras sed turpis justo. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+
+                            </div>
+                            <div class="singleAnswerForSingleQuestion">
+                                Answer 3 : Cras sed turpis justo. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="profileUserInformation">
+            <div class="profileUserAvatar">
+                <!-- TODO: connect to the avatar with DB -->
+            </div>
+            <div class="profileUserTextBlock">
+                <div class="profileUserTextInfos">
+                    <h3>Username</h3> <!-- TODO: look for username in DB -->
+                    <a>My skill:</a> <!-- TODO: look for a skill in DB -->
+                </div>
+                <div class="accountOptions"> <!-- TODO: code those functions or delete -->
+                    <ul>
+                        <li><a>Change my password.</a></li>
+                        <li><a>Delete my account.</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+<th:block th:include="fragments/footer.html :: bottom (${true})"></th:block>
+<script src="burger.js" type="text/javascript"></script>
+</body>
+</html>

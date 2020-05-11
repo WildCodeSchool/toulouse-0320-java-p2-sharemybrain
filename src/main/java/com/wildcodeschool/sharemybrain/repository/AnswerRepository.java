@@ -1,10 +1,13 @@
 package com.wildcodeschool.sharemybrain.repository;
 
+import com.wildcodeschool.sharemybrain.entity.Answer;
 import com.wildcodeschool.sharemybrain.entity.User;
 import com.wildcodeschool.sharemybrain.util.JdbcUtils;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 public class AnswerRepository {
@@ -68,5 +71,37 @@ public class AnswerRepository {
             JdbcUtils.closeConnection(connection);
         }
         return -1;
+    }
+
+    public List<Answer> answersByIdQuestion(int idQuestion) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            connection = DriverManager.getConnection(
+                    DB_URL, DB_USER, DB_PASSWORD
+            );
+            statement = connection.prepareStatement(
+                    "SELECT * FROM answer WHERE id_question = ?;"
+            );
+            statement.setInt(1, idQuestion);
+            resultSet = statement.executeQuery();
+            List<Answer> answers = new ArrayList<>();
+            while (resultSet.next()) {
+                int idAnswer = resultSet.getInt("id_answer");
+                int idUser = resultSet.getInt("id_user");
+                String answerText = resultSet.getString("description");
+                Date date = resultSet.getDate("date");
+                answers.add(new Answer(idAnswer, idQuestion, idUser, answerText, date));
+            }
+            return answers;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JdbcUtils.closeResultSet(resultSet);
+            JdbcUtils.closeStatement(statement);
+            JdbcUtils.closeConnection(connection);
+        }
+        return null;
     }
 }

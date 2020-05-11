@@ -1,20 +1,20 @@
 package com.wildcodeschool.sharemybrain.controller;
 
 import com.google.common.hash.Hashing;
+import com.wildcodeschool.sharemybrain.entity.Question;
+import com.wildcodeschool.sharemybrain.entity.Skill;
 import com.wildcodeschool.sharemybrain.entity.User;
-import com.wildcodeschool.sharemybrain.repository.AvatarRepository;
-import com.wildcodeschool.sharemybrain.repository.SkillRepository;
-import com.wildcodeschool.sharemybrain.repository.UserRepository;
+import com.wildcodeschool.sharemybrain.repository.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.nio.charset.StandardCharsets;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 
 @Controller
@@ -22,6 +22,8 @@ public class UserController {
     private UserRepository repository = new UserRepository();
     private AvatarRepository avatarRepository = new AvatarRepository();
     private SkillRepository skillRepository = new SkillRepository();
+    private QuestionRepository questionRepository = new QuestionRepository();
+    private AnswerRepository answerRepository = new AnswerRepository();
 
     @GetMapping("/login")
     public String showLoginPage() {
@@ -30,7 +32,8 @@ public class UserController {
 
     @PostMapping("/login")
     public String checkLogin(Model model, @RequestParam(defaultValue = "", required = false) String username,
-                             @RequestParam(defaultValue = "", required = false) String password, HttpServletResponse response) {
+                             @RequestParam(defaultValue = "", required = false) String password,
+                             HttpServletResponse response) {
         if (username == "" || password == "") {
             return "redirect:/login";
         }
@@ -74,7 +77,6 @@ public class UserController {
             model.addAttribute("noPswConfirmed", true);
             return "/register";
         } else if (user.getIdSkill() == 0) {
-            // TODO IF NO SKILL CHOSEN -> WORKS AND ANYTHING HAPPENS
             model.addAttribute("noSkill", true);
             return "/register";
         }
@@ -83,6 +85,24 @@ public class UserController {
         repository.insertNewUser(user);
         return "redirect:/login";
 
+    }
+
+    @GetMapping("/questionProfile")
+    public String questionProfile(Model model, @CookieValue(value = "username", defaultValue = "Atta") String username){
+        int idUser = repository.findUserId(username);
+        List<Question> questions = questionRepository.findWithUserId(idUser);
+        Map<Question, Skill>  mapQuestion= new LinkedHashMap<>();
+        for(Question question : questions) {
+            question.setAnswers(answerRepository.answersByIdQuestion(question.getIdQuestion()));
+            mapQuestion.put(question, skillRepository.findSkillById(question.getIdSkill()));
+        }
+        model.addAttribute("mapQuestion", mapQuestion);
+        int idAvatar = repository.findAvatar(username);
+        model.addAttribute("username", username);
+
+        model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar).getUrl());
+
+        return "questionProfile";
     }
 
     public String crypt(String psw) {

@@ -1,6 +1,7 @@
 package com.wildcodeschool.sharemybrain.entity;
 
 import java.util.Date;
+import java.util.List;
 
 public class Question {
     private int idQuestion;
@@ -10,6 +11,7 @@ public class Question {
     private int idUser;
     private int idSkill;
     private int countAnswers;
+    private List<Answer> answers;
 
     // Empty constructor
     public Question() {
@@ -72,4 +74,12 @@ public class Question {
     public int getCountAnswers() { return this.countAnswers;}
 
     public void setCountAnswers(int countAnswers) { this.countAnswers = countAnswers;}
+
+    public List<Answer> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(List<Answer> answers) {
+        this.answers = answers;
+    }
 }

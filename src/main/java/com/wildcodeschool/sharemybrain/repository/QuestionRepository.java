@@ -157,6 +157,7 @@ public class QuestionRepository {
         }
         return null;
     }
+
     public void askQuestion(String question_title, String question, String date, int idUser, int idSkill) {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -185,6 +186,42 @@ public class QuestionRepository {
             JdbcUtils.closeStatement(statement);
             JdbcUtils.closeConnection(connection);
         }
+    }
+
+
+    public List<Question> findWithUserId(int idUser) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            connection = DriverManager.getConnection(
+                    DB_URL, DB_USER, DB_PASSWORD
+            );
+            statement = connection.prepareStatement(
+                    "SELECT * FROM question WHERE id_user = ?;"
+            );
+            statement.setInt(1, idUser);
+            resultSet = statement.executeQuery();
+
+            List<Question> questions = new ArrayList<>();
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id_question");
+                String title = resultSet.getString("title");
+                String description = resultSet.getString("description");
+                Date date = resultSet.getDate("date");
+                int idSkill = resultSet.getInt("id_skill");
+                questions.add(new Question(id, title, description, idUser, idSkill, date));
+            }
+            return questions;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JdbcUtils.closeResultSet(resultSet);
+            JdbcUtils.closeStatement(statement);
+            JdbcUtils.closeConnection(connection);
+        }
+        return null;
     }
 
 

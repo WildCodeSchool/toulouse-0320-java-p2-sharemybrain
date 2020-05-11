@@ -94,7 +94,7 @@ public class UserController {
         List<Question> questions = questionRepository.findWithUserId(idUser);
         Map<Question, Skill> mapQuestion = new LinkedHashMap<>();
         for (Question question : questions) {
-            question.setAnswers(answerRepository.answersByIdQuestion(question.getIdQuestion()));
+            question.setAnswers(answerRepository.findAnswerWithId(question.getIdQuestion()));
             mapQuestion.put(question, skillRepository.findSkillById(question.getIdSkill()));
         }
         model.addAttribute("mapQuestion", mapQuestion);

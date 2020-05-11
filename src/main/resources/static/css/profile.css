@@ -1,5 +1,11 @@
 @import url('styles.css');
 
+.fullProfile {
+    margin: 1em;
+    padding: 1em;
+    min-width: 200px;
+}
+
 h2 {
     color: var(--darkImperialBlue);
     font-size: 2.5rem;
@@ -14,6 +20,8 @@ h2 {
 }
 
 .profileUserInformation {
+    display: flex;
+    flex-direction: column;
     width: 25%;
     margin-left: 1em;
     margin-right: 1em;
@@ -23,11 +31,11 @@ h2 {
 .profileQuestionAnswerTabs {
     display: flex;
     flex-direction: row;
+    margin-left: 1em;
+    margin-right: 1em;
 }
 
 .profileQuestionAnswerBlock {
-    margin-right: 1em;
-    margin-left: 1em;
     width:75%;
 
 }
@@ -48,9 +56,14 @@ h2 {
     background-color: var(--metallicSeaweed);
     border-radius: 0 15px 15px 15px;
     padding: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
+    min-width: 230px;
 }
 
-.profileUserTextInfos {
+.profileUserTextBlock {
+    display: flex;
+    flex-direction: column;
     margin-top: 1em;
     margin-bottom: 1em;
 }
@@ -64,20 +77,60 @@ h2 {
 .profileUserTextInfos a {
     font-size: 24px;
     color: var(--darkImperialBlue);
+    margin-bottom: 1em;
 }
 
 .accountOptions ul {
     list-style-type: none;
     font-size: 13px;
     color: var(--darkImperialBlue);
+    margin-top: 1em;
+}
+
+.accountOptions ul li {
+    margin-bottom: 0.5em;
 }
 
 .profileUserAvatar {
     background: url("/images/avatar/bull.png") no-repeat;
     background-size: contain;
-    width: 284px;
-    height: 284px;
+    width: 282px;
+    min-width: 110px;
+    height: 282px;
     padding: 1em;
 }
 
 
+/* MOBILE */
+@media screen and (max-width: 768px) {
+
+    .fullProfile h2 {
+        display: none;
+    }
+
+    .profileMainBlocks {
+        flex-direction: column-reverse;
+    }
+
+    .profileUserInformation {
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;
+        margin-bottom: 2em;
+    }
+
+    .profileUserAvatar {
+        width: 150px;
+        height: 150px;
+    }
+
+    .profileQuestionAnswerBlock {
+        width: 100%;
+    }
+
+    .profileUserTextBlock {
+        margin: 1em;
+
+    }
+
+}

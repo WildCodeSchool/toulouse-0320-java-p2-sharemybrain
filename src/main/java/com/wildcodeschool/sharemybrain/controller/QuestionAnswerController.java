@@ -91,4 +91,17 @@ public class QuestionAnswerController {
         return "redirect:/questions" ;
     }
 
+    @PostMapping("/askquestion")
+    public String postAnswer(@RequestParam String question_title,
+                             @RequestParam int idSkill,
+                             @RequestParam String question,
+                             @CookieValue(value = "username", defaultValue = "Atta") String username){
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
+        int idUser = userRepository.findUserId(username);
+        questionRepository.askQuestion(question_title, question, sdf.format(date), idUser, idSkill);
+        return "redirect:/" ;
+    }
 }
+

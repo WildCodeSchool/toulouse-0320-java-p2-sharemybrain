@@ -18,12 +18,14 @@
             <option value="oldest">By oldest</option>
         </select>
     </div>
-    <div class="question" th:each="question : ${questions}">
+    <div class="question" th:each="entry : ${avatarQuestMap}"
+         th:with="avatar = ${entry.value}, question = ${entry.key}">
         <div class="question-descrip-Img">
-            <!-- TODO update with the good avatar -->
-            <img src="">
+            <img alt="avatar" src="" th:id="id + ${avatar.id}"
+                 th:src="@{images/avatar/{avatar}(avatar = ${avatar.url})}">
             <div>
-                <a class="quest-title" href="/answer"  th:href="@{/answer/{question}(question = ${question.idQuestion})}" th:text="${question.title}">Fusce rhoncus odio ante, at auctor
+                <a class="quest-title" href="/answer" th:href="@{/answer/{question}(question = ${question.idQuestion})}"
+                   th:text="${question.title}">Fusce rhoncus odio ante, at auctor
                     nibh dapibus eget?</a>
                 <p class="quest-description" th:text="${question.description}">Cras sed turpis justo. Interdum et</p>
             </div>
@@ -32,7 +34,7 @@
         <!-- TODO update the question infos with DB information -->
         <div class="question-infos">
             <p>asked 10 seconds ago</p>
-            <p>2 answers</p>
+            <p th:text="|${question.countAnswers} answers|">2 answers</p>
         </div>
     </div>
     <div class="pagination">

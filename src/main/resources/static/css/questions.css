@@ -120,11 +120,13 @@
     .question div img {
         margin-right: 1rem;
         display: initial;
-        width: 5vw;
-        height: 5vw;
-
+        width: 3vw;
+        height: 3vw;
     }
-
+    #id3 {
+        width: 4vw;
+        height: 3vw;
+    }
     .question p, .question a {
         font-size: 1.3rem;
     }

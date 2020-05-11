@@ -158,6 +158,8 @@ a {
     .user {
         display: flex;
         align-items: center;
+        flex-basis: 10%;
+        justify-content: space-around;
     }
 
     .user p {
@@ -203,7 +205,6 @@ a {
     .nav-search img {
         width: 3vw;
         flex-basis: 3vw;
-    ()
     }
 
     .nav-exit img {

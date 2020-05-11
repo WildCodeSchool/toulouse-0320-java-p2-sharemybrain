@@ -6,14 +6,13 @@
     min-width: 200px;
 }
 
-h2 {
-    color: var(--darkImperialBlue);
-    font-size: 2.5rem;
-    margin: 1em;
+.fullProfile h2 {
+    display: none;
 }
 
 .profileMainBlocks {
     display: flex;
+    flex-direction: column-reverse;
     height: 100%;
     width: 100%;
     justify-content: space-between;
@@ -21,11 +20,12 @@ h2 {
 
 .profileUserInformation {
     display: flex;
-    flex-direction: column;
-    width: 25%;
+    flex-direction: row;
+    width: 100%;
     margin-left: 1em;
     margin-right: 1em;
-    justify-content: center;
+    margin-bottom: 2em;
+    justify-content: space-around;
 }
 
 .profileQuestionAnswerTabs {
@@ -36,7 +36,7 @@ h2 {
 }
 
 .profileQuestionAnswerBlock {
-    width:75%;
+    width:100%;
 
 }
 
@@ -64,8 +64,7 @@ h2 {
 .profileUserTextBlock {
     display: flex;
     flex-direction: column;
-    margin-top: 1em;
-    margin-bottom: 1em;
+    margin: 1em;
 }
 
 .profileUserTextInfos h3 {
@@ -94,43 +93,43 @@ h2 {
 .profileUserAvatar {
     background: url("/images/avatar/bull.png") no-repeat;
     background-size: contain;
-    width: 282px;
+    width: 150px;
     min-width: 110px;
-    height: 282px;
+    height: 150px;
     padding: 1em;
 }
 
-
-/* MOBILE */
-@media screen and (max-width: 768px) {
+/* DESKTOP */
+@media screen and (min-width: 768px) {
 
     .fullProfile h2 {
-        display: none;
+        display: flex;
+        color: var(--darkImperialBlue);
+        font-size: 2.5rem;
+        margin: 1em;
     }
 
     .profileMainBlocks {
-        flex-direction: column-reverse;
+        flex-direction: row;
     }
 
     .profileUserInformation {
-        flex-direction: row;
-        justify-content: space-around;
-        width: 100%;
-        margin-bottom: 2em;
+        flex-direction: column;
+        justify-content: center;
+        width: 25%;
     }
 
     .profileUserAvatar {
-        width: 150px;
-        height: 150px;
+        width: 282px;
+        height: 282px;
     }
 
     .profileQuestionAnswerBlock {
-        width: 100%;
+        width: 75%;
     }
 
     .profileUserTextBlock {
-        margin: 1em;
-
+        margin-bottom: 0;
+        margin-top: 0;
     }
-
 }

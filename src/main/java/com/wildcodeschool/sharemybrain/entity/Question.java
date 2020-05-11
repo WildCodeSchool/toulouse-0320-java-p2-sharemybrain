@@ -17,6 +17,13 @@ public class Question {
     public Question() {
     }
 
+    public Question(int idQuestion, String title, String description, int idUser) {
+        this.idQuestion = idQuestion;
+        this.title = title;
+        this.description = description;
+        this.idUser = idUser;
+    }
+
     //Constructor with all items
     public Question(int id, String title, String description, int idUser, int idSkill, Date date) {
         this.idQuestion = id;

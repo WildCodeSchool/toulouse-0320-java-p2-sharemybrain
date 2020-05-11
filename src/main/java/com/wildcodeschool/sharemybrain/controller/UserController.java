@@ -1,6 +1,7 @@
 package com.wildcodeschool.sharemybrain.controller;
 
 import com.google.common.hash.Hashing;
+import com.wildcodeschool.sharemybrain.entity.Avatar;
 import com.wildcodeschool.sharemybrain.entity.Question;
 import com.wildcodeschool.sharemybrain.entity.Skill;
 import com.wildcodeschool.sharemybrain.entity.User;
@@ -103,6 +104,26 @@ public class UserController {
         model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar).getUrl());
 
         return "questionProfile";
+    }
+
+    @GetMapping("/AnswerProfile")
+    public String AnswerProfile(Model model,
+                                @CookieValue(value = "username", defaultValue = "Atta") String username) {
+        int userId = repository.findUserId(username);
+        List<Question> questions = questionRepository.findQuestionsAnsweredByUserId(userId);
+        Map<Question, Avatar> avatarQuestMap = new LinkedHashMap<>();
+        int avatarId;
+        for (Question question : questions) {
+            avatarId = repository.findAvatarById(question.getIdUser());
+            avatarQuestMap.put(question, avatarRepository.findAvatar(avatarId));
+            question.setCountAnswers(answerRepository.countAnswersByQuestion(question.getIdQuestion()));
+        }
+        model.addAttribute("avatarQuestMap", avatarQuestMap);
+        int idAvatar = repository.findAvatar(username);
+        model.addAttribute("username", username);
+
+        model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar).getUrl());
+        return "answerProfile";
     }
 
     public String crypt(String psw) {

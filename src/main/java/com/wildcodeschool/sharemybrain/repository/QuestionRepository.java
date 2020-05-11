@@ -86,6 +86,7 @@ public class QuestionRepository {
         return 0;
     }
 
+
     public List<Question> findWithSkill(int limit, int offset, int idSkill) {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -224,5 +225,37 @@ public class QuestionRepository {
         return null;
     }
 
-
+    public List<Question> findQuestionsAnsweredByUserId(int userId){
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            connection = DriverManager.getConnection(
+                    DB_URL, DB_USER, DB_PASSWORD
+            );
+            statement = connection.prepareStatement(
+                    "SELECT question.id_question as question, question.title as title, question.description as descript, question.id_user as user FROM answer " +
+                            "JOIN question ON answer.id_question = question.id_question " +
+                            "WHERE answer.id_user = ?;"
+            );
+            statement.setInt(1, userId);
+            resultSet = statement.executeQuery();
+            List<Question> questions = new ArrayList<>();
+            while (resultSet.next()) {
+                int idQuestion = resultSet.getInt("question");
+                String title = resultSet.getString("title");
+                String description = resultSet.getString("descript");
+                int idUser = resultSet.getInt("user");
+                questions.add(new Question(idQuestion, title, description, idUser));
+            }
+            return questions;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JdbcUtils.closeResultSet(resultSet);
+            JdbcUtils.closeStatement(statement);
+            JdbcUtils.closeConnection(connection);
+        }
+        return null;
+    }
 }

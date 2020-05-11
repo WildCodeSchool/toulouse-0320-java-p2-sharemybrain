@@ -1,6 +1,7 @@
 package com.wildcodeschool.sharemybrain.repository;
 
 import com.wildcodeschool.sharemybrain.entity.Answer;
+import com.wildcodeschool.sharemybrain.entity.Question;
 import com.wildcodeschool.sharemybrain.entity.User;
 import com.wildcodeschool.sharemybrain.util.JdbcUtils;
 
@@ -104,4 +105,5 @@ public class AnswerRepository {
         }
         return null;
     }
+
 }

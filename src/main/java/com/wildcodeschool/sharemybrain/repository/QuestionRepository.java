@@ -1,7 +1,6 @@
 package com.wildcodeschool.sharemybrain.repository;
 
 import com.wildcodeschool.sharemybrain.entity.Question;
-import com.wildcodeschool.sharemybrain.entity.User;
 import com.wildcodeschool.sharemybrain.util.JdbcUtils;
 
 import java.sql.*;
@@ -170,7 +169,7 @@ public class QuestionRepository {
             statement = connection.prepareStatement(
                     "INSERT INTO question (title, description, `date`, id_user, id_skill) VALUES (?, ?, ?, ?, ?);"
             );
-            statement.setString(1,question_title);
+            statement.setString(1, question_title);
             statement.setString(2, question);
             statement.setString(3, date);
             statement.setInt(4, idUser);
@@ -225,7 +224,7 @@ public class QuestionRepository {
         return null;
     }
 
-    public List<Question> findQuestionsAnsweredByUserId(int userId){
+    public List<Question> findQuestionsAnsweredByUserId(int userId) {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -234,7 +233,7 @@ public class QuestionRepository {
                     DB_URL, DB_USER, DB_PASSWORD
             );
             statement = connection.prepareStatement(
-                    "SELECT question.id_question as question, question.title as title, question.description as descript, question.id_user as user FROM answer " +
+                    "SELECT DISTINCT question.id_question as question, question.title as title, question.description as descript, question.id_user as user FROM answer " +
                             "JOIN question ON answer.id_question = question.id_question " +
                             "WHERE answer.id_user = ?;"
             );
@@ -257,5 +256,77 @@ public class QuestionRepository {
             JdbcUtils.closeConnection(connection);
         }
         return null;
+    }
+
+    public List<Question> search(int limit, int offset, String word) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            connection = DriverManager.getConnection(
+                    DB_URL, DB_USER, DB_PASSWORD
+            );
+            statement = connection.prepareStatement(
+                    "SELECT * FROM question WHERE title LIKE ? OR description LIKE ? LIMIT ?,?;"
+            );
+            word = "%" + word + "%";
+            statement.setString(1, word);
+            statement.setString(2, word);
+            statement.setInt(4, limit);
+            statement.setInt(3, offset);
+            resultSet = statement.executeQuery();
+
+            List<Question> questions = new ArrayList<>();
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id_question");
+                String title = resultSet.getString("title");
+                String description = resultSet.getString("description");
+                Date date = resultSet.getDate("date");
+                int idUser = resultSet.getInt("id_user");
+                int idSkill = resultSet.getInt("id_skill");
+
+                questions.add(new Question(id, title, description, idUser, idSkill, date));
+            }
+            return questions;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JdbcUtils.closeResultSet(resultSet);
+            JdbcUtils.closeStatement(statement);
+            JdbcUtils.closeConnection(connection);
+        }
+        return null;
+    }
+
+    public int totalSearch(String word) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            connection = DriverManager.getConnection(
+                    DB_URL, DB_USER, DB_PASSWORD
+            );
+
+            statement = connection.prepareStatement(
+                    "SELECT COUNT(*) as count FROM question WHERE title LIKE ? OR description LIKE ?;"
+            );
+            word = "%" + word + "%";
+            statement.setString(1, word);
+            statement.setString(2, word);
+
+            resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                return resultSet.getInt("count");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JdbcUtils.closeResultSet(resultSet);
+            JdbcUtils.closeStatement(statement);
+            JdbcUtils.closeConnection(connection);
+        }
+        return 0;
     }
 }

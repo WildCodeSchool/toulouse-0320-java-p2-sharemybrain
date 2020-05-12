@@ -81,23 +81,6 @@ a {
     text-align: center;
 }
 
-/* BUTTONS */
-.btns-index {
-    margin-top: 2rem;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1rem;
-    align-items: center;
-}
-
-.btn-log {
-    border-style: none;
-    background-color: transparent;
-    color: var(--darkImperialBlue);
-    font-size: 1.5rem;
-}
-
-
 /* MEDIA */
 @media screen and (min-width: 768px) {
 

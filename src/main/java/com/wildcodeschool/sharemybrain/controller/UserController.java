@@ -91,6 +91,9 @@ public class UserController {
     /* TODO: delete that block once the profile GetMapping works. */
 /*    @GetMapping("/questionProfile")
     public String questionProfile(Model model, @CookieValue(value = "username", defaultValue = "Atta") String username) {
+        if (username.equals("Atta")) {
+            return "/error";
+        }
         int idUser = repository.findUserId(username);
         List<Question> questions = questionRepository.findWithUserId(idUser);
         Map<Question, Skill> mapQuestion = new LinkedHashMap<>();
@@ -110,6 +113,9 @@ public class UserController {
 /*    @GetMapping("/answerProfile")
     public String AnswerProfile(Model model,
                                 @CookieValue(value = "username", defaultValue = "Atta") String username) {
+        if (username.equals("Atta")) {
+            return "/error";
+        }
         int userId = repository.findUserId(username);
         List<Question> questions = questionRepository.findQuestionsAnsweredByUserId(userId);
         Map<Question, Avatar> avatarQuestMap = new LinkedHashMap<>();

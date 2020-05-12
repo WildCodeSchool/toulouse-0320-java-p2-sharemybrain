@@ -88,7 +88,7 @@ public class UserController {
 
     }
 
-    @GetMapping("/questionProfile")
+/*    @GetMapping("/questionProfile")
     public String questionProfile(Model model, @CookieValue(value = "username", defaultValue = "Atta") String username) {
         int idUser = repository.findUserId(username);
         List<Question> questions = questionRepository.findWithUserId(idUser);
@@ -103,7 +103,7 @@ public class UserController {
         model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar).getUrl());
 
         return "questionProfile";
-    }
+    }*/
 
     @GetMapping("/AnswerProfile")
     public String AnswerProfile(Model model,
@@ -128,15 +128,26 @@ public class UserController {
     @GetMapping("/profile")
     public String showProfile(Model model,
                               @CookieValue(value = "username", defaultValue = "Atta") String username) {
-        int userId = repository.findUserId(username);
         model.addAttribute("username", username);
         int idAvatar = repository.findAvatar(username);
         model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar).getUrl());
         int idSkill = repository.findSkill(username);
         model.addAttribute("skill", skillRepository.findSkillById(idSkill).getName());
 
+        int idUser = repository.findUserId(username);
+        List<Question> questions = questionRepository.findWithUserId(idUser);
+        Map<Question, Skill> mapQuestion = new LinkedHashMap<>();
+        for (Question question : questions) {
+            question.setAnswers(answerRepository.findAnswerWithId(question.getIdQuestion()));
+            mapQuestion.put(question, skillRepository.findSkillById(question.getIdSkill()));
+        }
+        model.addAttribute("mapQuestion", mapQuestion);
+
         return "profile";
     }
+
+
+
 
     public String crypt(String psw) {
         String sha256hex = Hashing.sha256()

@@ -25,40 +25,11 @@
             </div>
             <div class="profileQuestionAnswerContent">
                 <div class="singleQuestionAnswerBlock">
-                    <!-- TODO: look for a fragment -->
-                    <div class="singleQuestionAnswerHeader">
-                        <div class="singleQuestionAnswerTitle">
-                            Fusce rhoncus odio ante, at auctor nibh dapibus eget?
-                            <!-- TODO: search for a questionTitle in DB -->
-                        </div>
-                        <div class="newQuestionLogo">
-                            <!-- TODO: add the '!' logo if the question hasn't been read yet -->
-                        </div>
-                    </div>
-                    <div class="singleQuestionAnswerContent">
-                        <div class="singleQuestionAnswerSkill">
-                            <div class="singleQuestionAnswerSkillLogo">
-                                <!-- TODO: add skills incons-->
-                            </div>
-                            <div class="singleQuestionAnswerSkillName">
-                                <!-- TODO: search for skill name in DB -->
-                            </div>
-                        </div>
-                        <div class="singleQuestionsAnswers">
-                            <!-- TODO: search for all answers related to one question in DB -->
-                            <div class="singleAnswerForSingleQuestion">
-                                Answer 1 : Cras sed turpis justo. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-                                <!-- TODO: add a read more link and shorten the extra text. -->
-                            </div>
-                            <div class="singleAnswerForSingleQuestion">
-                                Answer 2 : Cras sed turpis justo. Interdum et malesuada fames ac ante ipsum primis in faucibus.
 
-                            </div>
-                            <div class="singleAnswerForSingleQuestion">
-                                Answer 3 : Cras sed turpis justo. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-                            </div>
-                        </div>
-                    </div>
+                    <th:block th:include="questionProfile.html :: questionsProfileBlock (${mapQuestion})">
+                    </th:block>
+      <!--              <th:block th:include="questionProfile.html :: questionsProfileBlock (${mapQuestion})">
+                    </th:block>-->
                 </div>
             </div>
         </div>

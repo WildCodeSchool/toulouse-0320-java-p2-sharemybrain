@@ -128,9 +128,10 @@ public class UserController {
     @GetMapping("/profile")
     public String showProfile(Model model,
                               @CookieValue(value = "username", defaultValue = "Atta") String username) {
-/*        int userId = repository.findUserId(username);*/
+        int userId = repository.findUserId(username);
         model.addAttribute("username", username);
-/*        model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar).getUrl());*/
+        int idAvatar = repository.findAvatar(username);
+        model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar).getUrl());
 /*        model.addAttribute(("skill", SkillRepository.findSkillbyId()))*/
 
         return "profile";

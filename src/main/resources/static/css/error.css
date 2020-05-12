@@ -1,4 +1,5 @@
-@import "styles.css";
+@import url('styles.css');
+
 h1 {
     color: var(--sunsetOrange);
     font-size: 5rem;

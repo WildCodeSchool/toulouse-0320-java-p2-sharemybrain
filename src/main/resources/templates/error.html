@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="fragments/head.html :: head"></th:block>
+    <title>Error</title>
+    <link href="css/error.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<th:block th:include="fragments/header.html :: header(${false},${'index'}, ${avatar}, ${username})"></th:block>
+<main>
+<div class="error404">
+    <h1>404</h1>
+    <div class="image-errorMobil">
+        <img src="images/LogoBlue2.png">
+    </div>
+    <h2>Oops you are not on the right place to share  <i class="far fa-sad-tear"></i></h2>
+</div>
+<div class="image-errorDesk">
+    <img src="images/LogoBlue2.png">
+</div>
+</main>
+</body>
+<th:block th:include="fragments/footer.html :: bottom (${true})"></th:block>
+<script src="burger.js" type="text/javascript"></script>
+</html>

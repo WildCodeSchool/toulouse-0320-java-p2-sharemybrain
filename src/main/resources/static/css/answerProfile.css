@@ -1,7 +1,8 @@
 @import url('questions.css');
 
-@media screen and (min-width: 768px) {
-    h2 {
-        margin-bottom: 3rem;
-    }
+#title-Answer {
+    display: initial;
+    margin:0;
+    color:  var(--gainsboro);
+    font-size: 1.5rem;
 }

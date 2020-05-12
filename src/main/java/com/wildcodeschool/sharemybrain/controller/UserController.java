@@ -88,60 +88,22 @@ public class UserController {
 
     }
 
-    /* TODO: delete that block once the profile GetMapping works. */
-/*    @GetMapping("/questionProfile")
-    public String questionProfile(Model model, @CookieValue(value = "username", defaultValue = "Atta") String username) {
-        if (username.equals("Atta")) {
-            return "/error";
-        }
-        int idUser = repository.findUserId(username);
-        List<Question> questions = questionRepository.findWithUserId(idUser);
-        Map<Question, Skill> mapQuestion = new LinkedHashMap<>();
-        for (Question question : questions) {
-            question.setAnswers(answerRepository.findAnswerWithId(question.getIdQuestion()));
-            mapQuestion.put(question, skillRepository.findSkillById(question.getIdSkill()));
-        }
-        model.addAttribute("mapQuestion", mapQuestion);
-        int idAvatar = repository.findAvatar(username);
-        model.addAttribute("username", username);
-        model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar).getUrl());
-
-        return "questionProfile";
-    }*/
-
-    /* TODO: delete that block once the profile GetMapping works. */
-/*    @GetMapping("/answerProfile")
-    public String AnswerProfile(Model model,
-                                @CookieValue(value = "username", defaultValue = "Atta") String username) {
-        if (username.equals("Atta")) {
-            return "/error";
-        }
-        int userId = repository.findUserId(username);
-        List<Question> questions = questionRepository.findQuestionsAnsweredByUserId(userId);
-        Map<Question, Avatar> avatarQuestMap = new LinkedHashMap<>();
-        int avatarId;
-        for (Question question : questions) {
-            avatarId = repository.findAvatarById(question.getIdUser());
-            avatarQuestMap.put(question, avatarRepository.findAvatar(avatarId));
-            question.setCountAnswers(answerRepository.countAnswersByQuestion(question.getIdQuestion()));
-        }
-        model.addAttribute("avatarQuestMap", avatarQuestMap);
-        int idAvatar = repository.findAvatar(username);
-        model.addAttribute("username", username);
-        model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar).getUrl());
-
-        return "answerProfile";
-    }*/
-
     @GetMapping("/profile")
     public String showProfile(Model model,
-                              @CookieValue(value = "username", defaultValue = "Atta") String username) {
+                              @CookieValue(value = "username", defaultValue = "Atta") String username,
+                              @RequestParam(defaultValue = "Questions", required = false) String currentTab) {
+
+        if (username.equals("Atta")) {
+            return "/error";
+        }
+        // Skill and username for header
         model.addAttribute("username", username);
         int idAvatar = repository.findAvatar(username);
         model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar).getUrl());
         int idSkill = repository.findSkill(username);
         model.addAttribute("skill", skillRepository.findSkillById(idSkill).getName());
 
+        // Questions asked by user
         int idUser = repository.findUserId(username);
         List<Question> questions = questionRepository.findWithUserId(idUser);
         Map<Question, Skill> mapQuestion = new LinkedHashMap<>();
@@ -151,42 +113,20 @@ public class UserController {
         }
         model.addAttribute("mapQuestion", mapQuestion);
 
-
-        /* TODO: check the following code lines: currently, the results are the asked questions and not the answered ones as expected */
+        // Questions answered by user
+        List<Question> questions2 = questionRepository.findQuestionsAnsweredByUserId(idUser);
         Map<Question, Avatar> avatarQuestMap = new LinkedHashMap<>();
         int avatarId;
-        for (Question question : questions) {
+        for (Question question : questions2) {
             avatarId = repository.findAvatarById(question.getIdUser());
             avatarQuestMap.put(question, avatarRepository.findAvatar(avatarId));
             question.setCountAnswers(answerRepository.countAnswersByQuestion(question.getIdQuestion()));
         }
         model.addAttribute("avatarQuestMap", avatarQuestMap);
-
-        /* TODO: introduction of a questionsTab attribute for switching the tab. Try to use it, or delete it if another method is used.
-/*        String currentTab = "questionsTab";
-        model.addAttribute("tab", currentTab);*/
+        model.addAttribute("tab", currentTab);
 
         return "profile";
     }
-
-         /* TODO: Define a PostMapping method for switching the tabs between Answers and Questions in the profile.
-/*    @PostMapping("/profile")
-    public String switchTab(Model model,
-                            @ModelAttribute String tab) {
-
-        if (tab.equals("questionsTab")) {
-            model.addAttribute("tab", tab);
-            return "/profile";
-        } else if (tab.equals("answersTab")) {
-            model.addAttribute("tab", tab);
-            return "/profile";
-        }
-        return "/profile";
-    }*/
-
-
-
-
 
     public String crypt(String psw) {
         String sha256hex = Hashing.sha256()

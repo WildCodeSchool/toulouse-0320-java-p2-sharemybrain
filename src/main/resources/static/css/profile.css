@@ -1,4 +1,5 @@
 @import url('styles.css');
+@import url('answerProfile.css');
 @import url('questionProfile.css');
 
 .fullProfile {
@@ -115,7 +116,7 @@
 
     .profileUserInformation {
         flex-direction: column;
-        justify-content: center;
+        align-items: center;
         width: 25%;
     }
 

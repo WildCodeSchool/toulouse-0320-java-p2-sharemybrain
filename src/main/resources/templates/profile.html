@@ -16,20 +16,24 @@
             <div class="profileQuestionAnswerTabs">
                 <div>
                     <input class="tabButton" type="submit" value="Questions">
-                    <!-- TODO: connect to a controller-->
+                    <!-- TODO: make it work with a controller-->
                 </div>
                 <div>
                     <input class="tabButton" type="submit" value="Answers">
-                    <!-- TODO: connect to a controller-->
+                    <!-- TODO: make it work with a controller-->
                 </div>
             </div>
             <div class="profileQuestionAnswerContent">
                 <div class="singleQuestionAnswerBlock">
 
+
+                    <!-- TODO: make coexist the two th:block with a th:if. -->
                     <th:block th:include="questionProfile.html :: questionsProfileBlock (${mapQuestion})">
                     </th:block>
-      <!--              <th:block th:include="questionProfile.html :: questionsProfileBlock (${mapQuestion})">
+     <!--               <th:block th:include="answerProfile.html :: answersProfileBlock (${avatarQuestMap})">
                     </th:block>-->
+
+
                 </div>
             </div>
         </div>

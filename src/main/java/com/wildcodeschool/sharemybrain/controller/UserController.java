@@ -88,6 +88,7 @@ public class UserController {
 
     }
 
+    /* TODO: delete that block once the profile GetMapping works. */
 /*    @GetMapping("/questionProfile")
     public String questionProfile(Model model, @CookieValue(value = "username", defaultValue = "Atta") String username) {
         int idUser = repository.findUserId(username);
@@ -105,7 +106,8 @@ public class UserController {
         return "questionProfile";
     }*/
 
-    @GetMapping("/AnswerProfile")
+    /* TODO: delete that block once the profile GetMapping works. */
+/*    @GetMapping("/answerProfile")
     public String AnswerProfile(Model model,
                                 @CookieValue(value = "username", defaultValue = "Atta") String username) {
         int userId = repository.findUserId(username);
@@ -123,7 +125,7 @@ public class UserController {
         model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar).getUrl());
 
         return "answerProfile";
-    }
+    }*/
 
     @GetMapping("/profile")
     public String showProfile(Model model,
@@ -143,8 +145,39 @@ public class UserController {
         }
         model.addAttribute("mapQuestion", mapQuestion);
 
+
+        /* TODO: check the following code lines: currently, the results are the asked questions and not the answered ones as expected */
+        Map<Question, Avatar> avatarQuestMap = new LinkedHashMap<>();
+        int avatarId;
+        for (Question question : questions) {
+            avatarId = repository.findAvatarById(question.getIdUser());
+            avatarQuestMap.put(question, avatarRepository.findAvatar(avatarId));
+            question.setCountAnswers(answerRepository.countAnswersByQuestion(question.getIdQuestion()));
+        }
+        model.addAttribute("avatarQuestMap", avatarQuestMap);
+
+        /* TODO: introduction of a questionsTab attribute for switching the tab. Try to use it, or delete it if another method is used.
+/*        String currentTab = "questionsTab";
+        model.addAttribute("tab", currentTab);*/
+
         return "profile";
     }
+
+         /* TODO: Define a PostMapping method for switching the tabs between Answers and Questions in the profile.
+/*    @PostMapping("/profile")
+    public String switchTab(Model model,
+                            @ModelAttribute String tab) {
+
+        if (tab.equals("questionsTab")) {
+            model.addAttribute("tab", tab);
+            return "/profile";
+        } else if (tab.equals("answersTab")) {
+            model.addAttribute("tab", tab);
+            return "/profile";
+        }
+        return "/profile";
+    }*/
+
 
 
 

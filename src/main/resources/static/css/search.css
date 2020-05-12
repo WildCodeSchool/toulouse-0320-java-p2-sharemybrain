@@ -1,6 +1,6 @@
 @import url('questions.css');
 
-.title-search{
+.title-search {
     width: 90%;
     display: flex;
     flex-direction: column;
@@ -36,8 +36,8 @@
     color: var(--sunsetOrange)
 }
 
-@media screen and (min-width: 768px)  {
-    .title-search{
+@media screen and (min-width: 768px) {
+    .title-search {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;

@@ -12,8 +12,8 @@
 <main class="share-knowledge">
     <div class="title-search">
         <h2>Find a Question</h2>
-        <form class= "search" action="/search" method="get" >
-            <input type="text" name="searching" id="search" placeholder="Search by ..." th:value="${searching}">
+        <form action="/search" class="search" method="get">
+            <input id="search" name="searching" placeholder="Search by ..." th:value="${searching}" type="text">
             <button><i class="fas fa-search"></i></button>
         </form>
     </div>
@@ -42,15 +42,16 @@
             <p th:text="|${question.countAnswers} answers|">2 answers</p>
         </div>
     </div>
-    <div class="pagination" >
+    <div class="pagination">
         <a href="#" th:href="@{/search(page=${page - 1}, searching = ${searching})}" th:if="${page} > 1">Prev</a>
-        <div class="num-page" th:if="${numPages} &gt; 3" th:each="i: ${#numbers.sequence(1, 3)}">
+        <div class="num-page" th:each="i: ${#numbers.sequence(1, 3)}" th:if="${numPages} &gt; 3">
             <a href="/search" th:href="@{/search(page=${i}, searching = ${searching})}" th:text="${i}">1</a>
         </div>
-        <div class="num-page" th:if="${numPages} <= 3" th:each="i: ${#numbers.sequence(1, numPages)}">
+        <div class="num-page" th:each="i: ${#numbers.sequence(1, numPages)}" th:if="${numPages} <= 3">
             <a href="/search" th:href="@{/search(page=${i}, searching = ${searching})}" th:text="${i}">1</a>
         </div>
-        <a href="#" th:href="@{/search(page=${page + 1}, searching = ${searching})}" th:if="${page} < ${numPages}">Next</a>
+        <a href="#" th:href="@{/search(page=${page + 1}, searching = ${searching})}"
+           th:if="${page} < ${numPages}">Next</a>
     </div>
 </main>
 

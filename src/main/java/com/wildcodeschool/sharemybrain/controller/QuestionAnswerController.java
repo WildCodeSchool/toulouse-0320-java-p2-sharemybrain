@@ -1,6 +1,7 @@
 package com.wildcodeschool.sharemybrain.controller;
 
 
+import com.wildcodeschool.sharemybrain.entity.Answer;
 import com.wildcodeschool.sharemybrain.entity.Avatar;
 import com.wildcodeschool.sharemybrain.entity.Question;
 import com.wildcodeschool.sharemybrain.repository.*;

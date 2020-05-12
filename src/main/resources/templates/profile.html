@@ -64,17 +64,17 @@
         </div>
         <div class="profileUserInformation">
             <div class="profileUserAvatar">
-                <!-- TODO: connect to the avatar with DB -->
+                <img th:src="@{/images/avatar/{avatar}(avatar = ${avatar})}">
             </div>
             <div class="profileUserTextBlock">
                 <div class="profileUserTextInfos">
-                    <h3>Username</h3> <!-- TODO: look for username in DB -->
-                    <a>My skill:</a> <!-- TODO: look for a skill in DB -->
+                    <h3 th:text="${username}">Username</h3>
+                    <a>My skill: </a><a th:text="${skill}"></a>
                 </div>
                 <div class="accountOptions"> <!-- TODO: code those functions or delete -->
                     <ul>
-                        <li><a>Change my password.</a></li>
-                        <li><a>Delete my account.</a></li>
+                        <li><a>Change my password</a></li>
+                        <li><a>Delete my account</a></li>
                     </ul>
                 </div>
             </div>

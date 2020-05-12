@@ -37,7 +37,6 @@
 
 .profileQuestionAnswerBlock {
     width:100%;
-
 }
 
 .tabButton {
@@ -91,12 +90,12 @@
 }
 
 .profileUserAvatar {
-    background: url("/images/avatar/bull.png") no-repeat;
-    background-size: contain;
+        padding: 1em;
+}
+
+.profileUserAvatar img {
     width: 150px;
-    min-width: 110px;
     height: 150px;
-    padding: 1em;
 }
 
 /* DESKTOP */
@@ -119,7 +118,7 @@
         width: 25%;
     }
 
-    .profileUserAvatar {
+    .profileUserAvatar img {
         width: 282px;
         height: 282px;
     }

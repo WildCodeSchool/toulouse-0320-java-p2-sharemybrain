@@ -24,7 +24,6 @@
     <section th:each="answer : ${avatarAnswerMap}" th:with="avatar = ${answer.value}, answer = ${answer.key}">
         <div>
             <img alt="avatar" th:id="id + ${avatar.id}" th:src="@{/images/avatar/{avatar}(avatar = ${avatar.url})}">
-            <span th:title="${answer.}"></span>
         </div>
         <p th:text="${answer.description}">Verum ad istam omnem orationem brevis est defensio. Nam quoad aetas M. Caeli
             dare potuit isti suspicioni locum, fuit primum ipsius pudore, deinde etiam patris diligentia disciplinaque munita.

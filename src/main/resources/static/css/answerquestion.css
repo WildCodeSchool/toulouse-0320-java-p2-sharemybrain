@@ -27,7 +27,6 @@ h3 {
 p {
     color: var(--gainsboro);
     font-size: 0.9rem;
-    text-align: left;
 }
 
 form.register {

@@ -11,6 +11,13 @@ public class Answer {
 
     public Answer() {}
 
+    public Answer(int idAnswer, int idQuestion, int idUser, String answerText) {
+        this.idAnswer = idAnswer;
+        this.idQuestion = idQuestion;
+        this.idUser = idUser;
+        this.description = answerText;
+    }
+
     public Answer(int idAnswer, int idQuestion, int idUser, String answerText, Date date) {
         this.idAnswer = idAnswer;
         this.idQuestion = idQuestion;

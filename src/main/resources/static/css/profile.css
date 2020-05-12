@@ -1,0 +1,134 @@
+@import url('styles.css');
+
+.fullProfile {
+    margin: 1em;
+    padding: 1em;
+    min-width: 200px;
+}
+
+.fullProfile h2 {
+    display: none;
+}
+
+.profileMainBlocks {
+    display: flex;
+    flex-direction: column-reverse;
+    height: 100%;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.profileUserInformation {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-bottom: 2em;
+    justify-content: space-around;
+}
+
+.profileQuestionAnswerTabs {
+    display: flex;
+    flex-direction: row;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.profileQuestionAnswerBlock {
+    width:100%;
+}
+
+.tabButton {
+    width: 100px;
+    background-color: var(--metallicSeaweed);
+    color:var(--gainsboro);
+    border: none;
+    text-align: center;
+    font-size: 18px;
+    padding: 0.5em;
+    border-radius: 15px 15px 0 0;
+    margin-right: 0.5em;
+}
+
+.profileQuestionAnswerContent {
+    background-color: var(--metallicSeaweed);
+    border-radius: 0 15px 15px 15px;
+    padding: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
+    min-width: 230px;
+}
+
+.profileUserTextBlock {
+    display: flex;
+    flex-direction: column;
+    margin: 1em;
+}
+
+.profileUserTextInfos h3 {
+    font-size: 24px;
+    color: var(--sunsetOrange);
+    margin-bottom: .5em;
+}
+
+.profileUserTextInfos a {
+    font-size: 24px;
+    color: var(--darkImperialBlue);
+    margin-bottom: 1em;
+}
+
+.accountOptions ul {
+    list-style-type: none;
+    font-size: 13px;
+    color: var(--darkImperialBlue);
+    margin-top: 1em;
+}
+
+.accountOptions ul li {
+    margin-bottom: 0.5em;
+}
+
+.profileUserAvatar {
+        padding: 1em;
+}
+
+.profileUserAvatar img {
+    width: 150px;
+    height: 150px;
+}
+
+/* DESKTOP */
+@media screen and (min-width: 768px) {
+
+    .fullProfile h2 {
+        display: flex;
+        color: var(--darkImperialBlue);
+        font-size: 2.5rem;
+        margin: 1em;
+    }
+
+    .profileMainBlocks {
+        flex-direction: row;
+    }
+
+    .profileUserInformation {
+        flex-direction: column;
+        justify-content: center;
+        width: 25%;
+    }
+
+    .profileUserAvatar img {
+        width: 282px;
+        height: 282px;
+    }
+
+    .profileQuestionAnswerBlock {
+        width: 75%;
+    }
+
+    .profileUserTextBlock {
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+}

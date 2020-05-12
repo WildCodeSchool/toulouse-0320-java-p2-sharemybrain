@@ -20,7 +20,7 @@ public class QuestionAnswerController {
     private final UserRepository userRepository = new UserRepository();
     private final AvatarRepository avatarRepository = new AvatarRepository();
     private final AnswerRepository answerRepository = new AnswerRepository();
-
+    private UserRepository repository = new UserRepository();
 
     @GetMapping("/questions")
     public String share(Model model, @RequestParam(required = false, defaultValue = "1") int page,
@@ -77,8 +77,16 @@ public class QuestionAnswerController {
         Question questionDescr = questionRepository.findQuestion(question);
         int avatarId = userRepository.findAvatarById(questionDescr.getIdUser());
         model.addAttribute("avatarQ", avatarRepository.findAvatar(avatarId));
-        model.addAttribute("answers", answerRepository.findAnswerWithId(question));
         model.addAttribute("question", questionDescr);
+        model.addAttribute("answers", answerRepository.findAnswerWithId(question));
+        List<Answer> answers = answerRepository.findAnswerWithId(question);
+        Map<Answer, Avatar> avatarAnswerMap = new LinkedHashMap<>();
+        int avatarAnswerId;
+        for (Answer answer : answers){
+            avatarAnswerId = repository.findAvatarById(answer.getIdUser());
+            avatarAnswerMap.put(answer, avatarRepository.findAvatar(avatarAnswerId));
+        }
+        model.addAttribute("avatarAnswerMap", avatarAnswerMap);
         return "/answerquestion";
     }
 

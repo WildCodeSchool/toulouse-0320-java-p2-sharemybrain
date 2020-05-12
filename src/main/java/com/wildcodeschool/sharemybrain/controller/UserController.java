@@ -132,7 +132,8 @@ public class UserController {
         model.addAttribute("username", username);
         int idAvatar = repository.findAvatar(username);
         model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar).getUrl());
-/*        model.addAttribute(("skill", SkillRepository.findSkillbyId()))*/
+        int idSkill = repository.findSkill(username);
+        model.addAttribute("skill", skillRepository.findSkillById(idSkill).getName());
 
         return "profile";
     }

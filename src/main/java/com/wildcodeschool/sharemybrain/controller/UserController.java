@@ -48,7 +48,7 @@ public class UserController {
                 cookie.setHttpOnly(true);
                 cookie.setPath("/");
                 response.addCookie(cookie);
-                return "redirect:/questions";
+                return "redirect:/profile";
             }
             model.addAttribute("nopsw", true);
             return "/login";
@@ -123,6 +123,17 @@ public class UserController {
         model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar).getUrl());
 
         return "answerProfile";
+    }
+
+    @GetMapping("/profile")
+    public String showProfile(Model model,
+                              @CookieValue(value = "username", defaultValue = "Atta") String username) {
+/*        int userId = repository.findUserId(username);*/
+        model.addAttribute("username", username);
+/*        model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar).getUrl());*/
+/*        model.addAttribute(("skill", SkillRepository.findSkillbyId()))*/
+
+        return "profile";
     }
 
     public String crypt(String psw) {

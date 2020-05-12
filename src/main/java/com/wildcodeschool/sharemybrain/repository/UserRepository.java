@@ -261,7 +261,7 @@ public class UserRepository {
         return -1;
     }
 
-    public int findAvatarUsernameAndSkill(int userId) {
+/*    public int findAvatarUsernameAndSkill(int userId) {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -287,6 +287,6 @@ public class UserRepository {
             JdbcUtils.closeConnection(connection);
         }
         return -1;
-    }
+    }*/
 
 }

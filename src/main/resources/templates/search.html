@@ -4,13 +4,19 @@
     <head>
         <th:block th:include="fragments/head.html :: head"></th:block>
         <title>Questions</title>
-        <link href="css/questions.css" rel="stylesheet" type="text/css">
+        <link href="css/search.css" rel="stylesheet" type="text/css">
     </head>
 </head>
 <body>
 <th:block th:include="fragments/header.html :: header(${true},${'index'}, ${avatar}, ${username})"></th:block>
 <main class="share-knowledge">
-    <h2>Questions for you!</h2>
+    <div class="title-search">
+        <h2>Find a Question</h2>
+        <form action="/search" class="search" method="get">
+            <input id="search" name="searching" placeholder="Search by ..." th:value="${searching}" type="text">
+            <button><i class="fas fa-search"></i></button>
+        </form>
+    </div>
     <div class="select_box">
         <select id="filter" name="filter">
             <option value="">Sort</option>
@@ -36,15 +42,16 @@
             <p th:text="|${question.countAnswers} answers|">2 answers</p>
         </div>
     </div>
-    <div class="pagination" >
-        <a href="#" th:href="@{/question(page=${page - 1})}" th:if="${page} > 1">Prev</a>
-        <div class="num-page" th:if="${numPages} &gt; 3" th:each="i: ${#numbers.sequence(1, 3)}">
-            <a href="/questions" th:href="@{/search(page=${i})}" th:text="${i}">1</a>
+    <div class="pagination">
+        <a href="#" th:href="@{/search(page=${page - 1}, searching = ${searching})}" th:if="${page} > 1">Prev</a>
+        <div class="num-page" th:each="i: ${#numbers.sequence(1, 3)}" th:if="${numPages} &gt; 3">
+            <a href="/search" th:href="@{/search(page=${i}, searching = ${searching})}" th:text="${i}">1</a>
         </div>
-        <div class="num-page" th:if="${numPages} <= 3" th:each="i: ${#numbers.sequence(1, numPages)}">
-            <a href="/questions" th:href="@{/question(page=${i})}" th:text="${i}">1</a>
+        <div class="num-page" th:each="i: ${#numbers.sequence(1, numPages)}" th:if="${numPages} <= 3">
+            <a href="/search" th:href="@{/search(page=${i}, searching = ${searching})}" th:text="${i}">1</a>
         </div>
-        <a href="#" th:href="@{/question(page=${page + 1})}" th:if="${page} < ${numPages}">Next</a>
+        <a href="#" th:href="@{/search(page=${page + 1}, searching = ${searching})}"
+           th:if="${page} < ${numPages}">Next</a>
     </div>
 </main>
 

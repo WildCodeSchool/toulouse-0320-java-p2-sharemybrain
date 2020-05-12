@@ -1,0 +1,80 @@
+@import "styles.css";
+h1 {
+    color: var(--sunsetOrange);
+    font-size: 5rem;
+    text-align: center;
+    font-family: Chau Philomene One;
+    width: 50%;
+}
+
+h2, i {
+    color: var(--darkImperialBlue);
+    font-size: 2.5rem;
+    text-align: center;
+    font-family: Chau Philomene One;
+}
+
+.error404 {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.image-errorDesk {
+    display: none;
+}
+
+.image-errorMobil{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img{
+    width: 50%;
+}
+/*Desktop*/
+@media screen and (min-width: 768px) {
+    h1 {
+        color: var(--sunsetOrange);
+        font-size: 10rem;
+        text-align: center;
+        font-family: Chau Philomene One;
+        width: 100%;
+    }
+
+    h2, i {
+        color: var(--darkImperialBlue);
+        font-size: 5rem;
+        text-align: center;
+        font-family: Chau Philomene One;
+    }
+
+    main {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .error404 {
+        width: 45%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .image-errorMobil{
+        display: none;
+    }
+
+    .image-errorDesk {
+        display: inherit;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 45%;
+    }
+
+    img{
+        width: 60%;
+    }
+
+}

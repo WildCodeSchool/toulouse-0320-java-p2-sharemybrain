@@ -11,6 +11,7 @@ import com.wildcodeschool.sharemybrain.repository.QuestionRepository;
 import com.wildcodeschool.sharemybrain.repository.SkillRepository;
 import com.wildcodeschool.sharemybrain.repository.UserRepository;
 
+import org.graalvm.compiler.core.CompilationWrapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -33,6 +34,9 @@ public class QuestionAnswerController {
     @GetMapping("/questions")
     public String share(Model model, @RequestParam(required = false, defaultValue = "1") int page,
                         @CookieValue(value = "username", defaultValue = "Atta") String username) {
+        if (username.equals("Atta")) {
+            return "/error";
+        }
         int question_offset, limit;
         limit = 3;
         question_offset = (page * limit) - limit;
@@ -70,8 +74,10 @@ public class QuestionAnswerController {
 
 
     @GetMapping("/ask")
-
     public String ask(Model model, @CookieValue(value = "username", defaultValue = "Atta") String username) {
+        if (username.equals("Atta")) {
+            return "/error";
+        }
         model.addAttribute("skills", skillRepository.findAllSkills());
         int idAvatar = userRepository.findAvatar(username);
         model.addAttribute("username", username);
@@ -81,6 +87,9 @@ public class QuestionAnswerController {
 
     @GetMapping("/answer/{question}")
     public String answer(Model model, @PathVariable int question, @CookieValue(value = "username", defaultValue = "Atta") String username) {
+        if (username.equals("Atta")) {
+            return "/error";
+        }
         int idAvatar = userRepository.findAvatar(username);
         model.addAttribute("username", username);
         model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar).getUrl());

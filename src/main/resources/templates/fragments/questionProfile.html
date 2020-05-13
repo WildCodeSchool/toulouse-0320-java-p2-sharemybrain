@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<body th:fragment="questionsProfileBlock (mapQuestion)">
+    <div class="share-knowledge" >
+        <h2 id="title-Questions">Your Questions!</h2>
+        <div class="question" th:each="entry : ${mapQuestion}"
+             th:with="skill = ${entry.value}, question = ${entry.key}">
+            <div class="question-descrip-Img">
+                <h3  class="questionProfileH3" th:text="${skill.name}">Skill</h3>
+                <div>
+                    <a class="quest-title" href="/answer" th:href="@{/answer/{question}(question = ${question.idQuestion})}"
+                       th:text="${question.title}">Fusce rhoncus odio ante, at auctor
+                        nibh dapibus eget?</a>
+                   <div>
+                        <p th:each="answer, iter : ${question.answers}" th:text="|Answer ${iter.index + 1} : ${answer.description} |">Answer 1:</p>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

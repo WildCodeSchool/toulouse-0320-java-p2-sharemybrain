@@ -1,16 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <head>
-        <th:block th:include="fragments/head.html :: head"></th:block>
-        <title>Questions</title>
-        <link href="css/answerProfile.css" rel="stylesheet" type="text/css">
-    </head>
-</head>
-<body>
-<th:block th:include="fragments/header.html :: header(${true},${'index'}, ${avatar}, ${username})"></th:block>
+<body th:fragment="answersProfileBlock (avatarQuestMap)">
 <main class="share-knowledge">
-    <h2>Questions answered by you!</h2>
+    <h2 id="title-Answer">Questions answered by you!</h2>
     <div class="question" th:each="entry : ${avatarQuestMap}"
          th:with="avatar = ${entry.value}, question = ${entry.key}">
         <div class="question-descrip-Img">
@@ -25,9 +17,5 @@
         </div>
     </div>
 </main>
-
-<th:block th:include="fragments/footer.html :: bottom (${true})"></th:block>
-<script src="burger.js" type="text/javascript"></script>
-
 </body>
 </html>

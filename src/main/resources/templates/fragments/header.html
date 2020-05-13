@@ -26,7 +26,7 @@
 <header class="log-header header" th:if="${logged}">
     <div class="left-icons">
         <div class="logo">
-            <div class="img"></div>
+            <a href="/" class="img"></a>
             <a href="/">ShareMyBrain</a>
         </div>
         <div class="btns-nav">
@@ -51,8 +51,7 @@
 
     <div class="user">
         <p th:text="|Hello ${username}|">Hello</p>
-        <img th:src="@{/images/avatar/{avatar}(avatar = ${avatar})}">
-
+        <a href="/profile"><img src="/images" th:src="@{/images/avatar/{avatar}(avatar = ${avatar})}" th:attr="alt=${avatar}" alt="avatar"></a>
     </div>
     <div class="btn-burger">
         <span></span>

@@ -172,6 +172,8 @@ public class QuestionAnswerController {
             avatarId = userRepository.findAvatarById(question.getIdUser());
             avatarQuestMap.put(question, avatarRepository.findAvatar(avatarId));
             question.setCountAnswers(answerRepository.countAnswersByQuestion(question.getIdQuestion()));
+            question.setSkillName(skillRepository.findSkillNameById(question.getIdSkill()));
+            question.setQuestionUserName(userRepository.findUserNameWithIQuestion(question.getIdQuestion()));
         }
         model.addAttribute("avatarQuestMap", avatarQuestMap);
         int idAvatar = userRepository.findAvatar(username);

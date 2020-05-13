@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+    <th:block th:include="fragments/head.html :: head"></th:block>
+    <link href="css/login.css" rel="stylesheet" type="text/css"/>
+
+</head>
+<body>
+<th:block th:include="fragments/header.html :: header(${false},${'login'}, ${''}, ${''})"></th:block>
+<div class="cadredestop">
+    <h2>Change your password</h2>
+    <form action="/changepassword" class="login" method="post">
+        <div id="formLog">
+            <input id="name" name="oldpsw" placeholder="Old Password" required type="password">
+            <p class="error" th:if="${nopsw}">Your password is not correct</p>
+            <input id="pwd" name="newpsw" placeholder="New Password" required type="password">
+            <input id="pwdConf" name="newpswConf" placeholder="New Password Confirmation" required type="password">
+            <p class="error" th:if="${noPswConfirmed}">Oops the passwords don't match try again</p>
+        </div>
+
+        <div>
+            <input class="button" type="submit" value="Go">
+        </div>
+
+    </form>
+</div>
+
+<th:block th:include="fragments/footer.html :: bottom (${false})"></th:block>
+<script src="burger.js" type="text/javascript"></script>
+</body>
+</html>

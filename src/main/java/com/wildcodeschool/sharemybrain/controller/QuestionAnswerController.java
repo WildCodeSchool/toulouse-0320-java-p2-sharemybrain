@@ -4,14 +4,7 @@ package com.wildcodeschool.sharemybrain.controller;
 import com.wildcodeschool.sharemybrain.entity.Answer;
 import com.wildcodeschool.sharemybrain.entity.Avatar;
 import com.wildcodeschool.sharemybrain.entity.Question;
-
-import com.wildcodeschool.sharemybrain.repository.AvatarRepository;
-import com.wildcodeschool.sharemybrain.repository.AnswerRepository;
-import com.wildcodeschool.sharemybrain.repository.QuestionRepository;
-import com.wildcodeschool.sharemybrain.repository.SkillRepository;
-import com.wildcodeschool.sharemybrain.repository.UserRepository;
-
-import org.graalvm.compiler.core.CompilationWrapper;
+import com.wildcodeschool.sharemybrain.repository.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

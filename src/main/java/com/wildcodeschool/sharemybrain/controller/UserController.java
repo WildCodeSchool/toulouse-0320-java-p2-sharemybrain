@@ -128,6 +128,44 @@ public class UserController {
         return "profile";
     }
 
+    @GetMapping("/changepassword")
+    public String changePassword(Model model,
+                                 @CookieValue(value = "username", defaultValue = "Atta") String username) {
+        if (username.equals("Atta")) {
+            return "/error";
+        }
+        return "/changePsw";
+    }
+    @PostMapping("/changepassword")
+    public String postchangePassword(Model model,
+                                     @CookieValue(value = "username", defaultValue = "Atta") String username,
+                                     @RequestParam String oldpsw,
+                                     @RequestParam String newpsw,
+                                     @RequestParam String newpswConf,
+                                     HttpServletResponse response) {
+        String hash = crypt(oldpsw);
+        if (!repository.findUsernamePsw(hash, username)) {
+            model.addAttribute("nopsw", true);
+            return "/changePsw";
+        }
+        if (!newpsw.equals(newpswConf)) {
+            model.addAttribute("noPswConfirmed", true);
+            return "/changePsw";
+        }
+        int update = repository.updatePsw(username, crypt(newpsw));
+        if (update != 0) {
+            return "/error";
+        }
+        Cookie cookie = new Cookie("username", null);
+        cookie.setMaxAge(0);
+        cookie.setHttpOnly(true);
+        cookie.setPath("/");
+
+        //add cookie to response
+        response.addCookie(cookie);
+        return "redirect:/login";
+    }
+
     public String crypt(String psw) {
         String sha256hex = Hashing.sha256()
                 .hashString(psw, StandardCharsets.UTF_8)

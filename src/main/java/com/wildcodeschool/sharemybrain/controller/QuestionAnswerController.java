@@ -50,6 +50,7 @@ public class QuestionAnswerController {
         model.addAttribute("page", page);
         model.addAttribute("numPages", numPages);
         boolean newest = sort.equals("newest");
+        model.addAttribute("sort", sort);
 
         List<Question> questions = new ArrayList<>();
         if (idSkill == -1) {
@@ -150,6 +151,8 @@ public class QuestionAnswerController {
         model.addAttribute("numPages", numPages);
 
         boolean newest = sort.equals("newest");
+        model.addAttribute("sort", sort);
+
         List<Question> questions = new ArrayList<>();
         questions = questionRepository.search(limit, question_offset, searching, newest);
         Map<Question, Avatar> avatarQuestMap = new LinkedHashMap<>();

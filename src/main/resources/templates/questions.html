@@ -37,14 +37,14 @@
         </div>
     </div>
     <div class="pagination" >
-        <a href="#" th:href="@{/question(page=${page - 1})}" th:if="${page} > 1">Prev</a>
+        <a href="#" th:href="@{/questions(page=${page - 1}, sort = ${sort})}" th:if="${page} > 1">Prev</a>
         <div class="num-page" th:if="${numPages} &gt; 3" th:each="i: ${#numbers.sequence(1, 3)}">
-            <a href="/questions" th:href="@{/search(page=${i})}" th:text="${i}">1</a>
+            <a href="/questions" th:href="@{/questions(page=${i}, sort = ${sort})}" th:text="${i}">1</a>
         </div>
         <div class="num-page" th:if="${numPages} <= 3" th:each="i: ${#numbers.sequence(1, numPages)}">
-            <a href="/questions" th:href="@{/question(page=${i})}" th:text="${i}">1</a>
+            <a href="/questions" th:href="@{/questions(page=${i}, sort = ${sort})}" th:text="${i}">1</a>
         </div>
-        <a href="#" th:href="@{/question(page=${page + 1})}" th:if="${page} < ${numPages}">Next</a>
+        <a href="#" th:href="@{/questions(page=${page + 1}, sort = ${sort})}" th:if="${page} < ${numPages}">Next</a>
     </div>
 </main>
 

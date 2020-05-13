@@ -96,10 +96,8 @@ public class QuestionAnswerController {
         //Check if the skill of the user is the same as answer
         int idSkillUser = userRepository.findSkill(username);
         Question questionDescr = questionRepository.findQuestion(question);
-        boolean isSkill = false;
-        if (idSkillUser == questionDescr.getIdSkill()) {
-            isSkill = true;
-        }
+        boolean isSkill =  idSkillUser == questionDescr.getIdSkill();
+        
         model.addAttribute("isSkill", isSkill);
 
         int avatarId = userRepository.findAvatarById(questionDescr.getIdUser());

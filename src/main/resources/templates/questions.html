@@ -19,10 +19,10 @@
         </select>
     </form>
     <div class="question" th:each="entry : ${avatarQuestMap}"
-         th:with="avatar = ${entry.value}, question = ${entry.key}">
+         th:with="avatar = ${entry.value}, question = ${entry.key}" >
         <div class="question-descrip-Img">
             <img alt="avatar" src="" th:id="id + ${avatar.id}"
-                 th:src="@{images/avatar/{avatar}(avatar = ${avatar.url})}">
+                 th:src="@{images/avatar/{avatar}(avatar = ${avatar.url})}" th:title="${question.questionUserName}">
             <div>
                 <a class="quest-title" href="/answer" th:href="@{/answer/{question}(question = ${question.idQuestion})}"
                    th:text="${question.title}">Fusce rhoncus odio ante, at auctor
@@ -32,7 +32,7 @@
         </div>
 
         <div class="question-infos">
-            <p>asked 10 seconds ago</p>
+            <p th:text="|posted the ${question.date}|">posted the mm/dd/yyyy</p>
             <p th:text="|${question.countAnswers} answers|">2 answers</p>
         </div>
     </div>

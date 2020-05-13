@@ -9,9 +9,10 @@
 <th:block th:include="fragments/header.html :: header(${true},${'index'}, ${avatar}, ${username})"></th:block>
 <main>
     <section>
-        <div>
+        <div class="info-userQuestion">
             <img alt="avatar" src="" th:id="id + ${avatarQ.id}"
-                 th:src="@{/images/avatar/{avatar}(avatar = ${avatarQ.url})}">
+                 th:src="@{/images/avatar/{avatar}(avatar = ${avatarQ.url})}" th:title="${questionUsername}">
+            <h4 th:text="|${questionUsername} :|">User Name </h4>
         </div>
         <div id="question-desktop">
             <h3 th:text="${question.title}">Title of the question to fetch in the database</h3>
@@ -21,13 +22,17 @@
                 Rufini.</p>
         </div>
     </section>
-    <section th:each="answer : ${avatarAnswerMap}" th:with="avatar = ${answer.value}, answer = ${answer.key}">
-        <div>
-            <img alt="avatar" th:id="id + ${avatar.id}" th:src="@{/images/avatar/{avatar}(avatar = ${avatar.url})}">
+    <section th:each="answer : ${avatarAnswerMap}" th:with="avatar = ${answer.value}, answer = ${answer.key}" >
+        <div class="answerQuestion">
+            <img alt="avatar" th:id="id + ${avatar.id}" th:src="@{/images/avatar/{avatar}(avatar = ${avatar.url})}" th:title="${answer.userName}">
+            <h4 th:text="|${answer.userName} :|">User Name </h4>
         </div>
         <p th:text="${answer.description}">Verum ad istam omnem orationem brevis est defensio. Nam quoad aetas M. Caeli
             dare potuit isti suspicioni locum, fuit primum ipsius pudore, deinde etiam patris diligentia disciplinaque munita.
             Qui ut huic virilem togam deditšnihil dicam hoc loco de me; tantum sit, quantum vos existimatis; hoc dicam, hunc</p>
+        <div class="question-infos">
+            <p th:text="|posted the ${answer.date}|">posted the mm/dd/yyyy</p>
+        </div>
     </section>
 
     <form action="/answerquestion" class="register" method="post">

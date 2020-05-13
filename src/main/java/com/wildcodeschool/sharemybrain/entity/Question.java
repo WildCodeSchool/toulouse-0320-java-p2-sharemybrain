@@ -11,6 +11,7 @@ public class Question {
     private int idUser;
     private int idSkill;
     private int countAnswers;
+    private String questionUserName;
     private List<Answer> answers;
 
     // Empty constructor
@@ -33,6 +34,17 @@ public class Question {
         this.idSkill = idSkill;
         this.date = date;
     }
+    public Question(int id, String title, String description, int idUser, int idSkill, Date date, String questionUserName) {
+        this.idQuestion = id;
+        this.title = title;
+        this.description = description;
+        this.idUser = idUser;
+        this.idSkill = idSkill;
+        this.date = date;
+        this.questionUserName = questionUserName;
+    }
+
+
 
     public int getIdQuestion() { return this.idQuestion; }
 
@@ -88,5 +100,13 @@ public class Question {
 
     public void setAnswers(List<Answer> answers) {
         this.answers = answers;
+    }
+
+    public String getQuestionUserName() {
+        return questionUserName;
+    }
+
+    public void setQuestionUserName(String questionUserName) {
+        this.questionUserName = questionUserName;
     }
 }

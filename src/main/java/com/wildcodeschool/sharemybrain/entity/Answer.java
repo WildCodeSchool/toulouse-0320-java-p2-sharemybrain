@@ -8,6 +8,8 @@ public class Answer {
     private int idUser;
     private String description;
     private Date date;
+    private String userName;
+
 
     public Answer() {}
 
@@ -24,6 +26,14 @@ public class Answer {
         this.idUser = idUser;
         this.description = answerText;
         this.date = date;
+    }
+    public Answer(int idAnswer, int idQuestion, int idUser, String answerText, Date date, String userName) {
+        this.idAnswer = idAnswer;
+        this.idQuestion = idQuestion;
+        this.idUser = idUser;
+        this.description = answerText;
+        this.date = date;
+        this.userName = userName;
     }
 
     public int getIdAnswer() { return this.idAnswer; }
@@ -48,6 +58,13 @@ public class Answer {
 
     public void setDate(Date date) { this.date = date; }
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 }
 
 

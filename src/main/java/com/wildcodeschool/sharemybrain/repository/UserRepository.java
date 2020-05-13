@@ -260,5 +260,58 @@ public class UserRepository {
         }
         return -1;
     }
+    public String findUserNameWithIdAnswer(int answerId) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            connection = DriverManager.getConnection(
+                    DB_URL, DB_USER, DB_PASSWORD
+            );
+            statement = connection.prepareStatement(
+                    "SELECT username FROM answer JOIN user ON answer.id_user = user.id_user WHERE id_answer = ?;"
+            );
+            statement.setInt(1, answerId);
+            resultSet = statement.executeQuery();
 
+            if (resultSet.next()) {
+                String answerUserName = resultSet.getString("username");
+                return answerUserName;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JdbcUtils.closeResultSet(resultSet);
+            JdbcUtils.closeStatement(statement);
+            JdbcUtils.closeConnection(connection);
+        }
+        return null;
+    }
+    public String findUserNameWithIQuestion(int questionId) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            connection = DriverManager.getConnection(
+                    DB_URL, DB_USER, DB_PASSWORD
+            );
+            statement = connection.prepareStatement(
+                    "SELECT username FROM question JOIN user ON question.id_user = user.id_user WHERE id_question = ?;"
+            );
+            statement.setInt(1, questionId);
+            resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                String questionUserName = resultSet.getString("username");
+                return questionUserName;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JdbcUtils.closeResultSet(resultSet);
+            JdbcUtils.closeStatement(statement);
+            JdbcUtils.closeConnection(connection);
+        }
+        return null;
+    }
 }

@@ -61,9 +61,9 @@ public class QuestionAnswerController {
             avatarId = userRepository.findAvatarById(question.getIdUser());
             avatarQuestMap.put(question, avatarRepository.findAvatar(avatarId));
             question.setCountAnswers(answerRepository.countAnswersByQuestion(question.getIdQuestion()));
+            question.setQuestionUserName(userRepository.findUserNameWithIQuestion(question.getIdQuestion()));
         }
         model.addAttribute("avatarQuestMap", avatarQuestMap);
-
         int idAvatar = userRepository.findAvatar(username);
         model.addAttribute("username", username);
         model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar).getUrl());
@@ -102,7 +102,10 @@ public class QuestionAnswerController {
         for (Answer answer : answers){
             avatarAnswerId = repository.findAvatarById(answer.getIdUser());
             avatarAnswerMap.put(answer, avatarRepository.findAvatar(avatarAnswerId));
+            String answerUsername = userRepository.findUserNameWithIdAnswer(answer.getIdAnswer());
+            answer.setUserName(answerUsername);
         }
+        model.addAttribute("questionUsername", userRepository.findUserNameWithIQuestion(question));
         model.addAttribute("avatarAnswerMap", avatarAnswerMap);
         return "/answerquestion";
     }

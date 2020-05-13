@@ -11,13 +11,13 @@
 <th:block th:include="fragments/header.html :: header(${true},${'index'}, ${avatar}, ${username})"></th:block>
 <main class="share-knowledge">
     <h2>Questions for you!</h2>
-    <div class="select_box">
-        <select id="filter" name="filter">
+    <form method="get" action="/questions" class="select_box">
+        <select id="filter" name="sort" onchange="this.form.submit()">
             <option value="">Sort</option>
             <option value="newest">By newest</option>
             <option value="oldest">By oldest</option>
         </select>
-    </div>
+    </form>
     <div class="question" th:each="entry : ${avatarQuestMap}"
          th:with="avatar = ${entry.value}, question = ${entry.key}">
         <div class="question-descrip-Img">

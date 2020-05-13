@@ -14,7 +14,7 @@ public class QuestionRepository {
     private final static String DB_PASSWORD = "p0uleR3qu3st?";
 
 
-    public List<Question> findWithLimit(int limit, int offset) {
+    public List<Question> findWithLimit(int limit, int offset, Boolean newest) {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -22,9 +22,16 @@ public class QuestionRepository {
             connection = DriverManager.getConnection(
                     DB_URL, DB_USER, DB_PASSWORD
             );
-            statement = connection.prepareStatement(
-                    "SELECT * FROM question LIMIT ?,?;"
-            );
+            if (newest) {
+                statement = connection.prepareStatement(
+                        "SELECT * FROM question ORDER BY `date` DESC LIMIT ?,?;"
+                );
+            } else {
+                statement = connection.prepareStatement(
+                        "SELECT * FROM question ORDER BY `date` ASC LIMIT ?,?;"
+                );
+            }
+
             statement.setInt(2, limit);
             statement.setInt(1, offset);
             resultSet = statement.executeQuery();
@@ -85,8 +92,7 @@ public class QuestionRepository {
         return 0;
     }
 
-
-    public List<Question> findWithSkill(int limit, int offset, int idSkill) {
+    public List<Question> findWithSkill(int limit, int offset, int idSkill, Boolean newest) {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -94,9 +100,16 @@ public class QuestionRepository {
             connection = DriverManager.getConnection(
                     DB_URL, DB_USER, DB_PASSWORD
             );
-            statement = connection.prepareStatement(
-                    "SELECT * FROM question  WHERE id_skill = ? LIMIT ?,?;"
-            );
+            if (newest) {
+                statement = connection.prepareStatement(
+                        "SELECT * FROM question  WHERE id_skill = ? ORDER BY `date` DESC LIMIT ?,?;"
+                );
+            } else {
+                statement = connection.prepareStatement(
+                        "SELECT * FROM question  WHERE id_skill = ? ORDER BY `date` ASC LIMIT ?,?;"
+                );
+            }
+
             statement.setInt(3, limit);
             statement.setInt(2, offset);
             statement.setInt(1, idSkill);
@@ -258,7 +271,7 @@ public class QuestionRepository {
         return null;
     }
 
-    public List<Question> search(int limit, int offset, String word) {
+    public List<Question> search(int limit, int offset, String word, boolean newest) {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -266,14 +279,30 @@ public class QuestionRepository {
             connection = DriverManager.getConnection(
                     DB_URL, DB_USER, DB_PASSWORD
             );
-            statement = connection.prepareStatement(
-                    "SELECT * FROM question WHERE title LIKE ? OR description LIKE ? LIMIT ?,?;"
-            );
+            if (newest) {
+                statement = connection.prepareStatement(
+                        "SELECT * FROM question " +
+                                "JOIN skill ON question.id_skill = skill.id_skill " +
+                                "WHERE title LIKE ? OR description LIKE ? OR skill.name LIKE ? " +
+                                "ORDER BY `date` DESC " +
+                                "LIMIT ?,?;"
+                );
+            } else {
+                statement = connection.prepareStatement(
+                        "SELECT * FROM question " +
+                                "JOIN skill ON question.id_skill = skill.id_skill " +
+                                "WHERE title LIKE ? OR description LIKE ? OR skill.name LIKE ? " +
+                                "ORDER BY `date` ASC " +
+                                "LIMIT ?,?;"
+                );
+            }
+
             word = "%" + word + "%";
             statement.setString(1, word);
             statement.setString(2, word);
-            statement.setInt(4, limit);
-            statement.setInt(3, offset);
+            statement.setString(3, word);
+            statement.setInt(5, limit);
+            statement.setInt(4, offset);
             resultSet = statement.executeQuery();
 
             List<Question> questions = new ArrayList<>();

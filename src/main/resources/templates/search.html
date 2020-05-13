@@ -17,13 +17,14 @@
             <button><i class="fas fa-search"></i></button>
         </form>
     </div>
-    <div class="select_box">
-        <select id="filter" name="filter">
+    <form method="get" action="/search" class="select_box">
+        <input type="hidden" th:value="${searching}" name="searching">
+        <select id="filter" name="sort" onchange="this.form.submit()">
             <option value="">Sort</option>
             <option value="newest">By newest</option>
             <option value="oldest">By oldest</option>
         </select>
-    </div>
+    </form>
     <div class="question" th:each="entry : ${avatarQuestMap}"
          th:with="avatar = ${entry.value}, question = ${entry.key}">
         <div class="question-descrip-Img">
@@ -43,14 +44,14 @@
         </div>
     </div>
     <div class="pagination">
-        <a href="#" th:href="@{/search(page=${page - 1}, searching = ${searching})}" th:if="${page} > 1">Prev</a>
+        <a href="#" th:href="@{/search(page=${page - 1}, searching = ${searching}, sort = ${sort})}" th:if="${page} > 1">Prev</a>
         <div class="num-page" th:each="i: ${#numbers.sequence(1, 3)}" th:if="${numPages} &gt; 3">
-            <a href="/search" th:href="@{/search(page=${i}, searching = ${searching})}" th:text="${i}">1</a>
+            <a href="/search" th:href="@{/search(page=${i}, searching = ${searching}, sort = ${sort})}" th:text="${i}">1</a>
         </div>
         <div class="num-page" th:each="i: ${#numbers.sequence(1, numPages)}" th:if="${numPages} <= 3">
-            <a href="/search" th:href="@{/search(page=${i}, searching = ${searching})}" th:text="${i}">1</a>
+            <a href="/search" th:href="@{/search(page=${i}, searching = ${searching}, sort = ${sort})}" th:text="${i}">1</a>
         </div>
-        <a href="#" th:href="@{/search(page=${page + 1}, searching = ${searching})}"
+        <a href="#" th:href="@{/search(page=${page + 1}, searching = ${searching}, sort = ${sort})}"
            th:if="${page} < ${numPages}">Next</a>
     </div>
 </main>

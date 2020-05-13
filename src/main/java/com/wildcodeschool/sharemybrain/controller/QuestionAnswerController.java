@@ -32,10 +32,12 @@ public class QuestionAnswerController {
 
     @GetMapping("/questions")
     public String share(Model model, @RequestParam(required = false, defaultValue = "1") int page,
-                        @CookieValue(value = "username", defaultValue = "Atta") String username) {
+                        @CookieValue(value = "username", defaultValue = "Atta") String username,
+                        @RequestParam(required = false, defaultValue = "newest") String sort) {
         if (username.equals("Atta")) {
             return "/error";
         }
+
         int question_offset, limit;
         limit = 3;
         question_offset = (page * limit) - limit;
@@ -45,14 +47,16 @@ public class QuestionAnswerController {
         if (question_offset + limit > qtyQuestions) {
             limit = qtyQuestions - question_offset;
         }
-
         model.addAttribute("page", page);
         model.addAttribute("numPages", numPages);
+        boolean newest = sort.equals("newest");
+        model.addAttribute("sort", sort);
+
         List<Question> questions = new ArrayList<>();
         if (idSkill == -1) {
-            questions = questionRepository.findWithLimit(limit, question_offset);
+            questions = questionRepository.findWithLimit(limit, question_offset, newest);
         } else {
-            questions = questionRepository.findWithSkill(limit, question_offset, idSkill);
+            questions = questionRepository.findWithSkill(limit, question_offset, idSkill, newest);
         }
 
         Map<Question, Avatar> avatarQuestMap = new LinkedHashMap<>();
@@ -144,7 +148,8 @@ public class QuestionAnswerController {
     public String getSearch(Model model,
                             @RequestParam(required = false, defaultValue = "1") int page,
                             @CookieValue(value = "username", defaultValue = "Atta") String username,
-                            @RequestParam(required = false, defaultValue = "") String searching) {
+                            @RequestParam(required = false, defaultValue = "") String searching,
+                            @RequestParam(required = false, defaultValue = "newest") String sort) {
         int question_offset, limit;
         limit = 3;
         question_offset = (page * limit) - limit;
@@ -152,8 +157,12 @@ public class QuestionAnswerController {
         int numPages = (int) Math.ceil((double) qtyQuestions / limit);
         model.addAttribute("page", page);
         model.addAttribute("numPages", numPages);
+
+        boolean newest = sort.equals("newest");
+        model.addAttribute("sort", sort);
+
         List<Question> questions = new ArrayList<>();
-        questions = questionRepository.search(limit, question_offset, searching);
+        questions = questionRepository.search(limit, question_offset, searching, newest);
         Map<Question, Avatar> avatarQuestMap = new LinkedHashMap<>();
         int avatarId;
         for (Question question : questions) {

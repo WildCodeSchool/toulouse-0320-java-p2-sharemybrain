@@ -83,12 +83,19 @@
 .accountOptions ul {
     list-style-type: none;
     font-size: 13px;
-    color: var(--darkImperialBlue);
     margin-top: 1em;
 }
 
 .accountOptions ul li {
     margin-bottom: 0.5em;
+}
+.accountOptions a {
+    color: var(--darkImperialBlue);
+    text-decoration: none;
+}
+
+.accountOptions a:hover {
+    color: var(--sunsetOrange);
 }
 
 .profileUserAvatar {
@@ -99,6 +106,8 @@
     width: 150px;
     height: 150px;
 }
+
+
 
 /* DESKTOP */
 @media screen and (min-width: 768px) {

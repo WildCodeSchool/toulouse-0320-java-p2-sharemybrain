@@ -93,7 +93,7 @@ public class QuestionAnswerController {
         model.addAttribute("username", username);
         model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar).getUrl());
 
-        //Check if the skill of the user is
+        //Check if the skill of the user is the same as answer
         int idSkillUser = userRepository.findSkill(username);
         Question questionDescr = questionRepository.findQuestion(question);
         boolean isSkill = false;

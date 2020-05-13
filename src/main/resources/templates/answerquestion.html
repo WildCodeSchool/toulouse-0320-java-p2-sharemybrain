@@ -30,7 +30,7 @@
             Qui ut huic virilem togam deditšnihil dicam hoc loco de me; tantum sit, quantum vos existimatis; hoc dicam, hunc</p>
     </section>
 
-    <form action="/answerquestion" class="register" method="post">
+    <form th:if="${isSkill}" action="/answerquestion" class="register" method="post">
         <div>
             <label for="answer-question"></label>
             <input name="idQuestion" th:value="${question.idQuestion}" type="hidden">

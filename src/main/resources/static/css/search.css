@@ -31,9 +31,20 @@
     color: var(--darkImperialBlue);
     font-size: 1.2rem;
 }
+.skillQuestion{
+    padding-top: 0.5rem;
+}
+.skillQuestion p{
+    color: var(--sunsetOrange)
+}
 
 .search button:hover {
     color: var(--sunsetOrange)
+}
+h3{
+    color: var(--metallicSeaweed);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 @media screen and (min-width: 768px) {
@@ -57,5 +68,11 @@
     .search button {
         top: -30px;
         font-size: 1.5rem;
+    }
+    .skillQuestion{
+        padding: 0.5rem 0;
+    }
+    h3{
+        display: none;
     }
 }

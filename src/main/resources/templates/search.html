@@ -17,8 +17,8 @@
             <button><i class="fas fa-search"></i></button>
         </form>
     </div>
-    <form method="get" action="/search" class="select_box">
-        <input type="hidden" th:value="${searching}" name="searching">
+    <form action="/search" class="select_box" method="get">
+        <input name="searching" th:value="${searching}" type="hidden">
         <select id="filter" name="sort" onchange="this.form.submit()">
             <option value="">Sort</option>
             <option value="newest">By newest</option>
@@ -26,30 +26,36 @@
         </select>
     </form>
     <div class="question" th:each="entry : ${avatarQuestMap}"
-         th:with="avatar = ${entry.value}, question = ${entry.key}">
+          th:with="avatar = ${entry.value}, question = ${entry.key}">
         <div class="question-descrip-Img">
             <img alt="avatar" src="" th:id="id + ${avatar.id}"
-                 th:src="@{images/avatar/{avatar}(avatar = ${avatar.url})}">
+                 th:src="@{images/avatar/{avatar}(avatar = ${avatar.url})}" th:title="${question.questionUserName}">
             <div>
+                <h3 th:text="|${question.questionUserName} :|"></h3>
                 <a class="quest-title" href="/answer" th:href="@{/answer/{question}(question = ${question.idQuestion})}"
-                   th:text="${question.title}">Fusce rhoncus odio ante, at auctor
-                    nibh dapibus eget?</a>
+                   th:text="${question.title}">Fusce rhoncus odio ante, at auctor nibh dapibus eget?</a>
                 <p class="quest-description" th:text="${question.description}">Cras sed turpis justo. Interdum et</p>
+                <div class="skillQuestion">
+                    <p th:text="${question.skillName}">Skill</p>
+                </div>
             </div>
         </div>
 
         <div class="question-infos">
-            <p>asked 10 seconds ago</p>
+            <p th:text="|Posted the ${question.date}|">Posted the yyyy/MM/dd</p>
             <p th:text="|${question.countAnswers} answers|">2 answers</p>
         </div>
     </div>
     <div class="pagination">
-        <a href="#" th:href="@{/search(page=${page - 1}, searching = ${searching}, sort = ${sort})}" th:if="${page} > 1">Prev</a>
+        <a href="#" th:href="@{/search(page=${page - 1}, searching = ${searching}, sort = ${sort})}"
+           th:if="${page} > 1">Prev</a>
         <div class="num-page" th:each="i: ${#numbers.sequence(1, 3)}" th:if="${numPages} &gt; 3">
-            <a href="/search" th:href="@{/search(page=${i}, searching = ${searching}, sort = ${sort})}" th:text="${i}">1</a>
+            <a href="/search" th:href="@{/search(page=${i}, searching = ${searching}, sort = ${sort})}"
+               th:text="${i}">1</a>
         </div>
         <div class="num-page" th:each="i: ${#numbers.sequence(1, numPages)}" th:if="${numPages} <= 3">
-            <a href="/search" th:href="@{/search(page=${i}, searching = ${searching}, sort = ${sort})}" th:text="${i}">1</a>
+            <a href="/search" th:href="@{/search(page=${i}, searching = ${searching}, sort = ${sort})}"
+               th:text="${i}">1</a>
         </div>
         <a href="#" th:href="@{/search(page=${page + 1}, searching = ${searching}, sort = ${sort})}"
            th:if="${page} < ${numPages}">Next</a>

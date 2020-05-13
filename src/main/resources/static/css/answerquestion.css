@@ -21,16 +21,17 @@ section {
 h3 {
     color: var(--sunsetOrange);
     width: 100%;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 .answerQuestion{
     width: 100%;
 }
 h4{
-    color: var(--sunsetOrange);
+    color: var(--gainsboro);
     width: 100%;
     font-size: 1rem;
     text-align: left;
+    text-decoration:underline;
 }
 
 p {
@@ -85,6 +86,9 @@ section div img {
 }
 section div h4{
     text-align: left;
+}
+#question-desktop{
+    width: 100%;
 }
 
 /* desktop*/

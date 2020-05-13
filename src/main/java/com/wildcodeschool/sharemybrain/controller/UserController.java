@@ -114,10 +114,10 @@ public class UserController {
         model.addAttribute("mapQuestion", mapQuestion);
 
         // Questions answered by user
-        List<Question> questions2 = questionRepository.findQuestionsAnsweredByUserId(idUser);
+        List<Question> questionsAnswered = questionRepository.findQuestionsAnsweredByUserId(idUser);
         Map<Question, Avatar> avatarQuestMap = new LinkedHashMap<>();
         int avatarId;
-        for (Question question : questions2) {
+        for (Question question : questionsAnswered) {
             avatarId = repository.findAvatarById(question.getIdUser());
             avatarQuestMap.put(question, avatarRepository.findAvatar(avatarId));
             question.setCountAnswers(answerRepository.countAnswersByQuestion(question.getIdQuestion()));

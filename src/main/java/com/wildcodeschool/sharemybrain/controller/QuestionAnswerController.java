@@ -88,10 +88,20 @@ public class QuestionAnswerController {
         if (username.equals("Atta")) {
             return "/error";
         }
+        //avatar and user name for header
         int idAvatar = userRepository.findAvatar(username);
         model.addAttribute("username", username);
         model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar).getUrl());
+
+        //Check if the skill of the user is
+        int idSkillUser = userRepository.findSkill(username);
         Question questionDescr = questionRepository.findQuestion(question);
+        boolean isSkill = false;
+        if (idSkillUser == questionDescr.getIdSkill()) {
+            isSkill = true;
+        }
+        model.addAttribute("isSkill", isSkill);
+
         int avatarId = userRepository.findAvatarById(questionDescr.getIdUser());
         model.addAttribute("avatarQ", avatarRepository.findAvatar(avatarId));
         model.addAttribute("question", questionDescr);

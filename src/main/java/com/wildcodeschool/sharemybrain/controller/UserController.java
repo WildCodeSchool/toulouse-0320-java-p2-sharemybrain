@@ -35,7 +35,7 @@ public class UserController {
     public String checkLogin(Model model, @RequestParam(defaultValue = "", required = false) String username,
                              @RequestParam(defaultValue = "", required = false) String password,
                              HttpServletResponse response) {
-        if (username == "" || password == "") {
+        if (username.equals("") || password.equals("")) {
             return "redirect:/login";
         }
         String hash = crypt(password);

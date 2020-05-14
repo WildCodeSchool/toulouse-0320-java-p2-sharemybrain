@@ -7,7 +7,7 @@
 
 </head>
 <body>
-<th:block th:include="fragments/header.html :: header(${false},${'login'}, ${''}, ${''})"></th:block>
+<th:block th:include="fragments/header.html :: header(${true},${'index'}, ${avatar}, ${username})"></th:block>
 <div class="cadredestop">
     <h2>Change your password</h2>
     <form action="/changepassword" class="login" method="post">

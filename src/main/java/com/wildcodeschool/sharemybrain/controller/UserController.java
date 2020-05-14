@@ -100,6 +100,7 @@ public class UserController {
         model.addAttribute("username", username);
         int idAvatar = repository.findAvatar(username);
         model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar).getUrl());
+
         int idSkill = repository.findSkill(username);
         model.addAttribute("skill", skillRepository.findSkillById(idSkill).getName());
 
@@ -131,6 +132,12 @@ public class UserController {
     @GetMapping("/changepassword")
     public String changePassword(Model model,
                                  @CookieValue(value = "username", defaultValue = "Atta") String username) {
+        // Skill and username for header
+        model.addAttribute("username", username);
+        int idAvatar = repository.findAvatar(username);
+        model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar).getUrl());
+
+
         if (username.equals("Atta")) {
             return "/error";
         }

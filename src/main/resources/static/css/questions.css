@@ -91,6 +91,7 @@
 
     .question-descrip-Img {
         display: flex;
+        flex-basis: 100%;
     }
 
     .question div img {
@@ -112,10 +113,13 @@
     .question-infos {
         margin-top: 0;
         flex-direction: column;
+        flex-basis: 15%;
+        padding-right: 1rem;
     }
 
     .question-infos p {
         font-size: 1rem;
+        text-align: end;
     }
 
     .question-infos p:first-child {

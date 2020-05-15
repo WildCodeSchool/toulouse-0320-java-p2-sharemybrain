@@ -48,6 +48,7 @@ input {
     color: var(--darkImperialBlue);
     font-size: 2vh;
     padding-left: 0.7rem;
+    border-style: none;
 }
 
 p {
@@ -78,7 +79,6 @@ a:link, a:visited, a:hover, a:active {
         background-color: var(--gainsboro);
         display: flex;
         justify-content: center;
-        align-items: center;
     }
 
     .login {
@@ -87,6 +87,7 @@ a:link, a:visited, a:hover, a:active {
     }
 
     .cadredestop {
+        align-self: center;
         width: 60%;
     }
 }

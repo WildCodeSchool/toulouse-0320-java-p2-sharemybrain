@@ -6,9 +6,9 @@
     <link href="css/askquestion.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-<th:block  th:include="fragments/header.html :: header(${true},${'index'})"></th:block>
+<th:block th:include="fragments/header.html :: header(${true},${'index'}, ${avatar}, ${username})"></th:block>
 <h2>Ask your question:</h2>
-<form action="" class="register" method="post">
+<form action="/askquestion" class="register" method="post">
 
     <div id="formulaire">
         <label for="question_title"></label>
@@ -16,14 +16,13 @@
     </div>
 
     <label class="skill">
-        <select name="Chose your skill" size="1">
-            <option value="Choose">Choose your skill</option>
-            <OPTION>HTML</OPTION>
-            <OPTION>CSS</OPTION>
-            <OPTION>JAVA</OPTION>
-            <OPTION>JAVASCRIPT</OPTION>
-            <OPTION>Other</OPTION>
+
+        <select name="idSkill">
+            <option value="0">Choose your skill</option>
+            <option th:each="skill : ${skills}" th:value="${skill.id}" th:text="${skill.name}">
+            </option>
         </select>
+
     </label>
 
     <div>

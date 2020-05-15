@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body th:fragment="answersProfileBlock (avatarQuestMap)">
+<main class="share-knowledge">
+    <h2 id="title-Answer">Questions answered by you!</h2>
+    <div class="question" th:each="entry : ${avatarQuestMap}"
+         th:with="avatar = ${entry.value}, question = ${entry.key}">
+        <div class="question-descrip-Img">
+            <img alt="avatar" src="" th:id="id + ${avatar.id}"
+                 th:src="@{images/avatar/{avatar}(avatar = ${avatar.url})}">
+            <div>
+                <a class="quest-title" href="/answer" th:href="@{/answer/{question}(question = ${question.idQuestion})}"
+                   th:text="${question.title}">Fusce rhoncus odio ante, at auctor
+                    nibh dapibus eget?</a>
+                <p class="quest-description" th:text="${question.description}">Cras sed turpis justo. Interdum et</p>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

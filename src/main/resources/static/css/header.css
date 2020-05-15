@@ -123,11 +123,16 @@ a {
     color: var(--gainsboro);
 }
 
+.user {
+    display: none;
+}
 @media screen and (min-width: 768px) {
     /*GENERAL*/
+    .left-icons {
+        display: flex;
+    }
     .logo {
         flex-basis: 20%;
-        justify-content: space-between;
     }
 
     .img {
@@ -150,14 +155,20 @@ a {
         margin-right: 3rem;
     }
 
-    /*LOGGED*/
-    .log-header {
+    .user {
+        display: flex;
         align-items: center;
-        margin: 1rem 2rem 0 3rem;
-        justify-content: flex-start;
-        flex-wrap: wrap;
+        flex-basis: 10%;
+        justify-content: space-around;
     }
 
+    .user p {
+        color: var(--darkImperialBlue);
+    }
+
+    .user img {
+        height: 50px;
+    }
     .icon-nav {
         display: flex;
         align-items: center;
@@ -194,7 +205,6 @@ a {
     .nav-search img {
         width: 3vw;
         flex-basis: 3vw;
-    ()
     }
 
     .nav-exit img {

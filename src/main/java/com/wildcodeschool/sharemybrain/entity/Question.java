@@ -1,6 +1,7 @@
 package com.wildcodeschool.sharemybrain.entity;
 
 import java.util.Date;
+import java.util.List;
 
 public class Question {
     private int idQuestion;
@@ -9,12 +10,23 @@ public class Question {
     private Date date;
     private int idUser;
     private int idSkill;
+    private int countAnswers;
+    private String questionUserName;
+    private String skillName;
+    private List<Answer> answers;
 
     // Empty constructor
     public Question() {
     }
 
-    //Constructor with all items
+    public Question(int idQuestion, String title, String description, int idUser) {
+        this.idQuestion = idQuestion;
+        this.title = title;
+        this.description = description;
+        this.idUser = idUser;
+    }
+
+        //Constructor with all items
     public Question(int id, String title, String description, int idUser, int idSkill, Date date) {
         this.idQuestion = id;
         this.title = title;
@@ -22,6 +34,25 @@ public class Question {
         this.idUser = idUser;
         this.idSkill = idSkill;
         this.date = date;
+    }
+    public Question(int id, String title, String description, int idUser, int idSkill, Date date, String questionUserName) {
+        this.idQuestion = id;
+        this.title = title;
+        this.description = description;
+        this.idUser = idUser;
+        this.idSkill = idSkill;
+        this.date = date;
+        this.questionUserName = questionUserName;
+    }
+    public Question(int id, String title, String description, int idUser, int idSkill, Date date, String questionUserName, String skillName) {
+        this.idQuestion = id;
+        this.title = title;
+        this.description = description;
+        this.idUser = idUser;
+        this.idSkill = idSkill;
+        this.date = date;
+        this.questionUserName = questionUserName;
+        this.skillName = skillName;
     }
 
     public int getIdQuestion() { return this.idQuestion; }
@@ -67,4 +98,33 @@ public class Question {
     public void setDate(Date date) {
         this.date = date;
     }
+
+    public int getCountAnswers() { return this.countAnswers;}
+
+    public void setCountAnswers(int countAnswers) { this.countAnswers = countAnswers;}
+
+    public List<Answer> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(List<Answer> answers) {
+        this.answers = answers;
+    }
+
+    public String getQuestionUserName() {
+        return questionUserName;
+    }
+
+    public void setQuestionUserName(String questionUserName) {
+        this.questionUserName = questionUserName;
+    }
+
+    public String getSkillName() {
+        return skillName;
+    }
+
+    public void setSkillName(String skillName) {
+        this.skillName = skillName;
+    }
 }
+

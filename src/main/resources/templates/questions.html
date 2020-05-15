@@ -8,49 +8,43 @@
     </head>
 </head>
 <body>
-<th:block th:include="fragments/header.html :: header(${true},${'index'})"></th:block>
+<th:block th:include="fragments/header.html :: header(${true},${'index'}, ${avatar}, ${username})"></th:block>
 <main class="share-knowledge">
     <h2>Questions for you!</h2>
-    <div class="select_box">
-        <select id="filter" name="filter">
+    <form method="get" action="/questions" class="select_box">
+        <select id="filter" name="sort" onchange="this.form.submit()">
             <option value="">Sort</option>
             <option value="newest">By newest</option>
             <option value="oldest">By oldest</option>
         </select>
-    </div>
-    <div class="question" th:each="question : ${questions}">
+    </form>
+    <div class="question" th:each="entry : ${avatarQuestMap}"
+         th:with="avatar = ${entry.value}, question = ${entry.key}" >
         <div class="question-descrip-Img">
-            <!-- TODO update with the good avatar -->
-            <img src="">
+            <img alt="avatar" src="" th:id="id + ${avatar.id}"
+                 th:src="@{images/avatar/{avatar}(avatar = ${avatar.url})}" th:title="${question.questionUserName}">
             <div>
-                <a class="quest-title" href="/answer" th:text="${question.title}">Fusce rhoncus odio ante, at auctor
+                <a class="quest-title" href="/answer" th:href="@{/answer/{question}(question = ${question.idQuestion})}"
+                   th:text="${question.title}">Fusce rhoncus odio ante, at auctor
                     nibh dapibus eget?</a>
                 <p class="quest-description" th:text="${question.description}">Cras sed turpis justo. Interdum et</p>
             </div>
         </div>
 
-        <!-- TODO update the question infos with DB information -->
         <div class="question-infos">
-            <p>asked 10 seconds ago</p>
-            <p>2 answers</p>
+            <p th:text="|posted the ${question.date}|">posted the mm/dd/yyyy</p>
+            <p th:text="|${question.countAnswers} answers|">2 answers</p>
         </div>
     </div>
-    <div class="pagination">
-        <a href="#" th:href="@{/questions(page=${page - 1})}" th:if="${page} > 1">Prev</a>
-        <div class="num-page" th:href="@{/questions(page=${page + 1})}" th:if="${page} < ${numPages}">
-            <a href="/questions" th:href="@{/questions(page=${page})}" th:text="${page}">1</a>
-            <a href="/questions" th:href="@{/questions(page=${page + 1})}" th:if="${page + 1} <= ${numPages}"
-               th:text="${page + 1}">2</a>
-            <a href="/questions" th:href="@{/questions(page=${page + 2})}" th:if="${page + 2} <= ${numPages}"
-               th:text="${page + 2}">3</a>
+    <div class="pagination" >
+        <a href="#" th:href="@{/questions(page=${page - 1}, sort = ${sort})}" th:if="${page} > 1">Prev</a>
+        <div class="num-page" th:if="${numPages} &gt; 3" th:each="i: ${#numbers.sequence(1, 3)}">
+            <a href="/questions" th:href="@{/questions(page=${i}, sort = ${sort})}" th:text="${i}">1</a>
         </div>
-        <div class="num-page" th:href="@{/questions(page=${page + 1})}" th:if="${page} == ${numPages}">
-            <a href="/questions" th:href="@{/questions(page=${page - 2})}" th:if="${page - 2} > 0"
-               th:text="${page - 2}">1</a>
-            <a href="/questions" th:href="@{/questions(page=${page - 1})}" th:text="${page - 1}">2</a>
-            <a href="/questions" th:href="@{/questions(page=${page})}" th:text="${page}">3</a>
+        <div class="num-page" th:if="${numPages} <= 3" th:each="i: ${#numbers.sequence(1, numPages)}">
+            <a href="/questions" th:href="@{/questions(page=${i}, sort = ${sort})}" th:text="${i}">1</a>
         </div>
-        <a href="#" th:href="@{/questions(page=${page + 1})}" th:if="${page} < ${numPages}">Next</a>
+        <a href="#" th:href="@{/questions(page=${page + 1}, sort = ${sort})}" th:if="${page} < ${numPages}">Next</a>
     </div>
 </main>
 

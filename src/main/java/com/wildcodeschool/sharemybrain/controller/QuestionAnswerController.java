@@ -40,6 +40,9 @@ public class QuestionAnswerController {
         if (question_offset + limit > qtyQuestions) {
             limit = qtyQuestions - question_offset;
         }
+        if (numPages == 0) {
+            numPages = 1;
+        }
         model.addAttribute("page", page);
         model.addAttribute("numPages", numPages);
         boolean newest = sort.equals("newest");
@@ -151,6 +154,9 @@ public class QuestionAnswerController {
         question_offset = (page * limit) - limit;
         int qtyQuestions = questionRepository.totalSearch(searching);
         int numPages = (int) Math.ceil((double) qtyQuestions / limit);
+        if (numPages == 0) {
+            numPages = 1;
+        }
         model.addAttribute("page", page);
         model.addAttribute("numPages", numPages);
 

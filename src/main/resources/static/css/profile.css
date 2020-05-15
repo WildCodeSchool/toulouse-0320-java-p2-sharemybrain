@@ -3,8 +3,8 @@
 @import url('questionProfile.css');
 
 .fullProfile {
-    margin: 1em;
-    padding: 1em;
+    margin-bottom: 1em;
+    padding: 0;
     min-width: 200px;
 }
 
@@ -99,7 +99,7 @@
 }
 
 .profileUserAvatar {
-        padding: 1em;
+    padding: 1em;
 }
 
 .profileUserAvatar img {
@@ -136,6 +136,7 @@
 
     .profileQuestionAnswerBlock {
         width: 75%;
+        padding: 2rem;
     }
 
     .profileUserTextBlock {

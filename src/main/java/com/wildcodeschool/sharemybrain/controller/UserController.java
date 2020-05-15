@@ -67,7 +67,8 @@ public class UserController {
 
     @PostMapping("/register")
     public String registration(Model model, @ModelAttribute User user) {
-
+        model.addAttribute("avatars", avatarRepository.findAllAvatars());
+        model.addAttribute("skills", skillRepository.findAllSkills());
         if (repository.findAnyUsername(user.getUserName())) {
             model.addAttribute("userExists", true);
             return "/register";
@@ -81,7 +82,7 @@ public class UserController {
             model.addAttribute("noSkill", true);
             return "/register";
         }
-        int aa = user.getIdAvatar();
+
         user.setPwd(crypt(user.getPwd()));
         repository.insertNewUser(user);
         return "redirect:/login";

@@ -9,6 +9,6 @@ RUN mvn -Dmaven.test.skip  package
 
 FROM openjdk:8-jre-alpine
 WORKDIR /app
-COPY --from=MAVEN_BUILD /build/target/ShareMyBrain-0.0.1-SNAPSHOT.jar /app/
+COPY --from=MAVEN_BUILD /build/target/sharemybrain-0.0.1-SNAPSHOT.jar /app/
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar","-Dspring.profiles.active=prod", "sharemybrain-0.0.1-SNAPSHOT.jar"]

@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class JdbcSingleton {
 
-    private final static String DB_URL = "jdbc:mysql://localhost:3306/nantes_java_0320_pjt2_sharemybrain?serverTimezone=GMT";
+    private final static String DB_URL = "jdbc:mysql://51.68.18.102:3306/nantes_java_0320_pjt2_sharemybrain?serverTimezone=GMT";
     private final static String DB_USER = "poule";
     private final static String DB_PASSWORD = "p0uleR3qu3st?";
 

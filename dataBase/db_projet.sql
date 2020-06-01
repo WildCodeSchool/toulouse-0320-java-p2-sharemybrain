@@ -3,8 +3,8 @@
 #------------------------------------------------------------
 CREATE DATABASE IF NOT EXISTS nantes_java_0320_pjt2_sharemybrain CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE nantes_java_0320_pjt2_sharemybrain;
-CREATE USER IF NOT EXISTS 'poule'@'localhost' IDENTIFIED BY 'p0uleR3qu3st?';
-GRANT ALL PRIVILEGES ON nantes_java_0320_pjt2_sharemybrain.* TO 'poule'@'localhost';
+CREATE USER IF NOT EXISTS 'poule'@'%' IDENTIFIED BY 'p0uleR3qu3st?';
+GRANT ALL PRIVILEGES ON nantes_java_0320_pjt2_sharemybrain.* TO 'poule'@'%';
 FLUSH PRIVILEGES;
 
 #------------------------------------------------------------

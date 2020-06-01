@@ -1,13 +1,14 @@
-FROM openjdk:8-jdk-alpine
-WORKDIR /workspace/app
+FROM maven:3.5.3-jdk-8-alpine AS MAVEN_BUILD
+MAINTAINER Hugo Blanc
+COPY pom.xml /build/
+WORKDIR /build/
+RUN mvn dependency:go-offline
+COPY src /build/src/
+RUN mvn -Dmaven.test.skip  package
 
-COPY mvnw .
-COPY .mvn .mvn
-COPY pom.xml .
-COPY src src
 
-RUN ./mvnw install -DskipTests
-
+FROM openjdk:8-jre-alpine
+WORKDIR /app
+COPY --from=MAVEN_BUILD /build/target/sharemybrain-0.0.1-SNAPSHOT.jar /app/
 EXPOSE 8080
-
-RUN ./mvnw spring-boot:run
+ENTRYPOINT ["java", "-jar","-Dspring.profiles.active=prod", "sharemybrain-0.0.1-SNAPSHOT.jar"]

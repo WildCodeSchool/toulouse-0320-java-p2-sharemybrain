@@ -36,8 +36,8 @@
         </div>
     </div>
     <div class="btns-index" th:if="${not logged}">
-        <a class="btn-log" th:href="@{login}">Log in</a>
-        <a class="button btn-register" th:href="@{register}">Register</a>
+        <a class="btn-log" href="/login">Log in</a>
+        <a class="button btn-register" href="/register">Register</a>
     </div>
 </main>
 <th:block th:include="fragments/footer.html :: bottom (${logged})"></th:block>

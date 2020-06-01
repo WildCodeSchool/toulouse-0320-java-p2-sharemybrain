@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -14,6 +15,13 @@ import javax.servlet.http.HttpServletResponse;
 public class MainController {
     UserRepository userRepository = new UserRepository();
     AvatarRepository avatarRepository = new AvatarRepository();
+
+    @GetMapping("/hello")
+    @ResponseBody
+    public String hello() {
+
+        return "Hello World";
+    }
 
     @GetMapping("/")
     public String index(Model model, @CookieValue(value = "username", defaultValue = "Atta") String username) {

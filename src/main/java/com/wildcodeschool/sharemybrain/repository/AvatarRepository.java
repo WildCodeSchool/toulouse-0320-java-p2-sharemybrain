@@ -1,26 +1,24 @@
 package com.wildcodeschool.sharemybrain.repository;
 
 import com.wildcodeschool.sharemybrain.entity.Avatar;
+import com.wildcodeschool.sharemybrain.util.JdbcSingleton;
 import com.wildcodeschool.sharemybrain.util.JdbcUtils;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AvatarRepository {
-
-    private final static String DB_URL = "jdbc:mysql://localhost:3306/share_my_brain?serverTimezone=GMT";
-    private final static String DB_USER = "poule";
-    private final static String DB_PASSWORD = "p0uleR3qu3st?";
 
     public List<Avatar> findAllAvatars() {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = DriverManager.getConnection(
-                    DB_URL, DB_USER, DB_PASSWORD
-            );
+            connection = JdbcSingleton.getInstance().getConnection();
             statement = connection.prepareStatement(
                     "SELECT * FROM avatar;"
             );
@@ -49,9 +47,7 @@ public class AvatarRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = DriverManager.getConnection(
-                    DB_URL, DB_USER, DB_PASSWORD
-            );
+            connection = JdbcSingleton.getInstance().getConnection();
             statement = connection.prepareStatement(
                     "SELECT * FROM avatar WHERE id_avatar = ?;"
             );

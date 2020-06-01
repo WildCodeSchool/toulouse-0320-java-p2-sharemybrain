@@ -1,6 +1,7 @@
 package com.wildcodeschool.sharemybrain.repository;
 
 import com.wildcodeschool.sharemybrain.entity.Question;
+import com.wildcodeschool.sharemybrain.util.JdbcSingleton;
 import com.wildcodeschool.sharemybrain.util.JdbcUtils;
 
 import java.sql.*;
@@ -9,19 +10,13 @@ import java.util.Date;
 import java.util.List;
 
 public class QuestionRepository {
-    private final static String DB_URL = "jdbc:mysql://localhost:3306/share_my_brain?serverTimezone=GMT";
-    private final static String DB_USER = "poule";
-    private final static String DB_PASSWORD = "p0uleR3qu3st?";
-
 
     public List<Question> findWithLimit(int limit, int offset, Boolean newest) {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = DriverManager.getConnection(
-                    DB_URL, DB_USER, DB_PASSWORD
-            );
+            connection = JdbcSingleton.getInstance().getConnection();
             if (newest) {
                 statement = connection.prepareStatement(
                         "SELECT * FROM question ORDER BY `date` DESC LIMIT ?,?;"
@@ -64,9 +59,7 @@ public class QuestionRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = DriverManager.getConnection(
-                    DB_URL, DB_USER, DB_PASSWORD
-            );
+            connection = JdbcSingleton.getInstance().getConnection();
             if (idSkill == -1) {
                 statement = connection.prepareStatement(
                         "SELECT COUNT(*) as count FROM question;"
@@ -97,9 +90,7 @@ public class QuestionRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = DriverManager.getConnection(
-                    DB_URL, DB_USER, DB_PASSWORD
-            );
+            connection = JdbcSingleton.getInstance().getConnection();
             if (newest) {
                 statement = connection.prepareStatement(
                         "SELECT * FROM question  WHERE id_skill = ? ORDER BY `date` DESC LIMIT ?,?;"
@@ -141,9 +132,7 @@ public class QuestionRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = DriverManager.getConnection(
-                    DB_URL, DB_USER, DB_PASSWORD
-            );
+            connection = JdbcSingleton.getInstance().getConnection();
             statement = connection.prepareStatement(
                     "SELECT * FROM question  WHERE id_question = ?;"
             );
@@ -176,9 +165,7 @@ public class QuestionRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = DriverManager.getConnection(
-                    DB_URL, DB_USER, DB_PASSWORD
-            );
+            connection = JdbcSingleton.getInstance().getConnection();
             statement = connection.prepareStatement(
                     "INSERT INTO question (title, description, `date`, id_user, id_skill) VALUES (?, ?, ?, ?, ?);"
             );
@@ -207,9 +194,7 @@ public class QuestionRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = DriverManager.getConnection(
-                    DB_URL, DB_USER, DB_PASSWORD
-            );
+            connection = JdbcSingleton.getInstance().getConnection();
             statement = connection.prepareStatement(
                     "SELECT * FROM question WHERE id_user = ?;"
             );
@@ -242,9 +227,7 @@ public class QuestionRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = DriverManager.getConnection(
-                    DB_URL, DB_USER, DB_PASSWORD
-            );
+            connection = JdbcSingleton.getInstance().getConnection();
             statement = connection.prepareStatement(
                     "SELECT DISTINCT question.id_question as question, question.title as title, question.description as descript, question.id_user as user FROM answer " +
                             "JOIN question ON answer.id_question = question.id_question " +
@@ -276,9 +259,7 @@ public class QuestionRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = DriverManager.getConnection(
-                    DB_URL, DB_USER, DB_PASSWORD
-            );
+            connection = JdbcSingleton.getInstance().getConnection();
             if (newest) {
                 statement = connection.prepareStatement(
                         "SELECT * FROM question " +
@@ -333,10 +314,7 @@ public class QuestionRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = DriverManager.getConnection(
-                    DB_URL, DB_USER, DB_PASSWORD
-            );
-
+            connection = JdbcSingleton.getInstance().getConnection();
             statement = connection.prepareStatement(
                     "SELECT COUNT(*) as count FROM question WHERE title LIKE ? OR description LIKE ?;"
             );

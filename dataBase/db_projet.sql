@@ -1,7 +1,11 @@
 #------------------------------------------------------------
 #        Script MySQL.
 #------------------------------------------------------------
-
+CREATE DATABASE IF NOT EXISTS nantes_java_0320_pjt2_sharemybrain CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE nantes_java_0320_pjt2_sharemybrain;
+CREATE USER IF NOT EXISTS 'poule'@'%' IDENTIFIED BY 'p0uleR3qu3st?';
+GRANT ALL PRIVILEGES ON nantes_java_0320_pjt2_sharemybrain.* TO 'poule'@'%';
+FLUSH PRIVILEGES;
 
 #------------------------------------------------------------
 # Table: skill
@@ -32,8 +36,8 @@ CREATE TABLE avatar(
 CREATE TABLE user(
         id_user   Int  Auto_increment  NOT NULL ,
         username Varchar (50) NOT NULL ,
-        email     Varchar (50) NOT NULL ,
-        password  Varchar (50) NOT NULL ,
+        email     Varchar (150) NOT NULL ,
+        password  Varchar (255) NOT NULL ,
         id_avatar Int NOT NULL ,
         id_skill  Int
 	,CONSTRAINT user_PK PRIMARY KEY (id_user)

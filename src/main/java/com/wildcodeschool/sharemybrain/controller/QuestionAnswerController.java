@@ -28,7 +28,7 @@ public class QuestionAnswerController {
                         @CookieValue(value = "username", defaultValue = "Atta") String username,
                         @RequestParam(required = false, defaultValue = "newest") String sort) {
         if (username.equals("Atta")) {
-            return "/error";
+            return "error";
         }
 
         int question_offset, limit;
@@ -68,25 +68,25 @@ public class QuestionAnswerController {
         model.addAttribute("username", username);
         model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar).getUrl());
 
-        return "/questions";
+        return "questions";
     }
 
     @GetMapping("/ask")
     public String ask(Model model, @CookieValue(value = "username", defaultValue = "Atta") String username) {
         if (username.equals("Atta")) {
-            return "/error";
+            return "error";
         }
         model.addAttribute("skills", skillRepository.findAllSkills());
         int idAvatar = userRepository.findAvatar(username);
         model.addAttribute("username", username);
         model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar).getUrl());
-        return "/askquestion";
+        return "askquestion";
     }
 
     @GetMapping("/answer/{question}")
     public String answer(Model model, @PathVariable int question, @CookieValue(value = "username", defaultValue = "Atta") String username) {
         if (username.equals("Atta")) {
-            return "/error";
+            return "error";
         }
         //avatar and user name for header
         int idAvatar = userRepository.findAvatar(username);
@@ -115,7 +115,7 @@ public class QuestionAnswerController {
         }
         model.addAttribute("questionUsername", userRepository.findUserNameWithIQuestion(question));
         model.addAttribute("avatarAnswerMap", avatarAnswerMap);
-        return "/answerquestion";
+        return "answerquestion";
     }
 
     @PostMapping("/answerquestion")
@@ -179,7 +179,7 @@ public class QuestionAnswerController {
         model.addAttribute("username", username);
         model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar).getUrl());
         model.addAttribute("searching", searching);
-        return "/search";
+        return "search";
     }
 
 

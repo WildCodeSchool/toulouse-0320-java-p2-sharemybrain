@@ -1,23 +1,19 @@
 package com.wildcodeschool.sharemybrain.repository;
 
 import com.wildcodeschool.sharemybrain.entity.User;
+import com.wildcodeschool.sharemybrain.util.JdbcSingleton;
 import com.wildcodeschool.sharemybrain.util.JdbcUtils;
 
 import java.sql.*;
 
 public class UserRepository {
-    private final static String DB_URL = "jdbc:mysql://localhost:3306/share_my_brain?serverTimezone=GMT";
-    private final static String DB_USER = "poule";
-    private final static String DB_PASSWORD = "p0uleR3qu3st?";
 
     public boolean findAnyUsername(String userName) {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = DriverManager.getConnection(
-                    DB_URL, DB_USER, DB_PASSWORD
-            );
+            connection = JdbcSingleton.getInstance().getConnection();
             statement = connection.prepareStatement(
                     "SELECT * FROM user WHERE username = ?"
             );
@@ -42,9 +38,7 @@ public class UserRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = DriverManager.getConnection(
-                    DB_URL, DB_USER, DB_PASSWORD
-            );
+            connection = JdbcSingleton.getInstance().getConnection();
             statement = connection.prepareStatement(
                     "SELECT * FROM user WHERE  password = ? AND username = ?;"
             );
@@ -70,9 +64,7 @@ public class UserRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = DriverManager.getConnection(
-                    DB_URL, DB_USER, DB_PASSWORD
-            );
+            connection = JdbcSingleton.getInstance().getConnection();
             statement = connection.prepareStatement(
                     "SELECT * FROM user WHERE email = ?"
             );
@@ -97,9 +89,7 @@ public class UserRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = DriverManager.getConnection(
-                    DB_URL, DB_USER, DB_PASSWORD
-            );
+            connection = JdbcSingleton.getInstance().getConnection();
             statement = connection.prepareStatement(
                     "INSERT INTO user (username, email, password, id_avatar, id_skill) VALUES (?, ?, ?, ?, ?);"
             );
@@ -127,9 +117,7 @@ public class UserRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = DriverManager.getConnection(
-                    DB_URL, DB_USER, DB_PASSWORD
-            );
+            connection = JdbcSingleton.getInstance().getConnection();
             statement = connection.prepareStatement(
                     "SELECT id_skill FROM user WHERE username = ?;"
             );
@@ -154,9 +142,7 @@ public class UserRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = DriverManager.getConnection(
-                    DB_URL, DB_USER, DB_PASSWORD
-            );
+            connection = JdbcSingleton.getInstance().getConnection();
             statement = connection.prepareStatement(
                     "SELECT id_user FROM user WHERE username = ?;"
             );
@@ -182,9 +168,7 @@ public class UserRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = DriverManager.getConnection(
-                    DB_URL, DB_USER, DB_PASSWORD
-            );
+            connection = JdbcSingleton.getInstance().getConnection();
             statement = connection.prepareStatement(
                     "SELECT id_avatar FROM user WHERE username = ?;"
             );
@@ -210,9 +194,7 @@ public class UserRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = DriverManager.getConnection(
-                    DB_URL, DB_USER, DB_PASSWORD
-            );
+            connection = JdbcSingleton.getInstance().getConnection();
             statement = connection.prepareStatement(
                     "SELECT id_avatar FROM user WHERE id_user = ?;"
             );
@@ -238,9 +220,7 @@ public class UserRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = DriverManager.getConnection(
-                    DB_URL, DB_USER, DB_PASSWORD
-            );
+            connection = JdbcSingleton.getInstance().getConnection();
             statement = connection.prepareStatement(
                     "SELECT username FROM user WHERE id_user = ?;"
             );
@@ -265,9 +245,7 @@ public class UserRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = DriverManager.getConnection(
-                    DB_URL, DB_USER, DB_PASSWORD
-            );
+            connection = JdbcSingleton.getInstance().getConnection();
             statement = connection.prepareStatement(
                     "SELECT username FROM answer JOIN user ON answer.id_user = user.id_user WHERE id_answer = ?;"
             );
@@ -292,9 +270,7 @@ public class UserRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = DriverManager.getConnection(
-                    DB_URL, DB_USER, DB_PASSWORD
-            );
+            connection = JdbcSingleton.getInstance().getConnection();
             statement = connection.prepareStatement(
                     "SELECT username FROM question JOIN user ON question.id_user = user.id_user WHERE id_question = ?;"
             );
@@ -320,9 +296,7 @@ public class UserRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = DriverManager.getConnection(
-                    DB_URL, DB_USER, DB_PASSWORD
-            );
+            connection = JdbcSingleton.getInstance().getConnection();
             statement = connection.prepareStatement(
                     "UPDATE user SET password = ? WHERE username = ?;"
             );

@@ -28,7 +28,7 @@ public class UserController {
 
     @GetMapping("/login")
     public String showLoginPage() {
-        return "/login";
+        return "login";
     }
 
     @PostMapping("/login")
@@ -51,10 +51,10 @@ public class UserController {
                 return "redirect:/profile";
             }
             model.addAttribute("nopsw", true);
-            return "/login";
+            return "login";
         }
         model.addAttribute("noUser", true);
-        return "/login";
+        return "login";
     }
 
     @GetMapping("/register")
@@ -62,7 +62,7 @@ public class UserController {
         model.addAttribute("user", new User());
         model.addAttribute("avatars", avatarRepository.findAllAvatars());
         model.addAttribute("skills", skillRepository.findAllSkills());
-        return "/register";
+        return "register";
     }
 
     @PostMapping("/register")
@@ -71,16 +71,16 @@ public class UserController {
         model.addAttribute("skills", skillRepository.findAllSkills());
         if (repository.findAnyUsername(user.getUserName())) {
             model.addAttribute("userExists", true);
-            return "/register";
+            return "register";
         } else if (repository.findAnyEmail(user.getMail())) {
             model.addAttribute("emailExists", true);
-            return "/register";
+            return "register";
         } else if (!user.getPwd().equals(user.getPwd2())) {
             model.addAttribute("noPswConfirmed", true);
-            return "/register";
+            return "register";
         } else if (user.getIdSkill() == 0) {
             model.addAttribute("noSkill", true);
-            return "/register";
+            return "register";
         }
 
         user.setPwd(crypt(user.getPwd()));
@@ -95,7 +95,7 @@ public class UserController {
                               @RequestParam(defaultValue = "Questions", required = false) String currentTab) {
 
         if (username.equals("Atta")) {
-            return "/error";
+            return "error";
         }
         // Skill and username for header
         model.addAttribute("username", username);
@@ -140,9 +140,9 @@ public class UserController {
 
 
         if (username.equals("Atta")) {
-            return "/error";
+            return "error";
         }
-        return "/changePsw";
+        return "changePsw";
     }
     @PostMapping("/changepassword")
     public String postchangePassword(Model model,
@@ -154,15 +154,15 @@ public class UserController {
         String hash = crypt(oldpsw);
         if (!repository.findUsernamePsw(hash, username)) {
             model.addAttribute("nopsw", true);
-            return "/changePsw";
+            return "changePsw";
         }
         if (!newpsw.equals(newpswConf)) {
             model.addAttribute("noPswConfirmed", true);
-            return "/changePsw";
+            return "changePsw";
         }
         int update = repository.updatePsw(username, crypt(newpsw));
         if (update != 0) {
-            return "/error";
+            return "error";
         }
         Cookie cookie = new Cookie("username", null);
         cookie.setMaxAge(0);

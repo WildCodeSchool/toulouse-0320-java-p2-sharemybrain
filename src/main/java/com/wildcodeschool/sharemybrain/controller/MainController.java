@@ -2,6 +2,7 @@ package com.wildcodeschool.sharemybrain.controller;
 
 import com.wildcodeschool.sharemybrain.repository.AvatarRepository;
 import com.wildcodeschool.sharemybrain.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -13,8 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class MainController {
-    UserRepository userRepository = new UserRepository();
-    AvatarRepository avatarRepository = new AvatarRepository();
+
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private AvatarRepository avatarRepository;
 
     @GetMapping("/hello")
     @ResponseBody

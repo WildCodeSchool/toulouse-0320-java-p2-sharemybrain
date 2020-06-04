@@ -6,6 +6,7 @@ import com.wildcodeschool.sharemybrain.entity.Question;
 import com.wildcodeschool.sharemybrain.entity.Skill;
 import com.wildcodeschool.sharemybrain.entity.User;
 import com.wildcodeschool.sharemybrain.repository.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -20,11 +21,17 @@ import java.util.Map;
 
 @Controller
 public class UserController {
-    private UserRepository repository = new UserRepository();
-    private AvatarRepository avatarRepository = new AvatarRepository();
-    private SkillRepository skillRepository = new SkillRepository();
-    private QuestionRepository questionRepository = new QuestionRepository();
-    private AnswerRepository answerRepository = new AnswerRepository();
+
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private AvatarRepository avatarRepository;
+    @Autowired
+    private SkillRepository skillRepository;
+    @Autowired
+    private QuestionRepository questionRepository;
+    @Autowired
+    private AnswerRepository answerRepository;
 
     @GetMapping("/login")
     public String showLoginPage() {
@@ -39,8 +46,8 @@ public class UserController {
             return "redirect:/login";
         }
         String hash = crypt(password);
-        if (repository.findAnyUsername(username)) {
-            if (repository.findUsernamePsw(hash, username)) {
+        if (userRepository.findAnyUsername(username)) {
+            if (userRepository.findUsernamePsw(hash, username)) {
                 // initialisation des cookies
                 Cookie cookie = new Cookie("username", username);
                 cookie.setMaxAge(1 * 24 * 60 * 60); // expires in 7 days
@@ -69,10 +76,10 @@ public class UserController {
     public String registration(Model model, @ModelAttribute User user) {
         model.addAttribute("avatars", avatarRepository.findAllAvatars());
         model.addAttribute("skills", skillRepository.findAllSkills());
-        if (repository.findAnyUsername(user.getUserName())) {
+        if (userRepository.findAnyUsername(user.getUserName())) {
             model.addAttribute("userExists", true);
             return "register";
-        } else if (repository.findAnyEmail(user.getMail())) {
+        } else if (userRepository.findAnyEmail(user.getMail())) {
             model.addAttribute("emailExists", true);
             return "register";
         } else if (!user.getPwd().equals(user.getPwd2())) {
@@ -84,7 +91,7 @@ public class UserController {
         }
 
         user.setPwd(crypt(user.getPwd()));
-        repository.insertNewUser(user);
+        userRepository.insertNewUser(user);
         return "redirect:/login";
 
     }
@@ -99,14 +106,14 @@ public class UserController {
         }
         // Skill and username for header
         model.addAttribute("username", username);
-        int idAvatar = repository.findAvatar(username);
+        int idAvatar = userRepository.findAvatar(username);
         model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar).getUrl());
 
-        int idSkill = repository.findSkill(username);
+        int idSkill = userRepository.findSkill(username);
         model.addAttribute("skill", skillRepository.findSkillById(idSkill).getName());
 
         // Questions asked by user
-        int idUser = repository.findUserId(username);
+        int idUser = userRepository.findUserId(username);
         List<Question> questions = questionRepository.findWithUserId(idUser);
         Map<Question, Skill> mapQuestion = new LinkedHashMap<>();
         for (Question question : questions) {
@@ -120,7 +127,7 @@ public class UserController {
         Map<Question, Avatar> avatarQuestMap = new LinkedHashMap<>();
         int avatarId;
         for (Question question : questionsAnswered) {
-            avatarId = repository.findAvatarById(question.getIdUser());
+            avatarId = userRepository.findAvatarById(question.getIdUser());
             avatarQuestMap.put(question, avatarRepository.findAvatar(avatarId));
             question.setCountAnswers(answerRepository.countAnswersByQuestion(question.getIdQuestion()));
         }
@@ -135,7 +142,7 @@ public class UserController {
                                  @CookieValue(value = "username", defaultValue = "Atta") String username) {
         // Skill and username for header
         model.addAttribute("username", username);
-        int idAvatar = repository.findAvatar(username);
+        int idAvatar = userRepository.findAvatar(username);
         model.addAttribute("avatar", avatarRepository.findAvatar(idAvatar).getUrl());
 
 
@@ -152,7 +159,7 @@ public class UserController {
                                      @RequestParam String newpswConf,
                                      HttpServletResponse response) {
         String hash = crypt(oldpsw);
-        if (!repository.findUsernamePsw(hash, username)) {
+        if (!userRepository.findUsernamePsw(hash, username)) {
             model.addAttribute("nopsw", true);
             return "changePsw";
         }
@@ -160,7 +167,7 @@ public class UserController {
             model.addAttribute("noPswConfirmed", true);
             return "changePsw";
         }
-        int update = repository.updatePsw(username, crypt(newpsw));
+        int update = userRepository.updatePsw(username, crypt(newpsw));
         if (update != 0) {
             return "error";
         }

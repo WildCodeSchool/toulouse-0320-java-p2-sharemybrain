@@ -5,6 +5,7 @@ import com.wildcodeschool.sharemybrain.entity.Answer;
 import com.wildcodeschool.sharemybrain.entity.Avatar;
 import com.wildcodeschool.sharemybrain.entity.Question;
 import com.wildcodeschool.sharemybrain.repository.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,12 +17,16 @@ import java.util.*;
 @Controller
 public class QuestionAnswerController {
 
-    private final QuestionRepository questionRepository = new QuestionRepository();
-    private final SkillRepository skillRepository = new SkillRepository();
-    private final UserRepository userRepository = new UserRepository();
-    private final AvatarRepository avatarRepository = new AvatarRepository();
-    private final AnswerRepository answerRepository = new AnswerRepository();
-    private UserRepository repository = new UserRepository();
+    @Autowired
+    private QuestionRepository questionRepository;
+    @Autowired
+    private SkillRepository skillRepository;
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private AvatarRepository avatarRepository;
+    @Autowired
+    private AnswerRepository answerRepository;
 
     @GetMapping("/questions")
     public String share(Model model, @RequestParam(required = false, defaultValue = "1") int page,
@@ -108,7 +113,7 @@ public class QuestionAnswerController {
         Map<Answer, Avatar> avatarAnswerMap = new LinkedHashMap<>();
         int avatarAnswerId;
         for (Answer answer : answers){
-            avatarAnswerId = repository.findAvatarById(answer.getIdUser());
+            avatarAnswerId = userRepository.findAvatarById(answer.getIdUser());
             avatarAnswerMap.put(answer, avatarRepository.findAvatar(avatarAnswerId));
             String answerUsername = userRepository.findUserNameWithIdAnswer(answer.getIdAnswer());
             answer.setUserName(answerUsername);

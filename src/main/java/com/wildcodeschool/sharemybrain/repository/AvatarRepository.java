@@ -1,8 +1,10 @@
 package com.wildcodeschool.sharemybrain.repository;
 
 import com.wildcodeschool.sharemybrain.entity.Avatar;
-import com.wildcodeschool.sharemybrain.util.JdbcSingleton;
 import com.wildcodeschool.sharemybrain.util.JdbcUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,14 +13,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class AvatarRepository {
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
     public List<Avatar> findAllAvatars() {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = JdbcSingleton.getInstance().getConnection();
+            connection = jdbcTemplate.getDataSource().getConnection();
             statement = connection.prepareStatement(
                     "SELECT * FROM avatar;"
             );
@@ -47,7 +53,7 @@ public class AvatarRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = JdbcSingleton.getInstance().getConnection();
+            connection = jdbcTemplate.getDataSource().getConnection();
             statement = connection.prepareStatement(
                     "SELECT * FROM avatar WHERE id_avatar = ?;"
             );

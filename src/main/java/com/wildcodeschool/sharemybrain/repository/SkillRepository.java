@@ -1,21 +1,27 @@
 package com.wildcodeschool.sharemybrain.repository;
 
 import com.wildcodeschool.sharemybrain.entity.Skill;
-import com.wildcodeschool.sharemybrain.util.JdbcSingleton;
 import com.wildcodeschool.sharemybrain.util.JdbcUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class SkillRepository {
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
     public List<Skill> findAllSkills() {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = JdbcSingleton.getInstance().getConnection();
+            connection = jdbcTemplate.getDataSource().getConnection();
             statement = connection.prepareStatement(
                     "SELECT * FROM skill;"
             );
@@ -43,7 +49,7 @@ public class SkillRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = JdbcSingleton.getInstance().getConnection();
+            connection = jdbcTemplate.getDataSource().getConnection();
             statement = connection.prepareStatement(
                     "SELECT * FROM skill WHERE id_skill = ?;"
             );
@@ -70,7 +76,7 @@ public class SkillRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = JdbcSingleton.getInstance().getConnection();
+            connection = jdbcTemplate.getDataSource().getConnection();
             statement = connection.prepareStatement(
                     "SELECT * FROM skill WHERE id_skill = ?;"
             );

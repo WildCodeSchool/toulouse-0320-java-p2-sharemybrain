@@ -1,19 +1,25 @@
 package com.wildcodeschool.sharemybrain.repository;
 
 import com.wildcodeschool.sharemybrain.entity.User;
-import com.wildcodeschool.sharemybrain.util.JdbcSingleton;
 import com.wildcodeschool.sharemybrain.util.JdbcUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 
+@Repository
 public class UserRepository {
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
     public boolean findAnyUsername(String userName) {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = JdbcSingleton.getInstance().getConnection();
+            connection = jdbcTemplate.getDataSource().getConnection();
             statement = connection.prepareStatement(
                     "SELECT * FROM user WHERE username = ?"
             );
@@ -38,7 +44,7 @@ public class UserRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = JdbcSingleton.getInstance().getConnection();
+            connection = jdbcTemplate.getDataSource().getConnection();
             statement = connection.prepareStatement(
                     "SELECT * FROM user WHERE  password = ? AND username = ?;"
             );
@@ -64,7 +70,7 @@ public class UserRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = JdbcSingleton.getInstance().getConnection();
+            connection = jdbcTemplate.getDataSource().getConnection();
             statement = connection.prepareStatement(
                     "SELECT * FROM user WHERE email = ?"
             );
@@ -89,7 +95,7 @@ public class UserRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = JdbcSingleton.getInstance().getConnection();
+            connection = jdbcTemplate.getDataSource().getConnection();
             statement = connection.prepareStatement(
                     "INSERT INTO user (username, email, password, id_avatar, id_skill) VALUES (?, ?, ?, ?, ?);"
             );
@@ -117,7 +123,7 @@ public class UserRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = JdbcSingleton.getInstance().getConnection();
+            connection = jdbcTemplate.getDataSource().getConnection();
             statement = connection.prepareStatement(
                     "SELECT id_skill FROM user WHERE username = ?;"
             );
@@ -142,7 +148,7 @@ public class UserRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = JdbcSingleton.getInstance().getConnection();
+            connection = jdbcTemplate.getDataSource().getConnection();
             statement = connection.prepareStatement(
                     "SELECT id_user FROM user WHERE username = ?;"
             );
@@ -168,7 +174,7 @@ public class UserRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = JdbcSingleton.getInstance().getConnection();
+            connection = jdbcTemplate.getDataSource().getConnection();
             statement = connection.prepareStatement(
                     "SELECT id_avatar FROM user WHERE username = ?;"
             );
@@ -194,7 +200,7 @@ public class UserRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = JdbcSingleton.getInstance().getConnection();
+            connection = jdbcTemplate.getDataSource().getConnection();
             statement = connection.prepareStatement(
                     "SELECT id_avatar FROM user WHERE id_user = ?;"
             );
@@ -220,7 +226,7 @@ public class UserRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = JdbcSingleton.getInstance().getConnection();
+            connection = jdbcTemplate.getDataSource().getConnection();
             statement = connection.prepareStatement(
                     "SELECT username FROM user WHERE id_user = ?;"
             );
@@ -245,7 +251,7 @@ public class UserRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = JdbcSingleton.getInstance().getConnection();
+            connection = jdbcTemplate.getDataSource().getConnection();
             statement = connection.prepareStatement(
                     "SELECT username FROM answer JOIN user ON answer.id_user = user.id_user WHERE id_answer = ?;"
             );
@@ -270,7 +276,7 @@ public class UserRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = JdbcSingleton.getInstance().getConnection();
+            connection = jdbcTemplate.getDataSource().getConnection();
             statement = connection.prepareStatement(
                     "SELECT username FROM question JOIN user ON question.id_user = user.id_user WHERE id_question = ?;"
             );
@@ -296,7 +302,7 @@ public class UserRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = JdbcSingleton.getInstance().getConnection();
+            connection = jdbcTemplate.getDataSource().getConnection();
             statement = connection.prepareStatement(
                     "UPDATE user SET password = ? WHERE username = ?;"
             );

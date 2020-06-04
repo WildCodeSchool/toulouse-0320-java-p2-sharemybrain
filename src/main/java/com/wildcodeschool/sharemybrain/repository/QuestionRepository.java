@@ -1,22 +1,28 @@
 package com.wildcodeschool.sharemybrain.repository;
 
 import com.wildcodeschool.sharemybrain.entity.Question;
-import com.wildcodeschool.sharemybrain.util.JdbcSingleton;
 import com.wildcodeschool.sharemybrain.util.JdbcUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@Repository
 public class QuestionRepository {
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
     public List<Question> findWithLimit(int limit, int offset, Boolean newest) {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = JdbcSingleton.getInstance().getConnection();
+            connection = jdbcTemplate.getDataSource().getConnection();
             if (newest) {
                 statement = connection.prepareStatement(
                         "SELECT * FROM question ORDER BY `date` DESC LIMIT ?,?;"
@@ -59,7 +65,7 @@ public class QuestionRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = JdbcSingleton.getInstance().getConnection();
+            connection = jdbcTemplate.getDataSource().getConnection();
             if (idSkill == -1) {
                 statement = connection.prepareStatement(
                         "SELECT COUNT(*) as count FROM question;"
@@ -90,7 +96,7 @@ public class QuestionRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = JdbcSingleton.getInstance().getConnection();
+            connection = jdbcTemplate.getDataSource().getConnection();
             if (newest) {
                 statement = connection.prepareStatement(
                         "SELECT * FROM question  WHERE id_skill = ? ORDER BY `date` DESC LIMIT ?,?;"
@@ -132,7 +138,7 @@ public class QuestionRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = JdbcSingleton.getInstance().getConnection();
+            connection = jdbcTemplate.getDataSource().getConnection();
             statement = connection.prepareStatement(
                     "SELECT * FROM question  WHERE id_question = ?;"
             );
@@ -165,7 +171,7 @@ public class QuestionRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = JdbcSingleton.getInstance().getConnection();
+            connection = jdbcTemplate.getDataSource().getConnection();
             statement = connection.prepareStatement(
                     "INSERT INTO question (title, description, `date`, id_user, id_skill) VALUES (?, ?, ?, ?, ?);"
             );
@@ -194,7 +200,7 @@ public class QuestionRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = JdbcSingleton.getInstance().getConnection();
+            connection = jdbcTemplate.getDataSource().getConnection();
             statement = connection.prepareStatement(
                     "SELECT * FROM question WHERE id_user = ?;"
             );
@@ -227,7 +233,7 @@ public class QuestionRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = JdbcSingleton.getInstance().getConnection();
+            connection = jdbcTemplate.getDataSource().getConnection();
             statement = connection.prepareStatement(
                     "SELECT DISTINCT question.id_question as question, question.title as title, question.description as descript, question.id_user as user FROM answer " +
                             "JOIN question ON answer.id_question = question.id_question " +
@@ -259,7 +265,7 @@ public class QuestionRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = JdbcSingleton.getInstance().getConnection();
+            connection = jdbcTemplate.getDataSource().getConnection();
             if (newest) {
                 statement = connection.prepareStatement(
                         "SELECT * FROM question " +
@@ -314,7 +320,7 @@ public class QuestionRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            connection = JdbcSingleton.getInstance().getConnection();
+            connection = jdbcTemplate.getDataSource().getConnection();
             statement = connection.prepareStatement(
                     "SELECT COUNT(*) as count FROM question WHERE title LIKE ? OR description LIKE ?;"
             );
